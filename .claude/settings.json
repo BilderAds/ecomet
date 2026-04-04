@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MEMORY_DIR='/Users/victoria/Projekte/Website Builder/Websites/ecomet/.memory' && echo '=== MEMORY SYSTEM GELADEN (ecomet) ===' && find \"$MEMORY_DIR\" -name '*.md' -not -name '_template.md' | sort | while read f; do echo \"\\n===== $(echo $f | sed \"s|$MEMORY_DIR/||\" ) =====\"; cat \"$f\"; echo ''; done 2>/dev/null && echo '=== MEMORY ENDE ==='"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[MEMORY-UPDATE PFLICHT | ecomet] Session endet. Fuehre ALLE Schritte aus:\\n\\n1) SESSION-LOG: .memory/sessions/YYYY-MM-DD-NR.md\\n2) INDEX: .memory/index.md aktualisieren\\n3) LESSONS LEARNED: Falls Fehler -> .memory/lessons-learned/LL-NNN.md\\n4) PROJEKT: .memory/projekte/ecomet.md (Status, Session-Tabelle, was umgesetzt wurde)\\n5) KONTEXT: .memory/kontext/ falls neue Erkenntnisse'"
+          }
+        ]
+      }
+    ]
+  }
+}
