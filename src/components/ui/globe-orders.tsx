@@ -145,6 +145,14 @@ const products = [
   "Kräutertopf Set 3er", "Gartensprüher 2L", "Insektenhotel Holz", "Blumenkasten Balkon",
 ]
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+  }, [])
+  return isMobile
+}
+
 export function GlobeOrders({ className = "", speed = 0.002 }: GlobeOrdersProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const pointerInteracting = useRef<{ x: number; y: number } | null>(null)
@@ -152,6 +160,7 @@ export function GlobeOrders({ className = "", speed = 0.002 }: GlobeOrdersProps)
   const phiOffsetRef = useRef(0)
   const thetaOffsetRef = useRef(0)
   const isPausedRef = useRef(false)
+  const isMobile = useIsMobile()
 
   const [activeOrders, setActiveOrders] = useState<
     { id: string; city: string; product: string; time: string; visible: boolean }[]
@@ -159,6 +168,8 @@ export function GlobeOrders({ className = "", speed = 0.002 }: GlobeOrdersProps)
 
   // Simulate new orders popping up
   useEffect(() => {
+    const mobile = window.innerWidth < 768
+
     function addOrder() {
       const loc = orderLocations[Math.floor(Math.random() * orderLocations.length)]
       const product = products[Math.floor(Math.random() * products.length)]
@@ -167,19 +178,19 @@ export function GlobeOrders({ className = "", speed = 0.002 }: GlobeOrdersProps)
       const id = `${loc.id}-${Date.now()}`
 
       setActiveOrders((prev) => {
+        const max = mobile ? 2 : 3
         const next = [...prev, { id, city: loc.city, product, time, visible: true }]
-        if (next.length > 3) return next.slice(-3)
+        if (next.length > max) return next.slice(-max)
         return next
       })
 
-      // Remove after 4 seconds
       setTimeout(() => {
         setActiveOrders((prev) => prev.filter((o) => o.id !== id))
-      }, 4000)
+      }, mobile ? 3000 : 4000)
     }
 
     addOrder()
-    const interval = setInterval(addOrder, 2500)
+    const interval = setInterval(addOrder, mobile ? 3000 : 2500)
     return () => clearInterval(interval)
   }, [])
 
@@ -234,31 +245,40 @@ export function GlobeOrders({ className = "", speed = 0.002 }: GlobeOrdersProps)
       const width = canvas.offsetWidth
       if (width === 0 || globe) return
 
+      const mobile = window.innerWidth < 768
+
       globe = createGlobe(canvas, {
-        devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
-        width: width * 2,
-        height: width * 2,
+        devicePixelRatio: mobile ? 1 : Math.min(window.devicePixelRatio || 1, 2),
+        width: mobile ? width : width * 2,
+        height: mobile ? width : width * 2,
         phi: 4.5,
         theta: 0.15,
         dark: 1,
         diffuse: 2,
-        mapSamples: 24000,
+        mapSamples: mobile ? 6000 : 24000,
         mapBrightness: 8,
         baseColor: [0.4, 0.4, 0.4],
         markerColor: [0.95, 0.42, 0.17],
         glowColor: [0.94, 0.93, 0.91],
-        markers: [
-          ...orderLocations.map((m) => ({ location: m.location, size: 0.015 })),
-          { location: shanghai, size: 0.02 },
-          { location: shenzhen, size: 0.02 },
-        ],
-        arcs: [
-          { from: shanghai, to: germany, color: [0.95, 0.42, 0.17] as [number, number, number] },
-          { from: shenzhen, to: germany, color: [0.8, 0.35, 0.14] as [number, number, number] },
-          { from: shanghai, to: austria, color: [0.9, 0.38, 0.15] as [number, number, number] },
-          { from: shenzhen, to: switzerland, color: [0.85, 0.35, 0.14] as [number, number, number] },
-          { from: shanghai, to: switzerland, color: [0.75, 0.32, 0.12] as [number, number, number] },
-        ],
+        markers: mobile
+          ? [
+              { location: germany, size: 0.02 },
+              { location: shanghai, size: 0.02 },
+            ]
+          : [
+              ...orderLocations.map((m) => ({ location: m.location, size: 0.015 })),
+              { location: shanghai, size: 0.02 },
+              { location: shenzhen, size: 0.02 },
+            ],
+        arcs: mobile
+          ? [{ from: shanghai, to: germany, color: [0.95, 0.42, 0.17] as [number, number, number] }]
+          : [
+              { from: shanghai, to: germany, color: [0.95, 0.42, 0.17] as [number, number, number] },
+              { from: shenzhen, to: germany, color: [0.8, 0.35, 0.14] as [number, number, number] },
+              { from: shanghai, to: austria, color: [0.9, 0.38, 0.15] as [number, number, number] },
+              { from: shenzhen, to: switzerland, color: [0.85, 0.35, 0.14] as [number, number, number] },
+              { from: shanghai, to: switzerland, color: [0.75, 0.32, 0.12] as [number, number, number] },
+            ],
         arcColor: [0.95, 0.42, 0.17],
         arcWidth: 0.3,
         arcHeight: 0.5,
@@ -318,18 +338,21 @@ export function GlobeOrders({ className = "", speed = 0.002 }: GlobeOrdersProps)
           {activeOrders.map((order) => (
             <motion.div
               key={order.id}
-              layout
-              initial={{ opacity: 0, x: 40, scale: 0.9, filter: "blur(8px)" }}
-              animate={{ opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, x: 20, scale: 0.95, filter: "blur(4px)" }}
-              transition={{
-                layout: { type: "spring", stiffness: 400, damping: 30 },
-                opacity: { duration: 0.4 },
-                x: { type: "spring", stiffness: 300, damping: 25 },
-                scale: { duration: 0.3 },
-                filter: { duration: 0.3 },
-              }}
-              className="flex items-center gap-2 md:gap-3 bg-white/[0.07] backdrop-blur-md border border-white/10 rounded-lg md:rounded-xl px-2.5 py-2 md:px-4 md:py-3 min-w-[150px] md:min-w-[200px]"
+              layout={!isMobile}
+              initial={isMobile ? { opacity: 0, x: 20 } : { opacity: 0, x: 40, scale: 0.9, filter: "blur(8px)" }}
+              animate={isMobile ? { opacity: 1, x: 0 } : { opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
+              exit={isMobile ? { opacity: 0, x: 10 } : { opacity: 0, x: 20, scale: 0.95, filter: "blur(4px)" }}
+              transition={isMobile
+                ? { duration: 0.3 }
+                : {
+                    layout: { type: "spring", stiffness: 400, damping: 30 },
+                    opacity: { duration: 0.4 },
+                    x: { type: "spring", stiffness: 300, damping: 25 },
+                    scale: { duration: 0.3 },
+                    filter: { duration: 0.3 },
+                  }
+              }
+              className="flex items-center gap-2 md:gap-3 bg-[#1a1a1a]/90 md:bg-white/[0.07] md:backdrop-blur-md border border-white/10 rounded-lg md:rounded-xl px-2.5 py-2 md:px-4 md:py-3 min-w-[150px] md:min-w-[200px]"
             >
               <div className="w-6 h-6 md:w-8 md:h-8 rounded-md md:rounded-lg bg-ecomet/20 flex items-center justify-center flex-shrink-0">
                 <Package size={10} className="text-ecomet md:hidden" />

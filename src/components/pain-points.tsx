@@ -186,6 +186,7 @@ export function PainPoints() {
   });
 
   // Auto rotate the active/expanded card
+  // Auto rotate active card
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % 5);
@@ -193,96 +194,138 @@ export function PainPoints() {
     return () => clearInterval(interval);
   }, []);
 
+  // Mobile: auto flip cards with timer instead of scroll
+  useEffect(() => {
+    if (typeof window === "undefined" || window.innerWidth >= 768) return;
+    let step = 0;
+    const interval = setInterval(() => {
+      step++;
+      if (step <= 6) {
+        setHeadingFlipped(step >= 1);
+        setFlippedCount(Math.min(step, 5));
+      } else if (step <= 12) {
+        const reverseStep = 12 - step;
+        setHeadingFlipped(reverseStep < 5);
+        setFlippedCount(reverseStep);
+      } else {
+        step = 0;
+      }
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section id="vorteile" ref={sectionRef} className="relative h-[300vh]">
-      <div className="sticky top-0 h-screen overflow-hidden bg-white">
-        <div className="absolute inset-0 flex items-center">
-          <div className="w-full">
-            {/* Heading */}
-            <div className="text-center mb-10 sm:mb-16 px-4">
-              <AnimatePresence mode="wait">
-                {!headingFlipped ? (
-                  <motion.h2
-                    key="pain"
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -15 }}
-                    transition={{ duration: 0.4 }}
-                    className="text-2xl sm:text-3xl lg:text-5xl font-bold text-[#0a0a0a]"
-                  >
-                    Jeder Dropshipper kennt es:
-                  </motion.h2>
-                ) : (
-                  <motion.h2
-                    key="solution"
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -15 }}
-                    transition={{ duration: 0.4 }}
-                    className="text-2xl sm:text-3xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500"
-                  >
-                    Mit ecomet läuft es anders
-                  </motion.h2>
-                )}
-              </AnimatePresence>
-            </div>
+    <>
+      {/* Mobile: Simple auto-rotating, no sticky scroll */}
+      <section id="vorteile" className="md:hidden py-12 bg-white">
+        <div className="px-4">
+          <div className="text-center mb-8">
+            <AnimatePresence mode="wait">
+              {!headingFlipped ? (
+                <motion.h2
+                  key="pain-m"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-2xl font-bold text-[#0a0a0a]"
+                >
+                  Jeder Dropshipper kennt es:
+                </motion.h2>
+              ) : (
+                <motion.h2
+                  key="sol-m"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500"
+                >
+                  Mit ecomet läuft es anders
+                </motion.h2>
+              )}
+            </AnimatePresence>
+          </div>
 
-            {/* Desktop: Cards that individually flip */}
-            <div className="hidden md:flex gap-4 px-6 sm:px-8 lg:px-12 overflow-hidden">
-              {painPoints.map((pain, i) => (
-                <FlipCard
+          <div className="grid grid-cols-2 gap-3">
+            {painPoints.map((pain, i) => {
+              const item = i < flippedCount ? solutions[i] : pain;
+              const isRed = i >= flippedCount;
+              const isLast = i === 4;
+              return (
+                <div
                   key={i}
-                  pain={pain}
-                  solution={solutions[i]}
-                  flipped={i < flippedCount}
-                  isExpanded={i === activeIndex}
-                  onClick={() => setActiveIndex(i)}
-                />
-              ))}
-            </div>
-
-            {/* Mobile: 2x2 grid + 1 full width, Icon + Label */}
-            <div className="md:hidden px-4">
-              <div className="grid grid-cols-2 gap-3">
-                {painPoints.map((pain, i) => {
-                  const item = i < flippedCount ? solutions[i] : pain;
-                  const isRed = i >= flippedCount;
-                  const isLast = i === 4;
-                  return (
+                  className={`rounded-2xl border transition-colors duration-500 shadow-[0_2px_20px_-4px_rgba(0,0,0,0.1)] ${isLast ? "col-span-2" : ""}`}
+                  style={{
+                    background: isRed ? "#fef2f2" : "#f0fdf4",
+                    borderColor: isRed ? "#fca5a5" : "#86efac",
+                  }}
+                >
+                  <div className={`p-4 flex flex-col items-center justify-center text-center gap-2 ${isLast ? "py-5 flex-row gap-3" : ""}`}>
                     <div
-                      key={i}
-                      className={`relative rounded-2xl border overflow-hidden transition-colors duration-500 shadow-[0_2px_20px_-4px_rgba(0,0,0,0.1)] ${isLast ? "col-span-2" : ""}`}
-                      style={{
-                        background: isRed ? "#fef2f2" : "#f0fdf4",
-                        borderColor: isRed ? "#fca5a5" : "#86efac",
-                      }}
+                      className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-500"
+                      style={{ background: isRed ? "#fee2e2" : "#dcfce7" }}
                     >
-                      <AnimatePresence mode="wait">
-                        <motion.div
-                          key={item.label}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.9 }}
-                          transition={{ duration: 0.35 }}
-                          className={`p-4 flex flex-col items-center justify-center text-center gap-2 ${isLast ? "py-5 flex-row gap-3" : ""}`}
-                        >
-                          <div
-                            className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-500"
-                            style={{ background: isRed ? "#fee2e2" : "#dcfce7" }}
-                          >
-                            <item.icon className={isRed ? "text-red-400" : "text-green-500"} size={20} />
-                          </div>
-                          <span className="text-xs font-semibold text-[#0a0a0a]">{item.label}</span>
-                        </motion.div>
-                      </AnimatePresence>
+                      <item.icon className={isRed ? "text-red-400" : "text-green-500"} size={20} />
                     </div>
-                  );
-                })}
+                    <span className="text-xs font-semibold text-[#0a0a0a]">{item.label}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Desktop: Sticky scroll with individual card flips */}
+      <div ref={sectionRef} className="relative h-[300vh] hidden md:block">
+        <div className="sticky top-0 h-screen overflow-hidden bg-white">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full">
+              <div className="text-center mb-16 px-4">
+                <AnimatePresence mode="wait">
+                  {!headingFlipped ? (
+                    <motion.h2
+                      key="pain"
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -15 }}
+                      transition={{ duration: 0.4 }}
+                      className="text-3xl lg:text-5xl font-bold text-[#0a0a0a]"
+                    >
+                      Jeder Dropshipper kennt es:
+                    </motion.h2>
+                  ) : (
+                    <motion.h2
+                      key="solution"
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -15 }}
+                      transition={{ duration: 0.4 }}
+                      className="text-3xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500"
+                    >
+                      Mit ecomet läuft es anders
+                    </motion.h2>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <div className="flex gap-4 px-6 sm:px-8 lg:px-12 overflow-hidden">
+                {painPoints.map((pain, i) => (
+                  <FlipCard
+                    key={i}
+                    pain={pain}
+                    solution={solutions[i]}
+                    flipped={i < flippedCount}
+                    isExpanded={i === activeIndex}
+                    onClick={() => setActiveIndex(i)}
+                  />
+                ))}
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </>
   );
 }
