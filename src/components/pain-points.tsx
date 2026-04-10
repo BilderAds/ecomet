@@ -216,35 +216,19 @@ export function PainPoints() {
 
   return (
     <>
-      {/* Mobile: Simple auto-rotating, no sticky scroll */}
+      {/* Mobile: Simple auto-rotating, no sticky scroll, no framer-motion */}
       <section id="vorteile" className="md:hidden py-12 bg-white">
         <div className="px-4">
           <div className="text-center mb-8">
-            <AnimatePresence mode="wait">
-              {!headingFlipped ? (
-                <motion.h2
-                  key="pain-m"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="text-2xl font-bold text-[#0a0a0a]"
-                >
-                  Jeder Dropshipper kennt es:
-                </motion.h2>
-              ) : (
-                <motion.h2
-                  key="sol-m"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500"
-                >
-                  Mit ecomet läuft es anders
-                </motion.h2>
-              )}
-            </AnimatePresence>
+            <h2
+              className={`text-2xl font-bold transition-all duration-500 ${
+                headingFlipped
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500"
+                  : "text-[#0a0a0a]"
+              }`}
+            >
+              {headingFlipped ? "Mit ecomet läuft es anders" : "Jeder Dropshipper kennt es:"}
+            </h2>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
@@ -255,7 +239,7 @@ export function PainPoints() {
               return (
                 <div
                   key={i}
-                  className={`rounded-2xl border transition-colors duration-500 shadow-[0_2px_20px_-4px_rgba(0,0,0,0.1)] ${isLast ? "col-span-2" : ""}`}
+                  className={`rounded-2xl border shadow-[0_2px_20px_-4px_rgba(0,0,0,0.1)] transition-colors duration-700 ${isLast ? "col-span-2" : ""}`}
                   style={{
                     background: isRed ? "#fef2f2" : "#f0fdf4",
                     borderColor: isRed ? "#fca5a5" : "#86efac",
@@ -263,10 +247,10 @@ export function PainPoints() {
                 >
                   <div className={`p-4 flex flex-col items-center justify-center text-center gap-2 ${isLast ? "py-5 flex-row gap-3" : ""}`}>
                     <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-500"
+                      className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-700"
                       style={{ background: isRed ? "#fee2e2" : "#dcfce7" }}
                     >
-                      <item.icon className={isRed ? "text-red-400" : "text-green-500"} size={20} />
+                      <item.icon className={`transition-colors duration-700 ${isRed ? "text-red-400" : "text-green-500"}`} size={20} />
                     </div>
                     <span className="text-xs font-semibold text-[#0a0a0a]">{item.label}</span>
                   </div>

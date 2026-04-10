@@ -3,6 +3,51 @@
 import { motion } from "framer-motion";
 import { GlobeOrders } from "./ui/globe-orders";
 import { Clock, ShieldCheck, Package } from "lucide-react";
+import { useEffect, useState } from "react";
+
+const mobileProducts = [
+  { product: "Wireless Earbuds Pro", city: "Berlin" },
+  { product: "Yoga Matte TPE", city: "München" },
+  { product: "LED Strip RGB", city: "Wien" },
+  { product: "Powerbank 20000mAh", city: "Zürich" },
+  { product: "Sonnenbrillen Set", city: "Hamburg" },
+  { product: "Fitness Tracker Pro", city: "Köln" },
+  { product: "Handyhülle Stoßfest", city: "Frankfurt" },
+  { product: "Bluetooth Speaker", city: "Stuttgart" },
+];
+
+function MobileOrderPopups() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((p) => (p + 1) % mobileProducts.length);
+    }, 2800);
+    return () => clearInterval(interval);
+  }, []);
+
+  const order = mobileProducts[current];
+  const now = new Date();
+  const time = `${now.getHours().toString().padStart(2, "0")}:${now.getMinutes().toString().padStart(2, "0")}`;
+
+  return (
+    <div
+      key={current}
+      className="absolute -top-2 -right-4 bg-[#1a1a1a] border border-white/10 rounded-lg px-2.5 py-2 min-w-[140px] z-10 animate-fade-in"
+    >
+      <div className="flex items-center gap-2">
+        <div className="w-5 h-5 rounded bg-ecomet/20 flex items-center justify-center flex-shrink-0">
+          <Package size={10} className="text-ecomet" />
+        </div>
+        <div className="flex flex-col">
+          <span className="text-[8px] text-ecomet font-medium">Neue Bestellung</span>
+          <span className="text-[10px] text-white font-medium">{order.product}</span>
+          <span className="text-[7px] text-white/40">{order.city} &middot; {time}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const REGISTER_URL =
   "https://gtapp.unifydropshipping.com/auth/register?share=B031.2034151326159671297.false&sign=0f3479af09515ce68412ef3ae4d28b8b";
@@ -21,21 +66,18 @@ export function Hero() {
       <div className="relative w-full max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 pt-10 sm:pt-16 pb-16 sm:pb-28">
         {/* Mobile: Globe oben zentriert, dann Text linksbündig */}
         <div className="md:hidden flex flex-col gap-4">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="flex justify-center"
-          >
-            <GlobeOrders className="w-[200px]" />
-          </motion.div>
+          {/* Static globe visual (no WebGL) */}
+          <div className="flex justify-center">
+            <div className="relative w-[180px] h-[180px]">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#2a2a2a] to-[#0a0a0a] border border-white/10 shadow-[0_0_60px_rgba(242,107,43,0.15)]" />
+              <div className="absolute inset-2 rounded-full bg-gradient-to-br from-[#333] to-[#111] opacity-80" />
+              <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.08),transparent_60%)]" />
+              {/* Order popups */}
+              <MobileOrderPopups />
+            </div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            className="flex items-center gap-3"
-          >
+          <div className="flex items-center gap-3">
             <div className="flex -space-x-1.5">
               {avatarSeeds.map((seed, i) => (
                 <img
@@ -56,56 +98,38 @@ export function Hero() {
               </div>
               <span className="text-white/50 text-[10px]">1,475+ Empfehlungen</span>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          >
+          <div>
             <h1 className="text-2xl font-bold text-white leading-[1.2] tracking-tight">
               Schluss mit Retouren
             </h1>
             <p className="mt-2 text-2xl font-bold leading-[1.2] tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-ecomet to-ecomet-light">
               4-8 Tage Versand &<br />höchste Produktqualität.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-sm text-white/50 leading-relaxed"
-          >
+          <p className="text-sm text-white/50 leading-relaxed">
             Dein Fulfillment Partner für den DACH Raum.
             <br />
             Starte in 3 Schritten komplett kostenlos.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-          >
+          <div>
             <a
               href={REGISTER_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-ecomet hover:bg-ecomet-dark text-white font-semibold px-6 py-3.5 rounded-full text-base transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 bg-ecomet text-white font-semibold px-6 py-3.5 rounded-full text-base"
             >
               Jetzt kostenlos starten
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </a>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7, duration: 0.6 }}
-            className="flex flex-wrap gap-4 pt-1"
-          >
+          <div className="flex flex-wrap gap-4 pt-1">
             <div className="flex items-center gap-2 text-white/50 text-xs">
               <Clock size={12} className="text-ecomet flex-shrink-0" />
               4-8 Tage Lieferzeit
@@ -118,7 +142,7 @@ export function Hero() {
               <Package size={12} className="text-ecomet flex-shrink-0" />
               Dropshipping und Lagern
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Desktop: Text links, Globe rechts */}
