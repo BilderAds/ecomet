@@ -161,6 +161,9 @@ export function GlobeOrders({ className = "", speed = 0.002 }: GlobeOrdersProps)
   const thetaOffsetRef = useRef(0)
   const isPausedRef = useRef(false)
   const isMobile = useIsMobile()
+  const [webglSupported, setWebglSupported] = useState(true)
+  const inViewRef = useRef(true)
+  const rafRunningRef = useRef(false)
 
   const [activeOrders, setActiveOrders] = useState<
     { id: string; city: string; product: string; time: string; visible: boolean }[]
@@ -229,11 +232,25 @@ export function GlobeOrders({ className = "", speed = 0.002 }: GlobeOrdersProps)
   }, [handlePointerUp])
 
   useEffect(() => {
+    // Feature-detect WebGL on a throwaway canvas. Old devices without it get a static image.
+    const testCanvas = document.createElement("canvas")
+    const hasWebGL = !!(
+      testCanvas.getContext("webgl") || testCanvas.getContext("experimental-webgl")
+    )
+    if (!hasWebGL) {
+      setWebglSupported(false)
+      return
+    }
+
     if (!canvasRef.current) return
     const canvas = canvasRef.current
     let globe: ReturnType<typeof createGlobe> | null = null
     let animationId: number
     let phi = 0
+    const reduceMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    let startLoop: (() => void) | null = null
 
     const shanghai: [number, number] = [31.23, 121.47]
     const shenzhen: [number, number] = [22.54, 114.06]
@@ -288,13 +305,20 @@ export function GlobeOrders({ className = "", speed = 0.002 }: GlobeOrdersProps)
       })
 
       function animate() {
-        if (!isPausedRef.current) phi += speed
+        // Stop the loop entirely when scrolled out of view to save GPU/battery on weak devices.
+        if (!inViewRef.current) {
+          rafRunningRef.current = false
+          return
+        }
+        rafRunningRef.current = true
+        if (!isPausedRef.current && !reduceMotion) phi += speed
         globe!.update({
           phi: phi + phiOffsetRef.current + dragOffset.current.phi,
           theta: 0.15 + thetaOffsetRef.current + dragOffset.current.theta,
         })
         animationId = requestAnimationFrame(animate)
       }
+      startLoop = animate
       animate()
       setTimeout(() => canvas && (canvas.style.opacity = "1"), 100)
     }
@@ -311,11 +335,37 @@ export function GlobeOrders({ className = "", speed = 0.002 }: GlobeOrdersProps)
       ro.observe(canvas)
     }
 
+    // Pause when off-screen, resume when scrolled back into view.
+    const io = new IntersectionObserver(
+      (entries) => {
+        const visible = entries[0]?.isIntersecting ?? true
+        inViewRef.current = visible
+        if (visible && !rafRunningRef.current && startLoop) startLoop()
+      },
+      { threshold: 0 }
+    )
+    io.observe(canvas)
+
     return () => {
+      io.disconnect()
       if (animationId) cancelAnimationFrame(animationId)
       if (globe) globe.destroy()
     }
   }, [speed])
+
+  if (!webglSupported) {
+    return (
+      <div className={`relative aspect-square select-none ${className}`}>
+        <img
+          src="/globe-static.png"
+          alt="ecomet liefert in den gesamten DACH-Raum"
+          width={300}
+          height={300}
+          className="w-full h-full object-contain"
+        />
+      </div>
+    )
+  }
 
   return (
     <div className={`relative aspect-square select-none ${className}`}>

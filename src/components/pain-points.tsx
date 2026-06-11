@@ -7,6 +7,7 @@ import {
   ShieldCheck, Zap, Smile, Award, TrendingDown,
 } from "lucide-react";
 import type { ComponentType } from "react";
+import { Reveal } from "./reveal";
 
 interface CardItem {
   icon: ComponentType<{ size?: number; className?: string }>;
@@ -113,55 +114,48 @@ function FlipCard({
   );
 }
 
-function MobileFlipCard({
+// Mobile grid card: label only (no description). Flip state is driven by scroll progress in the parent.
+function MobileGridCard({
   pain,
   solution,
   flipped,
+  wide,
 }: {
   pain: CardItem;
   solution: CardItem;
   flipped: boolean;
+  wide: boolean;
 }) {
   const item = flipped ? solution : pain;
   const isRed = !flipped;
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={item.label}
-        initial={{ opacity: 0, x: 30 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -30 }}
-        transition={{ duration: 0.3 }}
-        className="relative rounded-2xl border overflow-hidden"
-        style={{
-          background: isRed ? "#fef2f2" : "#f0fdf4",
-          borderColor: isRed ? "#fca5a5" : "#86efac",
-        }}
-      >
-        <div className="p-5 flex items-start gap-4">
+    <div
+      className={`relative rounded-2xl border shadow-[0_2px_20px_-4px_rgba(0,0,0,0.1)] transition-colors duration-500 ${wide ? "col-span-2" : ""}`}
+      style={{
+        background: isRed ? "#fef2f2" : "#f0fdf4",
+        borderColor: isRed ? "#fca5a5" : "#86efac",
+      }}
+    >
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={item.label}
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -6 }}
+          transition={{ duration: 0.25 }}
+          className={`p-4 flex flex-col items-center justify-center text-center gap-2 ${wide ? "flex-row py-5 gap-3" : ""}`}
+        >
           <div
-            className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+            className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-500"
             style={{ background: isRed ? "#fee2e2" : "#dcfce7" }}
           >
             <item.icon className={isRed ? "text-red-400" : "text-green-500"} size={20} />
           </div>
-          <div>
-            <span className="text-sm font-semibold text-[#0a0a0a]">{item.label}</span>
-            <p className="text-xs text-[#737373] leading-relaxed mt-1">{item.description}</p>
-          </div>
-        </div>
-        <div className={`absolute bottom-0 left-0 right-0 h-1 ${isRed ? "bg-red-100" : "bg-green-100"}`}>
-          <motion.div
-            className={`h-full rounded-full ${isRed ? "bg-red-400" : "bg-green-500"}`}
-            initial={{ width: "0%" }}
-            animate={{ width: "100%" }}
-            transition={{ duration: 3, ease: "linear" }}
-            key={"m-" + item.label}
-          />
-        </div>
-      </motion.div>
-    </AnimatePresence>
+          <span className="text-xs font-semibold text-[#0a0a0a]">{item.label}</span>
+        </motion.div>
+      </AnimatePresence>
+    </div>
   );
 }
 
@@ -169,7 +163,10 @@ export function PainPoints() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [flippedCount, setFlippedCount] = useState(0); // 0 = all red, 6 = heading + 5 cards all green
   const [headingFlipped, setHeadingFlipped] = useState(false);
+  const [mobileHeadingFlipped, setMobileHeadingFlipped] = useState(false);
+  const [mobileFlippedCount, setMobileFlippedCount] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const mobileSectionRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -185,6 +182,21 @@ export function PainPoints() {
     setFlippedCount(count);
   });
 
+  // Mobile: flips are scrubbed to scroll position so the transformation tracks the scroll smoothly.
+  const { scrollYProgress: mobileProgress } = useScroll({
+    target: mobileSectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  useMotionValueEvent(mobileProgress, "change", (v) => {
+    const start = 0.24;
+    const end = 0.54;
+    const t = Math.min(Math.max((v - start) / (end - start), 0), 1);
+    const count = Math.round(t * 5);
+    setMobileFlippedCount(count);
+    setMobileHeadingFlipped(count >= 3);
+  });
+
   // Auto rotate the active/expanded card
   // Auto rotate active card
   useEffect(() => {
@@ -194,69 +206,33 @@ export function PainPoints() {
     return () => clearInterval(interval);
   }, []);
 
-  // Mobile: auto flip cards with timer instead of scroll
-  useEffect(() => {
-    if (typeof window === "undefined" || window.innerWidth >= 768) return;
-    let step = 0;
-    const interval = setInterval(() => {
-      step++;
-      if (step <= 6) {
-        setHeadingFlipped(step >= 1);
-        setFlippedCount(Math.min(step, 5));
-      } else if (step <= 12) {
-        const reverseStep = 12 - step;
-        setHeadingFlipped(reverseStep < 5);
-        setFlippedCount(reverseStep);
-      } else {
-        step = 0;
-      }
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <>
-      {/* Mobile: Simple auto-rotating, no sticky scroll, no framer-motion */}
-      <section id="vorteile" className="md:hidden py-12 bg-white">
+      {/* Mobile: vertical scroll-story. Each card flips pain -> solution as it enters the viewport. */}
+      <section id="vorteile" className="md:hidden py-14 bg-white">
         <div className="px-4">
-          <div className="text-center mb-8">
+          <Reveal className="text-center mb-8">
             <h2
-              className={`text-2xl font-bold transition-all duration-500 ${
-                headingFlipped
+              className={`text-2xl font-bold transition-colors duration-500 ${
+                mobileHeadingFlipped
                   ? "text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500"
                   : "text-[#0a0a0a]"
               }`}
             >
-              {headingFlipped ? "Mit ecomet läuft es anders" : "Jeder Dropshipper kennt es:"}
+              {mobileHeadingFlipped ? "Mit ecomet läuft es anders" : "Jeder Dropshipper kennt es:"}
             </h2>
-          </div>
+          </Reveal>
 
-          <div className="grid grid-cols-2 gap-3">
-            {painPoints.map((pain, i) => {
-              const item = i < flippedCount ? solutions[i] : pain;
-              const isRed = i >= flippedCount;
-              const isLast = i === 4;
-              return (
-                <div
-                  key={i}
-                  className={`rounded-2xl border shadow-[0_2px_20px_-4px_rgba(0,0,0,0.1)] transition-colors duration-700 ${isLast ? "col-span-2" : ""}`}
-                  style={{
-                    background: isRed ? "#fef2f2" : "#f0fdf4",
-                    borderColor: isRed ? "#fca5a5" : "#86efac",
-                  }}
-                >
-                  <div className={`p-4 flex flex-col items-center justify-center text-center gap-2 ${isLast ? "py-5 flex-row gap-3" : ""}`}>
-                    <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-700"
-                      style={{ background: isRed ? "#fee2e2" : "#dcfce7" }}
-                    >
-                      <item.icon className={`transition-colors duration-700 ${isRed ? "text-red-400" : "text-green-500"}`} size={20} />
-                    </div>
-                    <span className="text-xs font-semibold text-[#0a0a0a]">{item.label}</span>
-                  </div>
-                </div>
-              );
-            })}
+          <div ref={mobileSectionRef} className="relative grid grid-cols-2 gap-3">
+            {painPoints.map((pain, i) => (
+              <MobileGridCard
+                key={i}
+                pain={pain}
+                solution={solutions[i]}
+                flipped={i < mobileFlippedCount}
+                wide={i === 4}
+              />
+            ))}
           </div>
         </div>
       </section>

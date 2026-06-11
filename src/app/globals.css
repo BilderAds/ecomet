@@ -143,6 +143,22 @@
   animation: fade-in 0.3s ease-out;
 }
 
+/* Scroll reveal: GPU-composited opacity + rise, no JS animation, no added bundle.
+   Reduced-motion users are excluded so content shows immediately. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.reveal-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;

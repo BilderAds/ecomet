@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Reveal } from "./reveal";
 
 function InstagramIcon({ size = 16 }: { size?: number }) {
   return (
@@ -26,7 +27,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
-          <div className="md:col-span-2">
+          <Reveal className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <Image
                 src="/icon-logo.png"
@@ -63,10 +64,10 @@ export function Footer() {
                 <TikTokIcon size={16} />
               </a>
             </div>
-          </div>
+          </Reveal>
 
           {/* Navigation */}
-          <div>
+          <Reveal delay={80}>
             <h4 className="text-white text-sm font-medium mb-4">Navigation</h4>
             <ul className="space-y-3">
               {[
@@ -86,10 +87,10 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
 
           {/* Legal */}
-          <div>
+          <Reveal delay={160}>
             <h4 className="text-white text-sm font-medium mb-4">
               Rechtsdokumente
             </h4>
@@ -109,7 +110,7 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
         </div>
 
         {/* Bottom bar */}
