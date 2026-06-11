@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { Reveal } from "./reveal";
 
 const faqs = [
   {
@@ -55,22 +56,14 @@ const faqs = [
 function FaqItem({
   question,
   answer,
-  index,
 }: {
   question: string;
   answer: string;
-  index: number;
 }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="border-b border-[#e5e5e5] last:border-b-0"
-    >
+    <Reveal className="border-b border-[#e5e5e5] last:border-b-0">
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between py-5 text-left group"
@@ -100,7 +93,7 @@ function FaqItem({
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </Reveal>
   );
 }
 
@@ -108,41 +101,30 @@ export function Faq() {
   return (
     <section id="faq" className="py-24 bg-white">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl sm:text-4xl font-bold text-center text-[#0a0a0a] mb-16"
-        >
-          Häufig gestellte Fragen (FAQ)
-        </motion.h2>
+        <Reveal>
+          <h2 className="text-3xl sm:text-4xl font-bold text-center text-[#0a0a0a] mb-16">
+            Häufig gestellte Fragen (FAQ)
+          </h2>
+        </Reveal>
 
         <div className="border-t border-[#e5e5e5]">
-          {faqs.map((faq, i) => (
+          {faqs.map((faq) => (
             <FaqItem
               key={faq.question}
               question={faq.question}
               answer={faq.answer}
-              index={i}
             />
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="flex justify-center mt-12"
-        >
+        <Reveal className="flex justify-center mt-12">
           <a
             href="https://gtapp.unifydropshipping.com/auth/register?share=B031.2034151326159671297.false&sign=0f3479af09515ce68412ef3ae4d28b8b" target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-[#0a0a0a] hover:bg-[#1a1a1a] text-white font-medium px-6 py-3 rounded-full transition-all duration-300"
           >
             Jetzt starten
           </a>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

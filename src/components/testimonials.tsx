@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { Reveal } from "./reveal";
 
 const testimonials = [
   {
@@ -58,63 +58,46 @@ export function Testimonials() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <Reveal className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
             Was unsere Kunden sagen:
           </h2>
-        </motion.div>
+        </Reveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, i) => (
-            <motion.div
-              key={testimonial.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group p-6 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-ecomet/20 hover:bg-white/[0.05] transition-all duration-500"
-            >
-              <StarRating />
-              <p className="text-white/70 text-sm leading-relaxed mb-6">
-                &ldquo;{testimonial.text}&rdquo;
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-ecomet to-ecomet-dark flex items-center justify-center text-white text-sm font-bold">
-                  {testimonial.name.charAt(0)}
-                </div>
-                <div>
-                  <div className="text-sm font-medium text-white">
-                    {testimonial.name}
+          {testimonials.map((testimonial) => (
+            <Reveal key={testimonial.name}>
+              <div className="group h-full p-6 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-ecomet/20 hover:bg-white/[0.05] transition-all duration-500">
+                <StarRating />
+                <p className="text-white/70 text-sm leading-relaxed mb-6">
+                  &ldquo;{testimonial.text}&rdquo;
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-ecomet to-ecomet-dark flex items-center justify-center text-white text-sm font-bold">
+                    {testimonial.name.charAt(0)}
                   </div>
-                  <div className="text-xs text-white/40">
-                    {testimonial.role}
+                  <div>
+                    <div className="text-sm font-medium text-white">
+                      {testimonial.name}
+                    </div>
+                    <div className="text-xs text-white/40">
+                      {testimonial.role}
+                    </div>
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="flex justify-center mt-12"
-        >
+        <Reveal className="flex justify-center mt-12">
           <a
             href="https://gtapp.unifydropshipping.com/auth/register?share=B031.2034151326159671297.false&sign=0f3479af09515ce68412ef3ae4d28b8b" target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-white font-medium px-6 py-3 rounded-full border border-white/10 hover:border-white/20 transition-all duration-300"
           >
             Jetzt starten
           </a>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import type { CSSProperties } from "react";
 
 interface MarqueeProps {
   items: string[];
@@ -14,17 +12,9 @@ export function Marquee({ items, speed = 25 }: MarqueeProps) {
     <div className="relative overflow-hidden py-4 bg-[#0a0a0a] border-y border-white/5">
       <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10" />
       <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10" />
-      <motion.div
-        className="flex gap-8 whitespace-nowrap"
-        animate={{ x: ["0%", "-50%"] }}
-        transition={{
-          x: {
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: speed,
-            ease: "linear",
-          },
-        }}
+      <div
+        className="marquee-track flex gap-8 whitespace-nowrap"
+        style={{ "--marquee-duration": `${speed}s` } as CSSProperties}
       >
         {duplicatedItems.map((item, i) => (
           <div key={i} className="flex items-center gap-8">
@@ -34,7 +24,7 @@ export function Marquee({ items, speed = 25 }: MarqueeProps) {
             <span className="text-ecomet text-lg">&#x2726;</span>
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }

@@ -114,47 +114,62 @@ function FlipCard({
   );
 }
 
-// Mobile grid card: label only (no description). Flip state is driven by scroll progress in the parent.
+// Mobile grid card: label only. Flips pain -> solution via its own IntersectionObserver
+// when it crosses the screen center. Pure CSS transitions, no per-frame work, no scroll listener.
 function MobileGridCard({
   pain,
   solution,
-  flipped,
   wide,
+  onFlip,
 }: {
   pain: CardItem;
   solution: CardItem;
-  flipped: boolean;
   wide: boolean;
+  onFlip: () => void;
 }) {
+  const [flipped, setFlipped] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setFlipped(true);
+          onFlip();
+          io.disconnect();
+        }
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [onFlip]);
+
   const item = flipped ? solution : pain;
   const isRed = !flipped;
 
   return (
     <div
+      ref={ref}
       className={`relative rounded-2xl border shadow-[0_2px_20px_-4px_rgba(0,0,0,0.1)] transition-colors duration-500 ${wide ? "col-span-2" : ""}`}
       style={{
         background: isRed ? "#fef2f2" : "#f0fdf4",
         borderColor: isRed ? "#fca5a5" : "#86efac",
       }}
     >
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div
-          key={item.label}
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -6 }}
-          transition={{ duration: 0.25 }}
-          className={`p-4 flex flex-col items-center justify-center text-center gap-2 ${wide ? "flex-row py-5 gap-3" : ""}`}
+      <div
+        className={`p-4 flex flex-col items-center justify-center text-center gap-2 ${wide ? "flex-row py-5 gap-3" : ""}`}
+      >
+        <div
+          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-500"
+          style={{ background: isRed ? "#fee2e2" : "#dcfce7" }}
         >
-          <div
-            className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-500"
-            style={{ background: isRed ? "#fee2e2" : "#dcfce7" }}
-          >
-            <item.icon className={isRed ? "text-red-400" : "text-green-500"} size={20} />
-          </div>
-          <span className="text-xs font-semibold text-[#0a0a0a]">{item.label}</span>
-        </motion.div>
-      </AnimatePresence>
+          <item.icon className={`transition-colors duration-500 ${isRed ? "text-red-400" : "text-green-500"}`} size={20} />
+        </div>
+        <span className="text-xs font-semibold text-[#0a0a0a]">{item.label}</span>
+      </div>
     </div>
   );
 }
@@ -164,9 +179,8 @@ export function PainPoints() {
   const [flippedCount, setFlippedCount] = useState(0); // 0 = all red, 6 = heading + 5 cards all green
   const [headingFlipped, setHeadingFlipped] = useState(false);
   const [mobileHeadingFlipped, setMobileHeadingFlipped] = useState(false);
-  const [mobileFlippedCount, setMobileFlippedCount] = useState(0);
+  const mobileFlips = useRef(0);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const mobileSectionRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -182,20 +196,11 @@ export function PainPoints() {
     setFlippedCount(count);
   });
 
-  // Mobile: flips are scrubbed to scroll position so the transformation tracks the scroll smoothly.
-  const { scrollYProgress: mobileProgress } = useScroll({
-    target: mobileSectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  useMotionValueEvent(mobileProgress, "change", (v) => {
-    const start = 0.24;
-    const end = 0.54;
-    const t = Math.min(Math.max((v - start) / (end - start), 0), 1);
-    const count = Math.round(t * 5);
-    setMobileFlippedCount(count);
-    setMobileHeadingFlipped(count >= 3);
-  });
+  // Mobile: heading flips to the solution once a few cards have converted.
+  const handleMobileFlip = () => {
+    mobileFlips.current += 1;
+    if (mobileFlips.current >= 3) setMobileHeadingFlipped(true);
+  };
 
   // Auto rotate the active/expanded card
   // Auto rotate active card
@@ -223,14 +228,14 @@ export function PainPoints() {
             </h2>
           </Reveal>
 
-          <div ref={mobileSectionRef} className="relative grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-3">
             {painPoints.map((pain, i) => (
               <MobileGridCard
                 key={i}
                 pain={pain}
                 solution={solutions[i]}
-                flipped={i < mobileFlippedCount}
                 wide={i === 4}
+                onFlip={handleMobileFlip}
               />
             ))}
           </div>
