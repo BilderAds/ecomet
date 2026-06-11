@@ -1,8 +1,19 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { GlobeOrders } from "./ui/globe-orders";
+import dynamic from "next/dynamic";
 import { Clock, ShieldCheck, Package } from "lucide-react";
+
+// Lazy-load the WebGL globe so cobe + its animation code stay off the critical path.
+// The hero text paints immediately; the globe pops in once it's loaded.
+const GlobeOrders = dynamic(
+  () => import("./ui/globe-orders").then((m) => m.GlobeOrders),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-[300px] md:w-[340px] lg:w-[400px] xl:w-[450px] aspect-square" />
+    ),
+  }
+);
 
 const REGISTER_URL =
   "https://gtapp.unifydropshipping.com/auth/register?share=B031.2034151326159671297.false&sign=0f3479af09515ce68412ef3ae4d28b8b";
@@ -97,11 +108,9 @@ export function Hero() {
         {/* Desktop: Text links, Globe rechts */}
         <div className="hidden md:flex md:flex-row md:items-center gap-8">
           <div className="flex flex-col gap-8 z-10 flex-1 min-w-0">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.5 }}
-              className="flex items-center gap-3"
+            <div
+              className="hero-rise flex items-center gap-3"
+              style={{ animationDelay: "0.1s" }}
             >
               <div className="flex -space-x-1.5">
                 {avatarSeeds.map((seed, i) => (
@@ -123,37 +132,27 @@ export function Hero() {
                 </div>
                 <span className="text-white/50 text-[10px]">1,475+ Empfehlungen</span>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            >
+            <div className="hero-rise" style={{ animationDelay: "0.2s" }}>
               <h1 className="text-3xl lg:text-4xl font-bold text-white leading-[1.2] tracking-tight">
                 Schluss mit Paypal-Fällen und Retouren
               </h1>
               <p className="mt-2 text-3xl lg:text-4xl font-bold leading-[1.2] tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-ecomet to-ecomet-light">
                 4-8 Tage Versand & höchste Produktqualität.
               </p>
-            </motion.div>
+            </div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-lg text-white/50 max-w-lg leading-relaxed"
+            <p
+              className="hero-rise text-lg text-white/50 max-w-lg leading-relaxed"
+              style={{ animationDelay: "0.4s" }}
             >
               Dein Fulfillment Partner für den DACH Raum.
               <br />
               Starte in 3 Schritten komplett kostenlos.
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-            >
+            <div className="hero-rise" style={{ animationDelay: "0.5s" }}>
               <a
                 href={REGISTER_URL}
                 target="_blank"
@@ -165,13 +164,11 @@ export function Hero() {
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </a>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-              className="flex flex-wrap gap-6 pt-2"
+            <div
+              className="hero-rise flex flex-wrap gap-6 pt-2"
+              style={{ animationDelay: "0.7s" }}
             >
               <div className="flex items-center gap-2 text-white/50 text-sm">
                 <Clock size={14} className="text-ecomet flex-shrink-0" />
@@ -185,17 +182,12 @@ export function Hero() {
                 <Package size={14} className="text-ecomet flex-shrink-0" />
                 Dropshipping und Lagern möglich
               </div>
-            </motion.div>
+            </div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-shrink-0 items-center justify-end"
-          >
+          <div className="flex flex-shrink-0 items-center justify-end">
             <GlobeOrders className="w-[340px] lg:w-[400px] xl:w-[450px]" />
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
