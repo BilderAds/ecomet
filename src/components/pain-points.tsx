@@ -6,14 +6,19 @@ import {
   Ban, Clock, Mail, ThumbsDown, RotateCcw,
   ShieldCheck, Zap, Smile, Award, TrendingDown,
 } from "lucide-react";
-import type { ComponentType } from "react";
+import type { ComponentType, CSSProperties } from "react";
 import { Reveal } from "./reveal";
 
 interface CardItem {
-  icon: ComponentType<{ size?: number; className?: string }>;
+  icon: ComponentType<{ size?: number; className?: string; style?: CSSProperties }>;
   label: string;
   description: string;
 }
+
+// Rows don't switch all at once. The heading leads, then each row ripples in after it,
+// one by one. Spreads the paint work (color fades) over time instead of one big frame.
+const ROW_BASE_DELAY = 280; // ms, lets the heading move first
+const ROW_STAGGER = 110; // ms between rows
 
 const painPoints: CardItem[] = [
   { icon: Ban, label: "PayPal Freeze", description: "Dein Geld wird eingefroren und du kannst wochenlang nicht darauf zugreifen." },
@@ -124,12 +129,15 @@ function TransformRow({
   gain,
   icon: Icon,
   solved,
+  delay,
 }: {
   pain: string;
   gain: string;
-  icon: ComponentType<{ size?: number; className?: string }>;
+  icon: ComponentType<{ size?: number; className?: string; style?: CSSProperties }>;
   solved: boolean;
+  delay: number;
 }) {
+  const d = `${delay}ms`;
   return (
     <div
       className="flex items-center gap-4 rounded-2xl border px-4 transition-colors duration-500"
@@ -137,15 +145,17 @@ function TransformRow({
         minHeight: 76,
         background: solved ? "#f0fdf4" : "#fef2f2",
         borderColor: solved ? "#bbf7d0" : "#fecdd3",
+        transitionDelay: d,
       }}
     >
       <div
         className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-500"
-        style={{ background: solved ? "#dcfce7" : "#fee2e2" }}
+        style={{ background: solved ? "#dcfce7" : "#fee2e2", transitionDelay: d }}
       >
         <Icon
           size={22}
           className={`transition-colors duration-500 ${solved ? "text-green-600" : "text-red-500"}`}
+          style={{ transitionDelay: d }}
         />
       </div>
 
@@ -154,7 +164,7 @@ function TransformRow({
         <span
           aria-hidden={solved}
           className="absolute inset-0 flex items-center transition-[opacity,transform] duration-500 ease-out will-change-transform"
-          style={{ opacity: solved ? 0 : 1, transform: solved ? "translateY(-6px)" : "translateY(0)" }}
+          style={{ opacity: solved ? 0 : 1, transform: solved ? "translateY(-6px)" : "translateY(0)", transitionDelay: d }}
         >
           <span className="relative font-semibold text-[17px] leading-tight text-[#b42318] whitespace-nowrap">
             {pain}
@@ -162,6 +172,7 @@ function TransformRow({
               className={`pointer-events-none absolute left-0 top-1/2 h-[2px] w-full -translate-y-1/2 rounded-full bg-red-400 origin-left transition-transform duration-500 ease-out ${
                 solved ? "scale-x-100" : "scale-x-0"
               }`}
+              style={{ transitionDelay: d }}
             />
           </span>
         </span>
@@ -170,7 +181,7 @@ function TransformRow({
         <span
           aria-hidden={!solved}
           className="absolute inset-0 flex items-center transition-[opacity,transform] duration-500 ease-out will-change-transform"
-          style={{ opacity: solved ? 1 : 0, transform: solved ? "translateY(0)" : "translateY(6px)" }}
+          style={{ opacity: solved ? 1 : 0, transform: solved ? "translateY(0)" : "translateY(6px)", transitionDelay: d }}
         >
           <span className="font-bold text-[17px] leading-tight text-green-700 whitespace-nowrap">
             {gain}
@@ -246,6 +257,7 @@ function PainPointsMobile() {
               gain={solutions[i].label}
               icon={solutions[i].icon}
               solved={solved}
+              delay={ROW_BASE_DELAY + i * ROW_STAGGER}
             />
           ))}
         </div>
