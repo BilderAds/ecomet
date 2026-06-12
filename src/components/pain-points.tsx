@@ -234,8 +234,9 @@ function PainPointsMobile() {
           </h2>
         </Reveal>
 
-        {/* Auto-switch progress: fills over the cycle so it's clear a switch is coming. */}
-        <Reveal className="mb-6 h-1 w-full rounded-full bg-[#f1f1f1] overflow-hidden">
+        {/* Auto-switch progress: small centered accent that fills over the cycle so it's
+            clear a switch is coming. Kept short on purpose, just a design detail. */}
+        <Reveal className="mb-6 mx-auto h-1 w-16 rounded-full bg-[#f1f1f1] overflow-hidden">
           <div
             key={solved ? "s" : "p"}
             className="h-full w-full rounded-full origin-left"
