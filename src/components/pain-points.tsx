@@ -166,14 +166,8 @@ function TransformRow({
           className="absolute inset-0 flex items-center transition-[opacity,transform] duration-500 ease-out will-change-transform"
           style={{ opacity: solved ? 0 : 1, transform: solved ? "translateY(-6px)" : "translateY(0)", transitionDelay: d }}
         >
-          <span className="relative font-semibold text-[17px] leading-tight text-[#b42318] whitespace-nowrap">
+          <span className="font-semibold text-[17px] leading-tight text-[#b42318] whitespace-nowrap">
             {pain}
-            <span
-              className={`pointer-events-none absolute left-0 top-1/2 h-[2px] w-full -translate-y-1/2 rounded-full bg-red-400 origin-left transition-transform duration-500 ease-out ${
-                solved ? "scale-x-100" : "scale-x-0"
-              }`}
-              style={{ transitionDelay: d }}
-            />
           </span>
         </span>
 
@@ -222,16 +216,19 @@ function PainPointsMobile() {
     <section ref={secRef} id="vorteile" className="md:hidden py-16 bg-white overflow-hidden">
       <div className="px-5">
         <Reveal className="relative mb-9">
+          {/* Soft overlapping cross-fade with a gentle slide. Both move at once over the
+              same window so there is never a blank moment, which is what made the old
+              swap look abrupt and buggy. */}
           <h2
-            className="text-center text-[22px] font-bold tracking-tight leading-tight text-[#0a0a0a] whitespace-nowrap transition-opacity duration-300"
-            style={{ opacity: solved ? 0 : 1, transitionDelay: solved ? "0ms" : "300ms" }}
+            className="text-center text-[22px] font-bold tracking-tight leading-tight text-[#0a0a0a] whitespace-nowrap transition-[opacity,transform] duration-700 ease-out will-change-transform"
+            style={{ opacity: solved ? 0 : 1, transform: solved ? "translateY(-8px)" : "translateY(0)" }}
           >
             Jeder Dropshipper kennt es:
           </h2>
           <h2
             aria-hidden={!solved}
-            className="absolute inset-0 text-center text-[22px] font-bold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500 whitespace-nowrap transition-opacity duration-300"
-            style={{ opacity: solved ? 1 : 0, transitionDelay: solved ? "300ms" : "0ms" }}
+            className="absolute inset-0 text-center text-[22px] font-bold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500 whitespace-nowrap transition-[opacity,transform] duration-700 ease-out will-change-transform"
+            style={{ opacity: solved ? 1 : 0, transform: solved ? "translateY(0)" : "translateY(8px)" }}
           >
             Mit ecomet läuft es anders
           </h2>
