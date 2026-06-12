@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import {
   Ban, Clock, Mail, ThumbsDown, RotateCcw,
   ShieldCheck, Zap, Smile, Award, TrendingDown,
@@ -114,9 +114,11 @@ function FlipCard({
   );
 }
 
-// Mobile transformation row. Driven by a shared `solved` state that auto-toggles every
-// few seconds: the pain gets struck through (line draws across), the gain rises in,
-// the icon lights up from grey to brand orange. Pure CSS transitions (no jank).
+// Mobile transformation row. Driven by a shared `solved` state that auto toggles every
+// few seconds. Everything that moves uses only opacity and transform (GPU composited),
+// never font-size, max-height or margin. That keeps it off the layout path so it stays
+// smooth even on weaker phones like the iPhone 12. The pain and gain sit in a fixed
+// height box and cross fade, the strike line draws via scaleX, the colors fade.
 function TransformRow({
   pain,
   gain,
@@ -147,62 +149,129 @@ function TransformRow({
         />
       </div>
 
-      <div className="flex-1 min-w-0">
-        <span className="relative inline-block align-top">
-          <span
-            className={`block font-semibold leading-tight transition-all duration-500 ${
-              solved ? "text-[13px] text-[#9ca3af]" : "text-[17px] text-[#b42318]"
-            }`}
-          >
-            {pain}
-          </span>
-          <span
-            className={`pointer-events-none absolute left-0 top-1/2 h-[2px] w-full -translate-y-1/2 rounded-full bg-red-400 origin-left transition-transform duration-[600ms] ease-out ${
-              solved ? "scale-x-100" : "scale-x-0"
-            }`}
-          />
-        </span>
-        <div
-          className={`overflow-hidden font-bold leading-tight text-green-700 transition-all duration-500 ${
-            solved ? "opacity-100 max-h-12 mt-1 text-[17px]" : "opacity-0 max-h-0 text-[17px]"
-          }`}
-          style={{ transitionDelay: solved ? "220ms" : "0ms" }}
+      <div className="relative h-7 flex-1 min-w-0">
+        {/* Pain layer: fades and lifts out, strike line draws across it */}
+        <span
+          aria-hidden={solved}
+          className="absolute inset-0 flex items-center transition-[opacity,transform] duration-500 ease-out will-change-transform"
+          style={{ opacity: solved ? 0 : 1, transform: solved ? "translateY(-6px)" : "translateY(0)" }}
         >
-          {gain}
-        </div>
+          <span className="relative font-semibold text-[17px] leading-tight text-[#b42318] whitespace-nowrap">
+            {pain}
+            <span
+              className={`pointer-events-none absolute left-0 top-1/2 h-[2px] w-full -translate-y-1/2 rounded-full bg-red-400 origin-left transition-transform duration-500 ease-out ${
+                solved ? "scale-x-100" : "scale-x-0"
+              }`}
+            />
+          </span>
+        </span>
+
+        {/* Gain layer: fades and rises in */}
+        <span
+          aria-hidden={!solved}
+          className="absolute inset-0 flex items-center transition-[opacity,transform] duration-500 ease-out will-change-transform"
+          style={{ opacity: solved ? 1 : 0, transform: solved ? "translateY(0)" : "translateY(6px)" }}
+        >
+          <span className="font-bold text-[17px] leading-tight text-green-700 whitespace-nowrap">
+            {gain}
+          </span>
+        </span>
       </div>
     </div>
   );
 }
 
-export function PainPoints() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [flippedCount, setFlippedCount] = useState(0); // 0 = all red, 6 = heading + 5 cards all green
-  const [headingFlipped, setHeadingFlipped] = useState(false);
+// Mobile only. Owns its own `solved` state so the 4s toggle re-renders just these five
+// rows, never the hidden desktop tree.
+function PainPointsMobile() {
   const [solved, setSolved] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const mobileSecRef = useRef<HTMLElement>(null);
-  const mobileInView = useRef(false);
+  const secRef = useRef<HTMLElement>(null);
+  const inView = useRef(false);
 
-  // Mobile: auto-toggle problem <-> solution every few seconds, but only while the
-  // section is on screen (so it never burns cycles in the background).
   useEffect(() => {
-    const el = mobileSecRef.current;
+    const el = secRef.current;
     if (!el) return;
     const io = new IntersectionObserver(
       ([entry]) => {
-        mobileInView.current = entry.isIntersecting;
+        inView.current = entry.isIntersecting;
       },
       { threshold: 0.25 }
     );
     io.observe(el);
     const id = setInterval(() => {
-      if (mobileInView.current) setSolved((s) => !s);
+      if (inView.current) setSolved((s) => !s);
     }, 4000);
     return () => {
       io.disconnect();
       clearInterval(id);
     };
+  }, []);
+
+  return (
+    <section ref={secRef} id="vorteile" className="md:hidden py-16 bg-white overflow-hidden">
+      <div className="px-5">
+        <Reveal className="relative mb-9">
+          <h2
+            className="text-center text-[22px] font-bold tracking-tight leading-tight text-[#0a0a0a] whitespace-nowrap transition-opacity duration-300"
+            style={{ opacity: solved ? 0 : 1, transitionDelay: solved ? "0ms" : "300ms" }}
+          >
+            Jeder Dropshipper kennt es:
+          </h2>
+          <h2
+            aria-hidden={!solved}
+            className="absolute inset-0 text-center text-[22px] font-bold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500 whitespace-nowrap transition-opacity duration-300"
+            style={{ opacity: solved ? 1 : 0, transitionDelay: solved ? "300ms" : "0ms" }}
+          >
+            Mit ecomet läuft es anders
+          </h2>
+        </Reveal>
+
+        {/* Auto-switch progress: fills over the cycle so it's clear a switch is coming. */}
+        <Reveal className="mb-6 h-1 w-full rounded-full bg-[#f1f1f1] overflow-hidden">
+          <div
+            key={solved ? "s" : "p"}
+            className="h-full w-full rounded-full origin-left"
+            style={{
+              background: solved ? "#22c55e" : "#f87171",
+              animation: "progress-fill 4s linear",
+            }}
+          />
+        </Reveal>
+
+        <div className="flex flex-col gap-3">
+          {painPoints.map((pain, i) => (
+            <TransformRow
+              key={i}
+              pain={pain.label}
+              gain={solutions[i].label}
+              icon={solutions[i].icon}
+              solved={solved}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Desktop only. Sticky scroll with individual card flips. Its scroll listener and rotate
+// interval are gated behind a real desktop check so they never re-render on mobile, where
+// this whole block is display:none.
+function PainPointsDesktop() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [flippedCount, setFlippedCount] = useState(0);
+  const [headingFlipped, setHeadingFlipped] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isDesktop = useRef(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const update = () => {
+      isDesktop.current = mq.matches;
+    };
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
   }, []);
 
   const { scrollYProgress } = useScroll({
@@ -211,6 +280,7 @@ export function PainPoints() {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
+    if (!isDesktop.current) return; // never re-render on mobile scroll
     setHeadingFlipped(v >= HEADING_THRESHOLD);
     let count = 0;
     for (const t of CARD_THRESHOLDS) {
@@ -219,112 +289,71 @@ export function PainPoints() {
     setFlippedCount(count);
   });
 
-  // Auto rotate the active/expanded card
-  // Auto rotate active card
   useEffect(() => {
     const interval = setInterval(() => {
+      if (!isDesktop.current) return;
       setActiveIndex((prev) => (prev + 1) % 5);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <>
-      {/* Mobile: auto-toggles problem <-> solution every 4s. The pains get struck
-          through, the gains rise in, the heading flips to the brand claim. */}
-      <section ref={mobileSecRef} id="vorteile" className="md:hidden py-16 bg-white overflow-hidden">
-        <div className="px-5">
-          <Reveal className="relative mb-9">
-            <h2
-              className="text-[26px] font-bold leading-tight text-[#0a0a0a] transition-opacity duration-300"
-              style={{ opacity: solved ? 0 : 1, transitionDelay: solved ? "0ms" : "300ms" }}
-            >
-              Jeder Dropshipper kennt es:
-            </h2>
-            <h2
-              aria-hidden={!solved}
-              className="absolute inset-0 text-[26px] font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500 transition-opacity duration-300"
-              style={{ opacity: solved ? 1 : 0, transitionDelay: solved ? "300ms" : "0ms" }}
-            >
-              Mit ecomet läuft es anders
-            </h2>
-          </Reveal>
+    <div ref={sectionRef} className="relative h-[300vh] hidden md:block">
+      <div className="sticky top-0 h-screen overflow-hidden bg-white">
+        <div className="absolute inset-0 flex items-center">
+          <div className="w-full">
+            <div className="text-center mb-16 px-4">
+              <AnimatePresence mode="wait">
+                {!headingFlipped ? (
+                  <motion.h2
+                    key="pain"
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.4 }}
+                    className="text-3xl lg:text-5xl font-bold text-[#0a0a0a]"
+                  >
+                    Jeder Dropshipper kennt es:
+                  </motion.h2>
+                ) : (
+                  <motion.h2
+                    key="solution"
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.4 }}
+                    className="text-3xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500"
+                  >
+                    Mit ecomet läuft es anders
+                  </motion.h2>
+                )}
+              </AnimatePresence>
+            </div>
 
-          {/* Auto-switch progress: fills over the cycle so it's clear a switch is coming. */}
-          <Reveal className="mb-6 h-1 w-full rounded-full bg-[#f1f1f1] overflow-hidden">
-            <div
-              key={solved ? "s" : "p"}
-              className="h-full w-full rounded-full origin-left"
-              style={{
-                background: solved ? "#22c55e" : "#f87171",
-                animation: "progress-fill 4s linear",
-              }}
-            />
-          </Reveal>
-
-          <div className="flex flex-col gap-3">
-            {painPoints.map((pain, i) => (
-              <TransformRow
-                key={i}
-                pain={pain.label}
-                gain={solutions[i].label}
-                icon={solutions[i].icon}
-                solved={solved}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Desktop: Sticky scroll with individual card flips */}
-      <div ref={sectionRef} className="relative h-[300vh] hidden md:block">
-        <div className="sticky top-0 h-screen overflow-hidden bg-white">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full">
-              <div className="text-center mb-16 px-4">
-                <AnimatePresence mode="wait">
-                  {!headingFlipped ? (
-                    <motion.h2
-                      key="pain"
-                      initial={{ opacity: 0, y: 15 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -15 }}
-                      transition={{ duration: 0.4 }}
-                      className="text-3xl lg:text-5xl font-bold text-[#0a0a0a]"
-                    >
-                      Jeder Dropshipper kennt es:
-                    </motion.h2>
-                  ) : (
-                    <motion.h2
-                      key="solution"
-                      initial={{ opacity: 0, y: 15 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -15 }}
-                      transition={{ duration: 0.4 }}
-                      className="text-3xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500"
-                    >
-                      Mit ecomet läuft es anders
-                    </motion.h2>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              <div className="flex gap-4 px-6 sm:px-8 lg:px-12 overflow-hidden">
-                {painPoints.map((pain, i) => (
-                  <FlipCard
-                    key={i}
-                    pain={pain}
-                    solution={solutions[i]}
-                    flipped={i < flippedCount}
-                    isExpanded={i === activeIndex}
-                    onClick={() => setActiveIndex(i)}
-                  />
-                ))}
-              </div>
+            <div className="flex gap-4 px-6 sm:px-8 lg:px-12 overflow-hidden">
+              {painPoints.map((pain, i) => (
+                <FlipCard
+                  key={i}
+                  pain={pain}
+                  solution={solutions[i]}
+                  flipped={i < flippedCount}
+                  isExpanded={i === activeIndex}
+                  onClick={() => setActiveIndex(i)}
+                />
+              ))}
             </div>
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+export function PainPoints() {
+  return (
+    <>
+      <PainPointsMobile />
+      <PainPointsDesktop />
     </>
   );
 }
