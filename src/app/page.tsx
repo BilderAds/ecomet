@@ -1,44 +1,35 @@
-import { Navigation } from "@/components/navigation";
-import { Hero } from "@/components/hero";
-import { Marquee } from "@/components/marquee";
-import { PainPoints } from "@/components/pain-points";
-import { Solution } from "@/components/solution";
-import { Steps } from "@/components/steps";
-import { Testimonials } from "@/components/testimonials";
-import { Features } from "@/components/features";
-import { Faq } from "@/components/faq";
-import { FinalCta } from "@/components/final-cta";
-import { Footer } from "@/components/footer";
+import { Effekte } from "@/components/start/effekte";
+import { Navigation } from "@/components/start/navigation";
+import { Buehne } from "@/components/start/buehne";
+import { Partner } from "@/components/start/partner";
+import { Wege } from "@/components/start/wege";
+import { Ablauf } from "@/components/start/ablauf";
+import { Leistungen } from "@/components/start/leistungen";
+import { Aussage } from "@/components/start/aussage";
+import { Apps } from "@/components/start/apps";
+import { Fragen } from "@/components/start/fragen";
+import { Fuss, MobileLeiste } from "@/components/start/fuss";
 
-const marqueeItems = [
-  "4 bis 8 Tage Lieferzeit",
-  "Qualitätskontrolle",
-  "Kostenloser Service",
-  "Persönlicher Agent",
-  "Dropshipping & Lagern",
-  "1,475+ Empfehlungen",
-  "Eigenes Sourcing Team",
-  "Branding Möglichkeit",
-  "Flexible Zahlung",
-  "DACH Raum",
-];
-
-export default function Home() {
+export default function Startseite() {
   return (
     <>
+      <div className="bg-layer bg-glow" aria-hidden="true" />
+      <div className="bg-layer bg-grain" aria-hidden="true" />
+
       <Navigation />
       <main>
-        <Hero />
-        <Marquee items={marqueeItems} />
-        <PainPoints />
-        <Solution />
-        <Steps />
-        <Testimonials />
-        <Features />
-        <Faq />
-        <FinalCta />
+        <Buehne />
+        <Partner />
+        <Wege />
+        <Ablauf />
+        <Leistungen />
+        <Aussage />
+        <Apps />
+        <Fragen />
       </main>
-      <Footer />
+      <Fuss />
+      <MobileLeiste />
+      <Effekte />
     </>
   );
 }

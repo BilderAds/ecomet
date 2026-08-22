@@ -1,3 +1,14 @@
+# ecomet Website
+
+> **ZUERST LESEN: [`docs/SPEC-23AUG26-RELAUNCH-PLATTFORM.md`](docs/SPEC-23AUG26-RELAUNCH-PLATTFORM.md)**
+> Der Relaunch zur Plattform, der Umzug auf **e-comet.de**, die Webapplikation unter
+> `app.e-comet.de`, die drei App-Seiten und alle offenen Punkte mit Unify und Alex.
+> Stand 23.08.2026. Jede ältere Planung zur ecomet Website ist damit überholt.
+
+Live auf `ecometapp.de` (Vercel), zieht laut Spec um auf `e-comet.de`.
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

@@ -15,6 +15,7 @@ tags: [moc, ecomet]
 ## Sessions
 - [[sessions/2026-04-05-01|2026-04-05 Session 1]] Kompletter Website Build
 - [[sessions/2026-04-09-01|2026-04-09 bis 11]] Scroll Transition, Mobile, Unterseiten, GitHub Push
+- [[sessions/2026-04-11-01|2026-04-11 Session 1]] Mobile Performance: WebGL + Framer Motion gekillt
 
 ## Lessons Learned
 _Noch keine Eintraege._
