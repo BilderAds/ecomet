@@ -4,10 +4,12 @@ import { Buehne } from "@/components/start/buehne";
 import { Vertrauen } from "@/components/start/vertrauen";
 import { Wege } from "@/components/start/wege";
 import { Ansicht } from "@/components/start/ansicht";
+import { Faelle } from "@/components/start/faelle";
 import { Abschluss } from "@/components/start/abschluss";
 import { Ablauf } from "@/components/start/ablauf";
 import { Leistungen } from "@/components/start/leistungen";
 import { Apps } from "@/components/start/apps";
+import { Stimmen } from "@/components/start/stimmen";
 import { Fragen } from "@/components/start/fragen";
 import { Fuss, MobileLeiste } from "@/components/start/fuss";
 
@@ -24,8 +26,10 @@ export default function Startseite() {
         <Wege />
         <Apps />
         <Ansicht />
+        <Faelle />
         <Ablauf />
         <Leistungen />
+        <Stimmen />
         <Fragen />
         <Abschluss />
       </main>

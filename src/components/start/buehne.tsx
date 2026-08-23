@@ -152,8 +152,7 @@ export function Buehne() {
             </p>
           </div>
           <p className="text-sm text-white/50 leading-relaxed">
-            Aus unserem Lager in Deutschland oder direkt aus China. Dazu drei
-            Programme für Bestellungen, Rechnungen und PayPal-Fälle.
+            Aus unserem Lager in Deutschland oder direkt aus China.
             Keine Mindestmenge, kein Vertrag.
           </p>
           <div>
@@ -175,8 +174,7 @@ export function Buehne() {
               </p>
             </div>
             <p className="text-lg text-white/50 max-w-xl leading-relaxed">
-              Aus unserem Lager in Deutschland oder direkt aus China. Dazu drei
-              Programme für Bestellungen, Rechnungen und PayPal-Fälle.
+              Aus unserem Lager in Deutschland oder direkt aus China.
               <strong className="text-white/80 font-semibold"> Keine Mindestmenge,
               kein Vertrag.</strong>
             </p>
