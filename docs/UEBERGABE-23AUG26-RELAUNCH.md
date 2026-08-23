@@ -119,26 +119,27 @@ zwei Orangetöne nebeneinander. Alles auf den Wert des Baukastens **`#FF642C`**
 orange gedachte Wort also in Weiß, ohne dass irgendwo ein Fehler auftauchte.
 Die Regel gilt jetzt auch für `.seitenkopf h1`, `.sec-h2` und `h2`.
 
-### 9. Laufband raus, die vier Schritte als Leiter
+### 9. Laufband, vier Schritte und Trust-Zeile, nach Kevins Rückmeldung
 
-Kevin am 23.08. zum Laufband „Angebunden an": „das sieht ja mal komplett kacke
-aus". Es lief ohne Grund, und seine Verlaufskanten lagen als harte dunkle Kästen
-auf dem Verlauf des Hintergrunds, weil sie mit `var(--bg)` gegen einen Verlauf
-gerechnet wurden. Jetzt steht dort eine ruhige Reihe aus sechs Chips.
+**Das Laufband war kaputt, nicht nur hässlich.** Kevin: „das sieht ja mal komplett
+kacke aus". Die weichen Kanten waren zwei Kästen in `var(--bg)`, gerechnet gegen
+einen Verlauf. Deshalb lagen links und rechts zwei harte dunkle Rechtecke auf der
+Seite. Jetzt läuft das Band weiter endlos, die Kanten kommen aber über
+`mask-image`, das funktioniert über jedem Hintergrund. Beim Überfahren hält es an.
 
-Die vier Schritte standen als vier gleich breite Zeilen untereinander, die halbe
-Seite daneben war leer, und man sah der Liste nicht an, dass die Schritte
-NACHEINANDER kommen. Jetzt sitzen die Karten abwechselnd links und rechts, eine
-Haarlinie verbindet sie und zeichnet sich beim Scrollen selbst. Auf dem Handy
-stapeln sie sich an einer durchgehenden Linie am linken Rand.
+**Die vier Schritte laufen jetzt zur Seite, nicht nach unten.** Kevin: „das soll in
+1 viewport passen, also nicht scrollen sondern auf einen Blick". Vier gleich breite
+Karten nebeneinander, dazwischen je ein kurzer Strich mit Pfeil, der beim
+Einblenden wächst. Die Sektion ist 560 px hoch und passt damit in jeden Bildschirm.
 
-Kevins Vorlage von 21st.dev war die Idee, nicht der Code. Nicht übernommen
-wurden: Comic Sans für die Ziffern, drei Farbthemen, gedrehte Karten mit
-Schlagschatten, die Pin-Grafik und die ewig laufende gestrichelte Linie. Die
-Positionen dort sind feste Pixelwerte (`top-[450px]`), die bei jeder anderen
-Textlänge brechen. Unsere Kurve wird gemessen: nach dem Aufbau und bei jeder
-Größenänderung werden die Kartenränder abgefragt, auch die Strichlänge kommt aus
-`getTotalLength()` statt aus einer geratenen Zahl.
+Zwischenschritt war eine Leiter mit gemessener Kurve von oben nach unten. Die war
+schön, brauchte aber zwei Bildschirme. Weg damit.
+
+**Über der Überschrift steht wieder eine Trust-Zeile.** Sie zeigt zwei belegte
+Aussagen: „Lager in Deutschland" und „Fehlerquote unter 1 %". Sobald
+`empfehlungen` in `zahlen.ts` auf `geprueft: true` steht, schaltet dieselbe Stelle
+automatisch auf die Bewertungszeile mit Köpfen und Sternen um. Bis dahin steht dort
+kein erfundener Wert.
 
 ### 10. Selbst durchgeklickt
 

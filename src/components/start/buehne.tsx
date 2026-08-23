@@ -48,12 +48,25 @@ function Koepfe() {
 }
 
 /**
- * Die Bewertungszeile erscheint NUR, wenn `empfehlungen.geprueft` steht.
- * Ohne Beleg ist eine Bewertungszahl nach § 5b Abs. 3 UWG angreifbar,
- * also zeigen wir lieber nichts als etwas Erfundenes.
+ * Die kleine Trust-Zeile über der Überschrift.
+ *
+ * Sobald `empfehlungen` eine echte, belegte Zahl trägt, erscheint hier die
+ * Bewertungszeile mit Köpfen und Sternen. Solange das nicht so ist, steht
+ * dort NICHT nichts, sondern zwei Aussagen, die belegt sind. Eine erfundene
+ * Bewertungszahl ist nach § 5b Abs. 3 UWG angreifbar, ein belegter Fakt
+ * nicht. Zum Umschalten reicht `geprueft: true` in `zahlen.ts`.
  */
-function Bewertung() {
-  if (!empfehlungen.geprueft) return null;
+function Trust() {
+  if (!empfehlungen.geprueft) {
+    return (
+      <div className="trust-pille">
+        <span className="trust-punkt" aria-hidden="true" />
+        Lager in Deutschland
+        <span className="trust-trenner" aria-hidden="true" />
+        Fehlerquote unter 1 %
+      </div>
+    );
+  }
   return (
     <div className="flex items-center gap-3">
       <Koepfe />
@@ -65,7 +78,9 @@ function Bewertung() {
             </span>
           ))}
         </div>
-        <span className="text-white/50 text-[10px]">{empfehlungen.wert} {empfehlungen.label}</span>
+        <span className="text-white/50 text-[10px]">
+          {empfehlungen.wert} {empfehlungen.label}
+        </span>
       </div>
     </div>
   );
@@ -115,13 +130,13 @@ export function Buehne() {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       </div>
 
-      <div className="relative w-full max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 pt-10 sm:pt-16 pb-16 sm:pb-28">
+      <div className="relative w-full max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 pt-10 sm:pt-14 pb-10 sm:pb-14">
         {/* Handy: Globus oben, Text darunter */}
         <div className="md:hidden flex flex-col gap-4">
           <div className="flex justify-center -mb-2">
             <GlobeOrders className="w-[300px]" />
           </div>
-          <Bewertung />
+          <Trust />
           <div>
             <h1 className="text-2xl font-bold text-white leading-[1.2] tracking-tight">
               Schluss mit PayPal-Fällen und Retouren
@@ -143,7 +158,7 @@ export function Buehne() {
         {/* Rechner: Text links, Globus rechts */}
         <div className="hidden md:flex md:flex-row md:items-center gap-8">
           <div className="flex flex-col gap-8 z-10 flex-1 min-w-0">
-            <Bewertung />
+            <Trust />
             <div>
               <h1 className="text-3xl lg:text-4xl font-bold text-white leading-[1.2] tracking-tight">
                 Schluss mit PayPal-Fällen und Retouren
