@@ -52,9 +52,11 @@ Landing Page fuer Dropshipping Fulfillment Service im DACH Raum. Kunden sollen s
 - /nutzungsbedingungen
 
 ## Brand
-- **Primary Color:** #F26B2B (Orange)
-- **Dark:** #D4571E
+- **Primary Color:** #FF642C (Orange, Wert aus dem ecomet-Baukasten kit.js)
+- **Dark:** #EF5615
 - **Light:** #FF8A50
+- Bis 23.08.2026 standen hier faelschlich #F26B2B und #D4571E, damit lagen zwei
+  Orangetoene auf einer Seite.
 - **Font:** Inter
 - **Logo:** icon-logo.png + text-logo-white.png in public/
 - **Registrierungs-Link:** gtapp.unifydropshipping.com/auth/register?share=B031...
@@ -69,8 +71,14 @@ Deploy-ready. Auf GitHub gepusht (BilderAds/ecomet). Bereit fuer Vercel.
 | 2026-04-04 | 1 | Projektordner und Memory-Struktur erstellt |
 | 2026-04-05 | 1 | Komplette Website gebaut: alle Sections, Globe Animation, Orange Theme |
 | 2026-04-09 bis 11 | 1 | Scroll Transition, Mobile Optimierung, Unterseiten, Links, GitHub Push |
+| 2026-08-23 | 1 | Relaunch als Plattform: 14 Seiten, dark-glass, Anfrageformular auf Supabase |
+| 2026-08-23 | 2 | Erfundene Angaben raus, Zahlen an eine Stelle, Waechter gebaut, tote Bauteile geloescht |
 
 ## Offene Punkte / Naechste Schritte
+
+Der aktuelle Stand steht in `docs/UEBERGABE-23AUG26-RELAUNCH.md`, dort auch die
+neun Punkte, die Kevin entscheiden muss, bevor etwas live geht.
+
 - [ ] Vercel Deploy abschliessen + Custom Domain
 - [ ] Mobile Globe Popups Position feintunen
 - [ ] OG Images fuer Social Sharing
