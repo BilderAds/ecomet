@@ -1,4 +1,4 @@
-import { preise, wartenKostet } from "@/inhalte/zahlen";
+import { preise, wartenKostet, zollBeispiel } from "@/inhalte/zahlen";
 
 /**
  * Was es kostet, NICHT zu handeln. Fehlte auf der ganzen Startseite.
@@ -20,8 +20,7 @@ import { preise, wartenKostet } from "@/inhalte/zahlen";
  */
 const texte = [
   // Die Beträge kommen aus zahlen.ts, damit der Wächter sie sieht.
-  `Die 150-Euro-Zollfreigrenze ist weg. Jede Sendung aus einem Drittland kostet ${wartenKostet[0].wert} je Warenkategorie.`,
-  `Nur für den Zoll. Bei 1.000 Bestellungen im Monat, jeden Monat, ohne dass du dafür irgendetwas bekommst.`,
+  `Die 150-Euro-Zollfreigrenze ist weg. Jede Sendung aus einem Drittland kostet ${wartenKostet[0].wert} je Warenkategorie. Bei 1.000 Bestellungen im Monat sind das ${zollBeispiel.wert}, jeden Monat.`,
   "Was aus China kommt und zurückgeht, geht nach China zurück. Oder du wirfst es weg und zahlst es trotzdem.",
   "Seit dem 12. August gilt die EU-Verpackungsverordnung. Anmelden kannst du nur, was du in der Hand hattest.",
 ];

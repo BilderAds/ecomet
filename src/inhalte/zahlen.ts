@@ -117,14 +117,18 @@ export const wartenKostet: Zahl[] = [
     quelle: "Wegfall der 150-Euro-Zollfreigrenze zum 01.07.2026, pauschal 3 € je Warenkategorie je Sendung. " +
       "zoll.de Pressemitteilung, Bundesfinanzministerium, IHK Karlsruhe, abgerufen 23.08.2026. " +
       "Beschluss ECOFIN-Rat 12.12.2025" },
-  { wert: "3.000 €", label: "bei 1.000 Bestellungen im Monat", geprueft: true,
-    quelle: "1.000 mal 3 € Pauschalzoll. Reine Multiplikation der belegten Zahl darüber" },
   { wert: "2×", label: "jede Retoure", geprueft: true,
     quelle: "eigenes Angebot: Ware aus China geht nach China zurück, die Retoure ins deutsche Lager ist der Unterschied" },
   { wert: "200.000 €", label: "Bußgeld beim Verpackungsrecht", geprueft: true,
     quelle: "eigener Leitfaden Verpackungsrecht, Stand August 2026: „Bußgeldern bis 200.000 €“. " +
       "PPWR (EU) 2025/40 gilt seit 12.08.2026, bestätigt bei IHK Schleswig-Holstein" },
 ];
+
+/** Das Rechenbeispiel im Abschnitt „Was dich das Warten kostet". */
+export const zollBeispiel: Zahl = {
+  wert: "3.000 €", label: "Zoll bei 1.000 Bestellungen im Monat", geprueft: true,
+  quelle: "1.000 mal 3 € Pauschalzoll. Reine Multiplikation der belegten Zahl",
+};
 
 /** Preise. Jede Zeile, die auf der Seite auftaucht, steht hier. */
 export const preise = {
@@ -156,5 +160,6 @@ export const alleZahlen: Zahl[] = [
   ...aussageZahlen,
   ...zusagen,
   ...wartenKostet,
+  zollBeispiel,
   ...Object.values(preise),
 ];
