@@ -33,9 +33,6 @@ export function Apps() {
     <section className="sec" id="apps">
       <div className="wrap">
         <div className="sec-head fx">
-          <span className="eyebrow">
-            <span className="dot" /> Software, die wir selbst bauen
-          </span>
           <h2 className="sec-h2">
             Du siehst jede Bestellung, jede Rechnung und jeden{" "}
             <span className="mark glow">

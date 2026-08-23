@@ -25,7 +25,7 @@ export function Ansicht() {
       <div className="ansicht-gitter">
         <div className="ansicht-text fx">
           <span className="eyebrow">
-            <span className="dot" /> Die ecomet App, genauer
+            <span className="dot" /> ecomet.app
           </span>
           <h2>
             <span className="block">Du weißt, wie viel du verdienst</span>

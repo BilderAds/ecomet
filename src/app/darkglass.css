@@ -13,6 +13,7 @@
    Umfärben: nur die vier Werte unter "AKZENTE" ändern.
    ============================================================ */
 :root{
+  --r-knopf:12px;   /* Eckradius wie im Logo, 22 % der Hoehe */
   --bg:#08080a;
   --bg-2:#0e0e12;
   --fg:#ffffff;
@@ -217,10 +218,10 @@ img{max-width:100%;display:block}
 .sec-head{text-align:center;margin-bottom:64px}
 .sec-h2{font-size:clamp(1.875rem,4vw,3rem);font-weight:600;margin-bottom:16px}
 .sec-p{font-size:1.125rem;color:rgba(255,255,255,.6);max-width:672px;margin-inline:auto;line-height:1.6}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:600;text-transform:uppercase;
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.8125rem;font-weight:600;
   letter-spacing:.1em;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.05);
   border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.7);margin-bottom:24px}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--warn);animation:pulse 2s var(--ease) infinite}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--a1);animation:pulse 2s var(--ease) infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 
 /* ---------- 4 · Zwei Auswahl-Karten ---------- */
@@ -560,7 +561,7 @@ img{max-width:100%;display:block}
 .abschluss-kasten h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;letter-spacing:-.03em;margin-bottom:14px}
 .abschluss-kasten p{max-width:34rem;margin:0 auto 28px;color:rgba(255,255,255,.56);line-height:1.7}
 .abschluss-knoepfe{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-.abschluss-knopf{display:inline-flex;align-items:center;gap:8px;height:50px;padding:0 26px;border-radius:999px;
+.abschluss-knopf{display:inline-flex;align-items:center;gap:8px;height:50px;padding:0 26px;border-radius:var(--r-knopf);
   background:var(--a1);color:#fff;font-weight:600;font-size:.9375rem;
   transition:background .25s var(--ease),transform .25s var(--ease)}
 .abschluss-knopf:hover{background:var(--a3);transform:translateY(-1px)}
@@ -569,7 +570,7 @@ img{max-width:100%;display:block}
 .abschluss-knopf.zweit:hover{background:rgba(255,255,255,.09)}
 
 /* ---- Laufende Logowolke unter der Buehne ---- */
-.vertrauen{position:relative;z-index:10;padding:112px 0 64px}
+.vertrauen{position:relative;z-index:10;padding:56px 0 56px}
 .vertrauen-ueber{text-align:center;font-size:.6875rem;font-weight:600;text-transform:uppercase;
   letter-spacing:.14em;color:rgba(255,255,255,.28);margin-bottom:30px}
 .vertrauen-maske{overflow:hidden;width:100%;
@@ -586,7 +587,7 @@ img{max-width:100%;display:block}
 .vertrauen-logo:hover{color:rgba(255,255,255,.9)}
 .vertrauen-logo:hover img{opacity:.9}
 @media (max-width:700px){
-  .vertrauen{padding:72px 0 48px}
+  .vertrauen{padding:40px 0 40px}
   .vertrauen-logo{font-size:.9375rem;padding-inline:22px}
   .vertrauen-logo img{width:20px;height:20px}
 }
@@ -636,7 +637,7 @@ img{max-width:100%;display:block}
 .abschluss-kasten h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;letter-spacing:-.03em;margin-bottom:14px}
 .abschluss-kasten p{max-width:34rem;margin:0 auto 28px;color:rgba(255,255,255,.56);line-height:1.7}
 .abschluss-knoepfe{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-.abschluss-knopf{display:inline-flex;align-items:center;gap:8px;height:50px;padding:0 26px;border-radius:999px;
+.abschluss-knopf{display:inline-flex;align-items:center;gap:8px;height:50px;padding:0 26px;border-radius:var(--r-knopf);
   background:var(--a1);color:#fff;font-weight:600;font-size:.9375rem;
   transition:background .25s var(--ease),transform .25s var(--ease)}
 .abschluss-knopf:hover{background:var(--a3);transform:translateY(-1px)}

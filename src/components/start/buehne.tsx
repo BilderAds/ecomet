@@ -118,7 +118,7 @@ function Knopf({ gross = false }: { gross?: boolean }) {
       href="https://apps.shopify.com/ecomet"
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center justify-center gap-2 bg-ecomet hover:bg-ecomet-dark text-white font-semibold rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-ecomet/30 hover:scale-[1.02] ${
+      className={`inline-flex items-center justify-center gap-2 bg-ecomet hover:bg-ecomet-dark text-white font-semibold rounded-[12px] transition-all duration-300 hover:shadow-xl hover:shadow-ecomet/30 hover:scale-[1.02] ${
         gross ? "px-8 py-4 text-lg" : "px-6 py-3.5 text-base"
       }`}
     >
