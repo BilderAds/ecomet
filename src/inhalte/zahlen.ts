@@ -21,6 +21,22 @@ export type Zahl = {
   quelle?: string;
 };
 
+/** Die Bewertungszeile über der Überschrift. NICHT belegt, Kevin prüft. */
+export const empfehlungen: Zahl = {
+  wert: "1.475+",
+  label: "Empfehlungen",
+  geprueft: false,
+};
+
+/** Die drei kurzen Belege unter dem Knopf in der Bühne. */
+export const buehneBelege: Zahl[] = [
+  { wert: "", label: "1 bis 2 Tage aus dem DE-Lager", geprueft: false },
+  { wert: "", label: "Jedes Paket wird geprüft", geprueft: true,
+    quelle: "eigene Qualitätskontrolle, steht so auf der alten Seite seit 2026" },
+  { wert: "", label: "Lagern oder direkt verschicken", geprueft: true,
+    quelle: "beide Wege sind im Angebot" },
+];
+
 /** Die drei Kennzahlen unter der Bühne auf der Startseite. */
 export const buehneZahlen: Zahl[] = [
   { wert: "1 bis 2", label: "Tage bis zum Kunden", geprueft: false },
@@ -50,6 +66,8 @@ export const preise = {
 
 /** Alle Zahlen zusammen, für den Wächter. */
 export const alleZahlen: Zahl[] = [
+  empfehlungen,
+  ...buehneBelege,
   ...buehneZahlen,
   ...aussageZahlen,
   ...Object.values(preise),

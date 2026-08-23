@@ -28,8 +28,12 @@
   --r-lg:24px;
   --ease:cubic-bezier(.22,.61,.36,1);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+/* ecomet: der Stern-Reset der Vorlage ist RAUS. Tailwind legt seine
+   Utilities in einen CSS-Layer, ungelayerte Regeln schlagen sie unabhaengig
+   von der Spezifitaet. Mit `*{margin:0;padding:0}` verlor jede Seite ihre
+   Abstaende, der Text klebte am Bildschirmrand. Tailwind Preflight macht
+   denselben Reset ohnehin, nur sauber im Layer. */
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}  /* bleibt, kollidiert nicht */
 body{
   background:var(--bg);color:var(--fg);
   font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -453,3 +457,7 @@ img{max-width:100%;display:block}
 /* Pfeile in den App-Karten erst beim Überfahren */
 .app-karte .pick-go{color:rgba(255,255,255,.55);transition:color .25s}
 .app-karte:hover .pick-go{color:var(--a1)}
+
+/* Scroll-Hinweis entfernt. Kevin am 23.08.: "das scroll ding auf der homepage
+   ist voll kaputt". Rams 10: wenn ein Element nichts erklaert, fliegt es raus. */
+.scroll-hint{display:none !important}

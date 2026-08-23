@@ -46,7 +46,7 @@ export function Effekte() {
     schritte.forEach((s) => s.addEventListener("mouseenter", beiSchritt));
 
     const leiste = document.getElementById("mbar");
-    const buehne = document.querySelector(".hero");
+    const buehne = document.querySelector("#start");
     let leisteBeobachter: IntersectionObserver | undefined;
     if (leiste && buehne) {
       leisteBeobachter = new IntersectionObserver(

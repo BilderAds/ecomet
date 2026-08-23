@@ -3,81 +3,101 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
 
+/**
+ * Der Kopf der alten Seite, den Kevin am 23.08. zurückhaben wollte:
+ * durchgehende Leiste mit Unschärfe, Logo links, Links mittig, oranger
+ * Knopf rechts. Neu sind nur die Ziele: sie führen jetzt zu uns und nicht
+ * mehr zur Registrierung beim Partner.
+ */
 const punkte = [
   { text: "Deutsches Lager", ziel: "/fulfillment/deutschland" },
   { text: "Import aus China", ziel: "/fulfillment/china" },
   { text: "Apps", ziel: "/#apps" },
   { text: "Preise", ziel: "/preise" },
+  { text: "Über uns", ziel: "/ueber-uns" },
 ];
 
 export function Navigation() {
   const [offen, setOffen] = useState(false);
 
   return (
-    <nav className="nav">
-      <div className="wrap-wide nav-in">
-        <Link href="/" className="nav-logo" aria-label="ecomet Startseite">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#08080a]/80 backdrop-blur-xl border-b border-white/5">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <Link href="/" className="flex items-center" aria-label="ecomet Startseite">
           <Image
             src="/ecomet-schrift-weiss.png"
             alt="ecomet"
             width={120}
             height={28}
             priority
-            style={{ height: 24, width: "auto" }}
+            style={{ height: 22, width: "auto" }}
           />
         </Link>
 
-        <div className="nav-pill">
+        <div className="hidden md:flex items-center gap-8">
           {punkte.map((p) => (
-            <Link key={p.ziel} href={p.ziel}>
+            <Link
+              key={p.ziel}
+              href={p.ziel}
+              className="text-sm text-white/60 hover:text-white transition-colors duration-200 relative group"
+            >
               {p.text}
+              <span className="absolute -bottom-1 left-0 w-0 h-px bg-ecomet group-hover:w-full transition-all duration-300" />
             </Link>
           ))}
         </div>
 
-        <div className="nav-cta">
-          <span className="glass-wrap">
-            <Link href="/registrieren" className="glass-btn sm">
-              <span className="glass-txt">Konto erstellen</span>
-            </Link>
-            <span className="glass-shadow" />
-          </span>
-        </div>
-
-        <button
-          className="nav-burger"
-          aria-label={offen ? "Menü schließen" : "Menü öffnen"}
-          aria-expanded={offen}
-          onClick={() => setOffen((o) => !o)}
-        >
-          {offen ? (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <path d="M6 6l12 12M18 6L6 18" />
-            </svg>
-          ) : (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          )}
-        </button>
-      </div>
-
-      {offen && (
-        <div className="nav-mobil">
-          {punkte.map((p) => (
-            <Link key={p.ziel} href={p.ziel} onClick={() => setOffen(false)}>
-              {p.text}
-            </Link>
-          ))}
-          <Link href="/kontakt" onClick={() => setOffen(false)}>
-            Kontakt
-          </Link>
-          <Link href="/registrieren" className="nav-mobil-cta" onClick={() => setOffen(false)}>
+        <div className="flex items-center gap-4">
+          <Link
+            href="/registrieren"
+            className="hidden sm:inline-flex items-center gap-2 bg-ecomet hover:bg-ecomet-dark text-white text-sm font-medium px-5 py-2.5 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-ecomet/25"
+          >
             Konto erstellen
           </Link>
+
+          <button
+            onClick={() => setOffen(!offen)}
+            className="md:hidden text-white p-2"
+            aria-label={offen ? "Menü schließen" : "Menü öffnen"}
+            aria-expanded={offen}
+          >
+            {offen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+      </nav>
+
+      {offen && (
+        <div className="md:hidden bg-[#08080a]/95 backdrop-blur-xl border-b border-white/5">
+          <div className="px-4 py-4 flex flex-col gap-3">
+            {punkte.map((p) => (
+              <Link
+                key={p.ziel}
+                href={p.ziel}
+                onClick={() => setOffen(false)}
+                className="text-sm text-white/70 hover:text-white py-2 transition-colors"
+              >
+                {p.text}
+              </Link>
+            ))}
+            <Link
+              href="/kontakt"
+              onClick={() => setOffen(false)}
+              className="text-sm text-white/70 hover:text-white py-2 transition-colors"
+            >
+              Kontakt
+            </Link>
+            <Link
+              href="/registrieren"
+              onClick={() => setOffen(false)}
+              className="bg-ecomet hover:bg-ecomet-dark text-white text-sm font-medium px-5 py-2.5 rounded-full text-center transition-all duration-200 mt-2"
+            >
+              Konto erstellen
+            </Link>
+          </div>
         </div>
       )}
-    </nav>
+    </header>
   );
 }
