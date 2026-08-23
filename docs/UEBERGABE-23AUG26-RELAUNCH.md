@@ -119,7 +119,28 @@ zwei Orangetöne nebeneinander. Alles auf den Wert des Baukastens **`#FF642C`**
 orange gedachte Wort also in Weiß, ohne dass irgendwo ein Fehler auftauchte.
 Die Regel gilt jetzt auch für `.seitenkopf h1`, `.sec-h2` und `h2`.
 
-### 9. Selbst durchgeklickt
+### 9. Laufband raus, die vier Schritte als Leiter
+
+Kevin am 23.08. zum Laufband „Angebunden an": „das sieht ja mal komplett kacke
+aus". Es lief ohne Grund, und seine Verlaufskanten lagen als harte dunkle Kästen
+auf dem Verlauf des Hintergrunds, weil sie mit `var(--bg)` gegen einen Verlauf
+gerechnet wurden. Jetzt steht dort eine ruhige Reihe aus sechs Chips.
+
+Die vier Schritte standen als vier gleich breite Zeilen untereinander, die halbe
+Seite daneben war leer, und man sah der Liste nicht an, dass die Schritte
+NACHEINANDER kommen. Jetzt sitzen die Karten abwechselnd links und rechts, eine
+Haarlinie verbindet sie und zeichnet sich beim Scrollen selbst. Auf dem Handy
+stapeln sie sich an einer durchgehenden Linie am linken Rand.
+
+Kevins Vorlage von 21st.dev war die Idee, nicht der Code. Nicht übernommen
+wurden: Comic Sans für die Ziffern, drei Farbthemen, gedrehte Karten mit
+Schlagschatten, die Pin-Grafik und die ewig laufende gestrichelte Linie. Die
+Positionen dort sind feste Pixelwerte (`top-[450px]`), die bei jeder anderen
+Textlänge brechen. Unsere Kurve wird gemessen: nach dem Aufbau und bei jeder
+Größenänderung werden die Kartenränder abgefragt, auch die Strichlänge kommt aus
+`getTotalLength()` statt aus einer geratenen Zahl.
+
+### 10. Selbst durchgeklickt
 
 Alle 14 Seiten plus 404 aufgerufen, alle geben 200 bzw. 404. Jeder interne Link und der
 einzige Link nach draußen (`bilderads.de`, 200) einzeln geprüft. Handy-Ansicht mit

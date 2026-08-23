@@ -157,18 +157,46 @@ img{max-width:100%;display:block}
 }
 
 /* ---------- 3 · Logo-Laufband ---------- */
-.logos{position:relative;z-index:10;padding:8px 0 48px}
-.logos-h{text-align:center;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;
-  color:rgba(255,255,255,.45);margin-bottom:20px}
-.logos-mask{position:relative;overflow:hidden;max-width:1024px;margin-inline:auto}
-.logos-mask::before,.logos-mask::after{content:"";position:absolute;inset-block:0;width:96px;z-index:2;pointer-events:none}
-.logos-mask::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
-.logos-mask::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
-.logos-track{display:flex;width:max-content;animation:slide 28s linear infinite}
-.logos-track>div{flex:0 0 auto;margin-inline:44px;display:grid;place-items:center;height:64px;min-width:130px;
-  color:rgba(255,255,255,.62);font-weight:700;letter-spacing:.04em;font-size:1.0625rem}
-@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){.logos-track{animation:none}}
+.logos{position:relative;z-index:10;padding:8px 0 56px}
+.logos-h{text-align:center;font-size:.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;
+  color:rgba(255,255,255,.34);margin-bottom:20px}
+.logos-reihe{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:900px;margin-inline:auto;padding-inline:24px}
+.logos-chip{display:inline-flex;align-items:center;height:40px;padding:0 18px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);
+  color:rgba(255,255,255,.56);font-size:.9375rem;font-weight:500;letter-spacing:-.01em;
+  transition:color .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease)}
+.logos-chip:hover{color:rgba(255,255,255,.88);border-color:color-mix(in srgb,var(--a1) 34%,transparent);
+  background:rgba(255,255,255,.055)}
+
+/* Die vier Schritte als Leiter */
+.leiter{position:relative;max-width:1000px;margin-inline:auto}
+.leiter-weg{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:visible}
+.leiter-weg path{transition:stroke-dashoffset 1.6s var(--ease)}
+.sprosse{display:grid;grid-template-columns:1fr 1fr;gap:72px;position:relative;z-index:1}
+.sprosse+.sprosse{margin-top:64px}
+.sprosse.rechts .sprosse-karte{grid-column:2}
+.sprosse-karte{padding:26px 28px;border-radius:20px;border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.035);backdrop-filter:blur(10px);
+  transition:border-color .3s var(--ease),background .3s var(--ease),transform .3s var(--ease)}
+.sprosse-karte:hover{border-color:color-mix(in srgb,var(--a1) 40%,transparent);
+  background:rgba(255,255,255,.06);transform:translateY(-3px)}
+.sprosse-n{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:13px;margin-bottom:16px;
+  border:1px solid color-mix(in srgb,var(--a1) 40%,rgba(255,255,255,.1));
+  background:color-mix(in srgb,var(--a1) 12%,transparent);
+  color:var(--a1);font-size:.875rem;font-weight:600;font-variant-numeric:tabular-nums}
+.sprosse-karte h3{font-size:1.125rem;font-weight:600;margin-bottom:8px;letter-spacing:-.015em}
+.sprosse-karte p{color:rgba(255,255,255,.58);font-size:.9375rem;line-height:1.65}
+@media (max-width:899px){
+  /* Eine durchgehende Linie am Rand statt vier Stummel: der Strich gehoert
+     an die Huelle, nicht an jede Sprosse. */
+  .leiter{padding-left:22px;border-left:1px solid rgba(255,255,255,.09)}
+  .sprosse{grid-template-columns:1fr;gap:0}
+  .sprosse.rechts .sprosse-karte{grid-column:1}
+  .sprosse+.sprosse{margin-top:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  .leiter-weg path{stroke-dashoffset:0 !important;transition:none}
+}
 
 /* ---------- Abschnitts-Grundform ---------- */
 .sec{position:relative;z-index:10;padding:96px 0}
