@@ -515,41 +515,24 @@ img{max-width:100%;display:block}
   box-shadow:0 0 0 3px color-mix(in srgb,var(--a1) 18%,transparent)}
 .trust-trenner{width:1px;height:12px;background:rgba(255,255,255,.14)}
 
-/* ---- Vergleichsbuehne (/vorschau), nach dem Muster von mintlify.com ----
-   Das Produkt steht angeschnitten und uebergross, es laeuft rechts und
-   unten aus dem Bild. Der Text sitzt links in einer schmalen Spalte. */
-.vb{position:relative;overflow:hidden;padding-top:64px;min-height:min(880px,100vh)}
-.vb-raster{position:absolute;inset:0;pointer-events:none;opacity:.5;
-  background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
-  background-size:64px 64px;
-  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 20% 30%,#000,transparent 75%);
-  mask-image:radial-gradient(ellipse 70% 60% at 20% 30%,#000,transparent 75%)}
-.vb-inhalt{position:relative;display:grid;grid-template-columns:minmax(420px,46%) 1fr;
-  align-items:start;max-width:1400px;margin-inline:auto;padding:72px 0 0 clamp(24px,5vw,80px)}
-.vb-text{display:flex;flex-direction:column;align-items:flex-start;gap:26px;padding-bottom:80px;z-index:2}
-.vb-h1{font-size:clamp(2.4rem,4.2vw,3.6rem);font-weight:700;line-height:1.08;letter-spacing:-.035em}
-.vb-satz{font-size:1.0625rem;line-height:1.65;color:rgba(255,255,255,.55);max-width:30rem}
-.vb-satz strong{color:rgba(255,255,255,.86);font-weight:600}
-.vb-knoepfe{display:flex;flex-wrap:wrap;gap:12px}
-.vb-knopf{display:inline-flex;align-items:center;gap:8px;height:50px;padding:0 24px;border-radius:999px;
-  background:var(--a1);color:#fff;font-weight:600;font-size:.9375rem;
-  transition:background .25s var(--ease),transform .25s var(--ease)}
-.vb-knopf:hover{background:var(--a3);transform:translateY(-1px)}
-.vb-knopf.zweit{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
-  color:rgba(255,255,255,.82)}
-.vb-knopf.zweit:hover{background:rgba(255,255,255,.09)}
-.vb-belege{display:flex;flex-direction:column;gap:9px;font-size:.875rem;color:rgba(255,255,255,.45)}
-.vb-belege li{display:flex;align-items:center;gap:9px}
-.vb-belege li::before{content:"";width:5px;height:5px;border-radius:999px;background:var(--a1);flex:0 0 auto}
-.vb-bild{position:relative;margin-top:40px;margin-right:calc(-1 * clamp(40px,10vw,180px));
-  border-radius:18px 0 0 0;border-top:1px solid rgba(255,255,255,.1);border-left:1px solid rgba(255,255,255,.1);
-  overflow:hidden;background:#0c0c0f;
-  -webkit-mask-image:linear-gradient(to bottom,#000 72%,transparent);
-  mask-image:linear-gradient(to bottom,#000 72%,transparent)}
-.vb-bild img{display:block;width:100%;height:auto}
+/* ---- Das Produkt zeigt sich selbst, angeschnitten ----
+   Nach dem Muster von mintlify.com: das Bild laeuft rechts aus dem Rahmen.
+   Unten weich auslaufend, damit keine harte Kante entsteht. */
+.ansicht{overflow:hidden}
+.ansicht-gitter{display:grid;grid-template-columns:minmax(360px,42%) 1fr;gap:clamp(24px,4vw,64px);
+  align-items:center;max-width:1400px;margin-inline:auto;padding-left:clamp(24px,5vw,80px)}
+.ansicht-text{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.ansicht-text h2{font-size:clamp(1.9rem,3.2vw,2.6rem);font-weight:700;line-height:1.12;letter-spacing:-.03em}
+.ansicht-text p{color:rgba(255,255,255,.56);font-size:1rem;line-height:1.7;max-width:32rem}
+.ansicht-knopf{margin-top:4px}
+.ansicht-hinweis{font-size:.8125rem;color:rgba(255,255,255,.3)}
+.ansicht-bild{position:relative;margin-right:calc(-1 * clamp(40px,10vw,200px));
+  border-radius:18px 0 0 18px;border:1px solid rgba(255,255,255,.1);border-right:0;
+  overflow:hidden;background:#0c0c0f;max-height:620px;
+  -webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent);
+  mask-image:linear-gradient(to bottom,#000 78%,transparent)}
+.ansicht-bild img{display:block;width:100%;height:auto}
 @media (max-width:1100px){
-  .vb-inhalt{grid-template-columns:1fr;padding-inline:clamp(20px,5vw,40px)}
-  .vb-text{padding-bottom:32px}
-  .vb-bild{margin-right:calc(-1 * clamp(20px,6vw,60px));margin-left:0}
+  .ansicht-gitter{grid-template-columns:1fr;padding-inline:clamp(20px,5vw,40px)}
+  .ansicht-bild{margin-right:calc(-1 * clamp(20px,6vw,60px));max-height:420px}
 }

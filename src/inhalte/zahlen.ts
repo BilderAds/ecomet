@@ -1,8 +1,12 @@
 /**
  * ALLE ZAHLEN DER WEBSITE STEHEN HIER, UND ZWAR NUR HIER.
  *
- * ⚠ ACHTUNG: Alles mit `geprueft: false` ist ein PLATZHALTER. Solche Zahlen
- * werden auf der Seite GAR NICHT ERST ANGEZEIGT, siehe `zeigen()` unten.
+ * ⚠ ACHTUNG: Alles mit `geprueft: false` ist ein PLATZHALTER.
+ * Listen laufen über `zeigen()` und blenden Ungeprüftes aus. EINE Ausnahme
+ * gibt es: die Bewertungszahl in der Bühne. Kevin will die Zeile am
+ * 23.08.2026 ausdrücklich so, wie sie schon auf ecometapp.de steht. Sie wird
+ * angezeigt, bleibt hier aber auf `false`, damit der Wächter weiter darauf
+ * zeigt, bis es eine echte Quelle gibt.
  *
  * Regel: eine Zahl geht erst live, wenn `geprueft: true` steht UND in `quelle`
  * steht, woher sie kommt. Keine Zahl ohne Quelle. Rams 6, ehrlich sein.
@@ -34,10 +38,12 @@ const PREISLISTE = "ecomet Preisliste 21.08.2026, Packsy mal 1,23 abgeschnitten"
 
 /**
  * Die Bewertungszeile über der Überschrift.
- * ⚠ NICHT BELEGT, deshalb unsichtbar. Auf ecometapp.de steht dort heute
- * „1,475+ Empfehlungen“, für diese Zahl gibt es keine Quelle. Erfundene
- * Bewertungen sind nach § 5b Abs. 3 UWG abmahnfähig. Erst mit echter Zahl
- * und echter Quelle wieder einschalten.
+ * ⚠ NICHT BELEGT. Es gibt keine Bewertungsquelle: ecomet liegt nicht im
+ * Shopify App Store (am 23.08.2026 gesucht, kein Eintrag) und hat kein
+ * Trustpilot-Profil. Dieselbe Zahl steht seit Monaten auf ecometapp.de.
+ * Erfundene Bewertungen sind nach § 5b Abs. 3 UWG abmahnfähig. Sobald eine
+ * echte Zahl da ist: hier eintragen, `geprueft: true`, Quelle dazu. An der
+ * Bühne muss dann nichts geändert werden.
  */
 export const empfehlungen: Zahl = {
   wert: "1.475+",

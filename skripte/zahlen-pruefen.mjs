@@ -31,7 +31,7 @@ console.log(`${alleZahlen.length} Zahlen in src/inhalte/zahlen.ts.`);
 
 if (offen.length) {
   rot = true;
-  console.log(`\nNICHT GEPRÜFT, wird auf der Seite nicht angezeigt (${offen.length}):`);
+  console.log(`\nNICHT GEPRÜFT, darf so nicht live (${offen.length}):`);
   for (const z of offen) console.log(`  · ${name(z)}`);
 }
 if (ohneQuelle.length) {

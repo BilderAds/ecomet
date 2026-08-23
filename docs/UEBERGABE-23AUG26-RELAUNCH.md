@@ -141,7 +141,38 @@ Aussagen: „Lager in Deutschland" und „Fehlerquote unter 1 %". Sobald
 automatisch auf die Bewertungszeile mit Köpfen und Sternen um. Bis dahin steht dort
 kein erfundener Wert.
 
-### 10. Selbst durchgeklickt
+### 10. Kevins Entscheidung am Abend: Globus bleibt
+
+Kevin hat die Vergleichsbuehne gesehen und sich entschieden: **der Globus
+bleibt**, weil man daran sofort sieht, worum es geht. Der grosse Screenshot
+gefaellt ihm, aber nicht in der Buehne. Er steht deshalb jetzt als eigene
+Sektion `components/start/ansicht.tsx` direkt nach „Zwei Wege". Die Seite
+`/vorschau` ist geloescht.
+
+Weiter geaendert, alles nach seiner Ansage:
+
+- **Ueberschrift hoechstens ZWEI Zeilen.** Die Vorschau hatte vier, das ist
+  eine harte Regel und war ein Fehler. Jetzt steht dort
+  „Zwei Lager, ein Konto. / Deutschland und China.", nachgemessen zwei Zeilen.
+- **Ein einziger Knopf** in der Buehne, keine zwei.
+- **Keine Aufzaehlungspunkte** unter dem Knopf, die Symbol-Zeile der alten
+  Seite bleibt.
+- **Die Trust-Zeile ist die der Live-Seite**: fuenf Koepfe, fuenf Sterne, die
+  Zahl. Die Pille mit den zwei belegten Aussagen ist raus.
+- Neue Unterzeile aus der Vorschau, die er gut fand: „Lager, Versand,
+  Rechnungen und PayPal-Faelle an einer Stelle. Fuer deutsche Shopify-Haendler."
+
+**Die Koepfe hosten wir jetzt selbst.** Auf der Live-Seite kommen sie bei jedem
+Aufruf von `api.dicebear.com`, also von einem fremden Server, dem damit die IP
+jedes Besuchers zugeht. Die fuenf Bilder liegen einmal geholt in
+`public/koepfe/`, im richtigen Marken-Orange statt im alten `#F26B2B`.
+
+**Die Bewertungszahl bleibt unbelegt.** Am 23.08. gesucht: ecomet liegt nicht im
+Shopify App Store, es gibt kein Trustpilot-Profil. Kevin will die Zeile
+trotzdem, sie steht wortgleich schon live. Sie wird angezeigt, steht in
+`zahlen.ts` aber weiter auf `geprueft: false`, damit der Waechter darauf zeigt.
+
+### 11. Selbst durchgeklickt
 
 Alle 14 Seiten plus 404 aufgerufen, alle geben 200 bzw. 404. Jeder interne Link und der
 einzige Link nach draußen (`bilderads.de`, 200) einzeln geprüft. Handy-Ansicht mit

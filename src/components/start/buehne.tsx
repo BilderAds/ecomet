@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
 import { Clock, ShieldCheck, Package } from "lucide-react";
 import { buehneBelege, empfehlungen, zeigen } from "@/inhalte/zahlen";
@@ -12,11 +13,10 @@ import { buehneBelege, empfehlungen, zeigen } from "@/inhalte/zahlen";
  *
  * Der Globus lädt erst im Browser, damit er den ersten Aufbau nicht bremst.
  *
- * ⚠ ÜBERSCHRIFT GERATEN: Kevin schrieb am 23.08. "nimm diesen Text auf der
- * Hero Section, dein Text ist Arsch", der gemeinte Text kam aber nicht mit an.
- * Hier steht deshalb die alte Überschrift, die er gut fand, mit einer
- * Anpassung: aus "4-8 Tage Versand" wurde "1 bis 2 Werktage", weil das
- * Hauptversprechen jetzt das deutsche Lager ist. Bitte gegenlesen.
+ * Die Überschrift steht seit dem 23.08. abends auf der Positionierung statt
+ * auf dem Schmerz: "Zwei Lager, ein Konto. Deutschland und China." Höchstens
+ * ZWEI Zeilen, das ist harte Regel. Der Aufbau (weiße Zeile, orange Zeile)
+ * ist der der alten Seite, den Kevin gut fand.
  */
 const GlobeOrders = dynamic(
   () => import("../ui/globe-orders").then((m) => m.GlobeOrders),
@@ -28,19 +28,30 @@ const GlobeOrders = dynamic(
   },
 );
 
-/** Fünf Kreise als Andeutung von Menschen. Bewusst ohne fremden Dienst. */
+/**
+ * Die fünf Köpfe der Trust-Zeile, wie auf der Live-Seite.
+ *
+ * Dort kommen sie zur Laufzeit von `api.dicebear.com`. Das schickt bei
+ * JEDEM Seitenaufruf die IP des Besuchers an einen fremden Server, gehört
+ * dann in die Datenschutzerklärung und fällt aus, wenn der Dienst weg ist.
+ * Die fünf Bilder liegen deshalb einmal geholt in `public/koepfe/`, im
+ * Marken-Orange #FF642C statt im alten #F26B2B.
+ *
+ * Es sind gezeichnete Figuren, keine Fotos: sie geben niemanden als echte
+ * Person aus.
+ */
 function Koepfe() {
-  const toene = ["#FF642C", "#FF8A50", "#EF5615", "#FF9E6B", "#C4491A"];
+  const namen = ["Felix", "Sarah", "Marco", "Lisa", "Tom"];
   return (
-    <div className="flex -space-x-1.5">
-      {toene.map((ton, i) => (
-        <span
-          key={ton}
-          aria-hidden="true"
-          className="w-6 h-6 rounded-full border-[1.5px] border-[#08080a] block"
-          style={{
-            background: `linear-gradient(135deg, ${ton}, ${toene[(i + 2) % toene.length]})`,
-          }}
+    <div className="flex -space-x-2">
+      {namen.map((name) => (
+        <Image
+          key={name}
+          src={`/koepfe/${name}.svg`}
+          alt=""
+          width={34}
+          height={34}
+          className="w-[34px] h-[34px] rounded-full border-2 border-[#08080a]"
         />
       ))}
     </div>
@@ -48,37 +59,29 @@ function Koepfe() {
 }
 
 /**
- * Die kleine Trust-Zeile über der Überschrift.
+ * Die Trust-Zeile über der Überschrift, im Aufbau der Live-Seite:
+ * fünf Köpfe, fünf Sterne, darunter die Zahl.
  *
- * Sobald `empfehlungen` eine echte, belegte Zahl trägt, erscheint hier die
- * Bewertungszeile mit Köpfen und Sternen. Solange das nicht so ist, steht
- * dort NICHT nichts, sondern zwei Aussagen, die belegt sind. Eine erfundene
- * Bewertungszahl ist nach § 5b Abs. 3 UWG angreifbar, ein belegter Fakt
- * nicht. Zum Umschalten reicht `geprueft: true` in `zahlen.ts`.
+ * ⚠ Die ZAHL ist nicht belegt. Es gibt keine Bewertungsquelle: ecomet liegt
+ * nicht im Shopify App Store, es gibt kein Trustpilot-Profil. Sie steht in
+ * `zahlen.ts` weiter auf `geprueft: false`, damit `npm run zahlen-pruefen`
+ * weiter darauf zeigt. Kevin am 23.08. ausdrücklich so gewollt, die Zeile
+ * steht wortgleich schon auf ecometapp.de. Sobald eine echte Zahl da ist,
+ * wird nur `zahlen.ts` angefasst, hier nichts.
  */
 function Trust() {
-  if (!empfehlungen.geprueft) {
-    return (
-      <div className="trust-pille">
-        <span className="trust-punkt" aria-hidden="true" />
-        Lager in Deutschland
-        <span className="trust-trenner" aria-hidden="true" />
-        Fehlerquote unter 1 %
-      </div>
-    );
-  }
   return (
     <div className="flex items-center gap-3">
       <Koepfe />
-      <div className="flex flex-col">
-        <div className="flex gap-0.5" aria-hidden="true">
+      <div className="flex flex-col gap-0.5">
+        <div className="flex gap-1" aria-hidden="true">
           {[...Array(5)].map((_, i) => (
-            <span key={i} className="text-ecomet text-[10px]">
+            <span key={i} className="text-ecomet text-[13px] leading-none">
               &#9733;
             </span>
           ))}
         </div>
-        <span className="text-white/50 text-[10px]">
+        <span className="text-white/45 text-[13px] leading-none">
           {empfehlungen.wert} {empfehlungen.label}
         </span>
       </div>
@@ -138,16 +141,16 @@ export function Buehne() {
           </div>
           <Trust />
           <div>
-            <h1 className="text-2xl font-bold text-white leading-[1.2] tracking-tight">
-              Schluss mit PayPal-Fällen und Retouren
+            <h1 className="text-[1.75rem] font-bold text-white leading-[1.15] tracking-tight">
+              Zwei Lager, ein Konto.
             </h1>
-            <p className="mt-2 text-2xl font-bold leading-[1.2] tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-ecomet to-ecomet-light">
-              1 bis 2 Werktage Versand und geprüfte Qualität.
+            <p className="mt-1 text-[1.75rem] font-bold leading-[1.15] tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-ecomet to-ecomet-light">
+              Deutschland und China.
             </p>
           </div>
           <p className="text-sm text-white/50 leading-relaxed">
-            Dein Fulfillment-Partner für den DACH-Raum. Ein Konto für Lager,
-            Versand und Rechnungen.
+            Lager, Versand, Rechnungen und PayPal-Fälle an einer Stelle.
+            Für deutsche Shopify-Händler.
           </p>
           <div>
             <Knopf />
@@ -160,16 +163,16 @@ export function Buehne() {
           <div className="flex flex-col gap-8 z-10 flex-1 min-w-0">
             <Trust />
             <div>
-              <h1 className="text-3xl lg:text-4xl font-bold text-white leading-[1.2] tracking-tight">
-                Schluss mit PayPal-Fällen und Retouren
+              <h1 className="text-4xl lg:text-5xl font-bold text-white leading-[1.12] tracking-[-0.03em]">
+                Zwei Lager, ein Konto.
               </h1>
-              <p className="mt-2 text-3xl lg:text-4xl font-bold leading-[1.2] tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-ecomet to-ecomet-light">
-                1 bis 2 Werktage Versand und geprüfte Qualität.
+              <p className="mt-1 text-4xl lg:text-5xl font-bold leading-[1.12] tracking-[-0.03em] text-transparent bg-clip-text bg-gradient-to-r from-ecomet to-ecomet-light">
+                Deutschland und China.
               </p>
             </div>
-            <p className="text-lg text-white/50 max-w-lg leading-relaxed">
-              Dein Fulfillment-Partner für den DACH-Raum.
-              Ein Konto für Lager, Versand und Rechnungen.
+            <p className="text-lg text-white/50 max-w-xl leading-relaxed">
+              Lager, Versand, Rechnungen und PayPal-Fälle an einer Stelle.
+              Für <strong className="text-white/80 font-semibold">deutsche Shopify-Händler</strong>.
             </p>
             <div>
               <Knopf gross />
