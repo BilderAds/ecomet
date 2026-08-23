@@ -105,10 +105,10 @@ export default function Deutschland() {
           </div>
           <div className="steps">
             {[
-              ["Ware anmelden", "Du sagst uns, was kommt, wie viel und wie es verpackt ist."],
-              ["Anliefern", "Du schickst die Ware ans Lager oder wir holen sie in China ab."],
-              ["Verbinden", "Die ecomet App verbindet deinen Shop. Bestellungen kommen automatisch an."],
-              ["Versenden", "Ab jetzt geht jedes Paket ohne dein Zutun raus."],
+              ["Gespräch mit deinem Lagerpartner", "Anders als beim Import läuft das nicht allein über die App. Du sprichst einmal mit dem Partner, der dein Lager führt."],
+              ["Ware anmelden und anliefern", "Was kommt, wie viel, wie es verpackt ist. Du schickst die Ware ans Lager oder wir holen sie in China ab."],
+              ["Shop verbinden", "Die ecomet App verbindet deinen Shop. Bestellungen kommen automatisch an."],
+              ["Versenden", "Bis 12 Uhr bestellt, am selben Werktag raus. Ab jetzt ohne dein Zutun."],
             ].map(([titel, text], i) => (
               <div key={titel} className={`step fx${i === 0 ? " active" : ""}`} data-d={i + 1}>
                 <div className="step-n num">{String(i + 1).padStart(2, "0")}</div>

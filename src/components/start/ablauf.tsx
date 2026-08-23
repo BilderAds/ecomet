@@ -21,7 +21,7 @@ const schritte = [
   },
   {
     titel: "Lager wählen",
-    text: "Deutschland, China oder beides. Den Preis kennst du vorher.",
+    text: "China läuft direkt in der App. Fürs deutsche Lager sprichst du einmal mit deinem Lagerpartner.",
   },
   {
     titel: "Fertig, es läuft",

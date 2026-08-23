@@ -75,8 +75,8 @@ export default function China() {
           </div>
           <div className="steps">
             {[
-              ["Produkt schicken", "Ein Link von AliExpress, ein Foto oder eine Beschreibung reicht."],
-              ["Preis bekommen", "Wir suchen den Hersteller und nennen dir Stückpreis und Versand."],
+              ["App installieren", "Die ecomet App in deinem Shopify-Shop. Ein Klick, du brauchst dafür niemanden von uns."],
+              ["Produkt anfragen", "Direkt in der App: Link von AliExpress, Foto oder Beschreibung. Wir nennen Stückpreis und Versand."],
               ["Muster prüfen", "Auf Wunsch schicken wir dir erst ein Muster, bevor es losgeht."],
               ["Verkaufen", "Deine Bestellungen kommen automatisch bei uns an, wir verschicken."],
             ].map(([titel, text], i) => (
