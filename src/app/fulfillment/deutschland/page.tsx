@@ -22,8 +22,8 @@ export default function Deutschland() {
         ueber="Deutsches Lager"
         titel={
           <>
-            Dein Lager steht in Deutschland.{" "}
-            <span className="accent">Nicht in China.</span>
+            Dein Lager steht{" "}
+            <span className="accent">in Deutschland.</span>
           </>
         }
         satz="1 bis 2 Werktage Laufzeit, deutsche Rechnung, Retouren im Inland. Und ein Ansprechpartner, der deine Sprache spricht."
@@ -40,8 +40,8 @@ export default function Deutschland() {
                 Bewertungen bleiben oben, und du bekommst weniger Nachfragen.
               </p>
               <ul className="haken">
-                <li><Haken /> Täglicher Versand aus dem Lager, Laufzeit 1 bis 2 Werktage</li>
-                <li><Haken /> Sendungsverfolgung von DHL, kein Umweg über Asien</li>
+                <li><Haken /> Täglicher Versand aus dem Lager, kein Umweg über Asien</li>
+                <li><Haken /> Sendungsverfolgung von DHL ab dem ersten Tag</li>
                 <li><Haken /> Retouren gehen nach Deutschland zurück, nicht nach China</li>
                 <li><Haken /> Fehlerquote im Lager unter 1 %, sonst geht die Ware neu raus</li>
                 <li><Haken /> Keine Mindestlaufzeit und keine Grundgebühr</li>

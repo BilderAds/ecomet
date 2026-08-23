@@ -135,7 +135,9 @@ img{max-width:100%;display:block}
 .hero-in{position:relative;z-index:10;display:flex;height:100svh;align-items:center;justify-content:center;padding:96px 24px 96px}
 .hero-mid{text-align:center;max-width:896px;margin-inline:auto}
 .hero-h1{font-size:clamp(3.5rem,8vw,6.5rem);font-weight:600;letter-spacing:-.035em;line-height:.98}
-.hero-h1 .accent{background:linear-gradient(90deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent}
+/* Das hervorgehobene Wort einer Ueberschrift. Galt bis 23.08. NUR in .hero-h1,
+   deshalb blieb es auf jeder Unterseite weiss. Jetzt ueberall. */
+.hero-h1 .accent,.seitenkopf h1 .accent,.sec-h2 .accent,h2 .accent{background:linear-gradient(90deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero-p{margin:24px auto 0;max-width:672px;font-size:1.25rem;line-height:1.6;color:rgba(255,255,255,.8)}
 .hero-cta{margin-top:40px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
 .hero-stats{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:600px;margin-inline:auto}
