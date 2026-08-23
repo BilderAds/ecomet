@@ -34,7 +34,7 @@ export function Wege() {
                   <circle cx="12" cy="12" r="9" />
                   <path d="M12 7v5l3 2" />
                 </svg>
-                <span>1 bis 2 Werktage</span>
+                <span>1 bis 3 Werktage</span>
               </div>
             </div>
             <h3>Lager in Deutschland</h3>

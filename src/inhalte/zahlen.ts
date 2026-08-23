@@ -33,6 +33,11 @@ export const zeigen = (zahlen: Zahl[]) => zahlen.filter((z) => z.geprueft);
 /** Quellen, damit sie nicht in jeder Zeile ausgeschrieben stehen. */
 const DHL =
   "dhl.de, Paket national: „In 1-2 Werktagen (i. d. R.) beim Empfänger“, abgerufen 23.08.2026";
+const VERTRAG =
+  "Kooperations- und White-Label-Vertrag ecomet/Packsy24, § 4.1 Servicelevel, Stand August 2026, " +
+  "Kernen im Remstal 21.08.2026. Von Kevin am 23.08.2026 als unterschrieben bestätigt";
+const KEVIN =
+  "Kevin am 23.08.2026: Deutschland 1 bis 3 Tage, China 4 bis 8, Supplements 8 bis 10";
 const INFOSHEET = "Packsy24 Infosheet Juli 2026, Seite 2";
 const PREISLISTE = "ecomet Preisliste 21.08.2026, Packsy mal 1,23 abgeschnitten";
 
@@ -53,7 +58,7 @@ export const empfehlungen: Zahl = {
 
 /** Die drei kurzen Belege unter dem Knopf in der Bühne. */
 export const buehneBelege: Zahl[] = [
-  { wert: "", label: "Versand aus Deutschland, 1 bis 2 Werktage", geprueft: true, quelle: DHL },
+  { wert: "", label: "Bis 12 Uhr bestellt, am selben Werktag versandt", geprueft: true, quelle: VERTRAG },
   { wert: "", label: "Jedes Paket wird geprüft", geprueft: true,
     quelle: "eigene Qualitätskontrolle, steht so auf der alten Seite seit 2026" },
   { wert: "", label: "Lagern oder direkt verschicken", geprueft: true,
@@ -67,7 +72,7 @@ export const buehneBelege: Zahl[] = [
  * er ihn wiederhaben will, behaupten aber gerade nichts auf der Seite.
  */
 export const buehneZahlen: Zahl[] = [
-  { wert: "1 bis 2", label: "Werktage bis zum Kunden", geprueft: true, quelle: DHL },
+  { wert: "1 bis 3", label: "Werktage bis zum Kunden", geprueft: true, quelle: `${KEVIN}. Laufzeit DHL: ${DHL}` },
   { wert: "6,98 €", label: "je Bestellung nach DE", geprueft: true, quelle: PREISLISTE },
   { wert: "2", label: "Lager, DE und China", geprueft: true,
     quelle: "DE: Packsy24, Kernen im Remstal (Infosheet Juli 2026). China: Partnerlager, Meeting 21.05.2026" },
@@ -80,12 +85,27 @@ export const buehneZahlen: Zahl[] = [
  * Infosheet unseres Lagers wörtlich belegt sind.
  */
 export const aussageZahlen: Zahl[] = [
-  { wert: "unter 1 %", label: "Fehlerquote im Lager", geprueft: true,
-    quelle: `${INFOSHEET}: „Fehlerquote unter 1 %. Sollte ein Fehler passieren, wird die Ware neu versendet.“` },
+  { wert: "0,5 %", label: "Fehlerquote, vertraglich zugesagt", geprueft: true,
+    quelle: `${VERTRAG}: „Max. 0,5 % Fehlkommissionierungen je Abrechnungsmonat“. Das Infosheet nennt „unter 1 %“, der Vertrag ist strenger` },
   { wert: "0 €", label: "Grundgebühr und Mindestmenge", geprueft: true,
     quelle: `${INFOSHEET}: „Keine Mindestmengen, keine Vertragslaufzeit, keine monatliche Grundgebühr.“` },
-  { wert: "43", label: "Länder in Europa, plus weltweit", geprueft: true,
-    quelle: "Packsy24 Infosheet Juli 2026, Seite 7: „Europa 43 Länder“" },
+  { wert: "2 Werktage", label: "bis eine Retoure bearbeitet ist", geprueft: true,
+    quelle: `${VERTRAG}: „Retourenbearbeitung innerhalb 2 Werktage nach Wareneingang“` },
+];
+
+/**
+ * Zusagen aus dem Kooperationsvertrag mit Packsy24. Sie sind schriftlich
+ * vereinbart, nicht nur Werbung aus dem Infosheet. Deshalb dürfen sie auf
+ * der Seite stehen.
+ */
+export const zusagen: Zahl[] = [
+  { wert: "12 Uhr", label: "Cutoff, danach Versand am selben Werktag", geprueft: true, quelle: VERTRAG },
+  { wert: "99 %", label: "Bestandsgenauigkeit im Lager", geprueft: true,
+    quelle: `${VERTRAG}: „Mind. 99 % Inventurgenauigkeit“` },
+  { wert: "500.000 €", label: "Warenversicherung im Lager", geprueft: true,
+    quelle: "Vertrag § 5.6: Waren- und Lagerversicherung mindestens 500.000 €" },
+  { wert: "1 Mio. €", label: "Betriebshaftpflicht je Fall", geprueft: true,
+    quelle: "Vertrag § 5.6: Betriebshaftpflicht mindestens 1.000.000 € je Versicherungsfall" },
 ];
 
 /** Preise. Jede Zeile, die auf der Seite auftaucht, steht hier. */
@@ -116,5 +136,6 @@ export const alleZahlen: Zahl[] = [
   ...buehneBelege,
   ...buehneZahlen,
   ...aussageZahlen,
+  ...zusagen,
   ...Object.values(preise),
 ];

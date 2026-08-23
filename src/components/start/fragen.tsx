@@ -8,7 +8,7 @@ const fragen = [
   {
     frage: "Muss ich Ware auf Vorrat kaufen?",
     antwort:
-      "Nein. Beim Import aus China schicken wir jedes Paket einzeln los, sobald dein Kunde bestellt. Für das deutsche Lager brauchst du Ware vor Ort, dafür ist sie in ein bis zwei Werktagen beim Kunden.",
+      "Nein. Beim Import aus China schicken wir jedes Paket einzeln los, sobald dein Kunde bestellt. Für das deutsche Lager brauchst du Ware vor Ort, dafür ist sie in ein bis drei Werktagen beim Kunden.",
   },
   {
     frage: "Sieht mein Kunde, dass die Ware aus China kommt?",

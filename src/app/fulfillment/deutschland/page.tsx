@@ -6,7 +6,7 @@ import { preise } from "@/inhalte/zahlen";
 export const metadata: Metadata = {
   title: "Lager in Deutschland | ecomet",
   description:
-    "Deine Ware liegt in Deutschland und ist in 1 bis 2 Werktagen beim Kunden. Deutsche Rechnung, deutscher Ansprechpartner, Retouren im Inland.",
+    "Deine Ware liegt in Deutschland und ist in 1 bis 3 Werktagen beim Kunden. Deutsche Rechnung, deutscher Ansprechpartner, Retouren im Inland.",
 };
 
 const Haken = () => (
@@ -26,7 +26,7 @@ export default function Deutschland() {
             <span className="accent">in Deutschland.</span>
           </>
         }
-        satz="1 bis 2 Werktage Laufzeit, deutsche Rechnung, Retouren im Inland. Und ein Ansprechpartner, der deine Sprache spricht."
+        satz="1 bis 3 Werktage bis zum Kunden, deutsche Rechnung, Retouren im Inland. Und ein Ansprechpartner, der deine Sprache spricht."
       />
 
       <section className="sec">
@@ -36,14 +36,14 @@ export default function Deutschland() {
               <h2>Warum das den Unterschied macht</h2>
               <p>
                 Ein Paket aus China braucht vier bis acht Tage. Aus unserem Lager
-                ist es ein bis zwei. Deine Kunden bestellen wieder, deine
+                ist es ein bis drei. Deine Kunden bestellen wieder, deine
                 Bewertungen bleiben oben, und du bekommst weniger Nachfragen.
               </p>
               <ul className="haken">
-                <li><Haken /> Täglicher Versand aus dem Lager, kein Umweg über Asien</li>
-                <li><Haken /> Sendungsverfolgung von DHL ab dem ersten Tag</li>
+                <li><Haken /> Bis 12 Uhr bestellt, am selben Werktag versandt</li>
+                <li><Haken /> Retouren sind in zwei Werktagen bearbeitet</li>
                 <li><Haken /> Retouren gehen nach Deutschland zurück, nicht nach China</li>
-                <li><Haken /> Fehlerquote im Lager unter 1 %, sonst geht die Ware neu raus</li>
+                <li><Haken /> Höchstens 0,5 % Fehler im Lager, vertraglich zugesagt</li>
                 <li><Haken /> Keine Mindestlaufzeit und keine Grundgebühr</li>
               </ul>
             </div>

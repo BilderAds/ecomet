@@ -15,7 +15,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "ecomet | Lager, Versand und Import aus einer Hand",
   description:
-    "Ein Konto für dein ganzes Fulfillment. Lager in Deutschland mit 1 bis 2 Tagen Lieferzeit oder Import aus China. Bestellungen, Versand und Rechnungen an einem Ort.",
+    "Ein Konto für dein ganzes Fulfillment. Lager in Deutschland mit 1 bis 3 Tagen Lieferzeit oder Import aus China. Bestellungen, Versand und Rechnungen an einem Ort.",
   openGraph: {
     title: "ecomet | Lager, Versand und Import aus einer Hand",
     description:
