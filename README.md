@@ -1,6 +1,8 @@
 # ecomet Website
 
-> **ZUERST LESEN: [`docs/SPEC-23AUG26-RELAUNCH-PLATTFORM.md`](docs/SPEC-23AUG26-RELAUNCH-PLATTFORM.md)**
+> **ZUERST LESEN: [`docs/UEBERGABE-23AUG26-RELAUNCH.md`](docs/UEBERGABE-23AUG26-RELAUNCH.md)**
+> Stand der Arbeit, was offen ist, wie man die Seite ansieht.
+> Danach der Plan: [`docs/SPEC-23AUG26-RELAUNCH-PLATTFORM.md`](docs/SPEC-23AUG26-RELAUNCH-PLATTFORM.md)
 > Der Relaunch zur Plattform, der Umzug auf **e-comet.de**, die Webapplikation unter
 > `app.e-comet.de`, die drei App-Seiten und alle offenen Punkte mit Unify und Alex.
 > Stand 23.08.2026. Jede ältere Planung zur ecomet Website ist damit überholt.

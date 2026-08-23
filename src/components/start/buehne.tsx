@@ -11,6 +11,12 @@ import { buehneBelege, empfehlungen } from "@/inhalte/zahlen";
  * Texte und das Ziel der Knöpfe.
  *
  * Der Globus lädt erst im Browser, damit er den ersten Aufbau nicht bremst.
+ *
+ * ⚠ ÜBERSCHRIFT GERATEN: Kevin schrieb am 23.08. "nimm diesen Text auf der
+ * Hero Section, dein Text ist Arsch", der gemeinte Text kam aber nicht mit an.
+ * Hier steht deshalb die alte Überschrift, die er gut fand, mit einer
+ * Anpassung: aus "4-8 Tage Versand" wurde "1 bis 2 Tage", weil das
+ * Hauptversprechen jetzt das deutsche Lager ist. Bitte gegenlesen.
  */
 const GlobeOrders = dynamic(
   () => import("../ui/globe-orders").then((m) => m.GlobeOrders),
@@ -112,15 +118,15 @@ export function Buehne() {
           <Bewertung />
           <div>
             <h1 className="text-2xl font-bold text-white leading-[1.2] tracking-tight">
-              Alles für deinen Shop.
+              Schluss mit PayPal-Fällen und Retouren
             </h1>
             <p className="mt-2 text-2xl font-bold leading-[1.2] tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-ecomet to-ecomet-light">
-              Ein Konto.
+              1 bis 2 Tage Versand und geprüfte Qualität.
             </p>
           </div>
           <p className="text-sm text-white/50 leading-relaxed">
-            Lager in Deutschland oder Import aus China. Bestellungen, Versand und
-            Rechnungen laufen bei uns an einem Ort.
+            Dein Fulfillment-Partner für den DACH-Raum. Ein Konto für Lager,
+            Versand und Rechnungen.
           </p>
           <div>
             <Knopf />
@@ -134,15 +140,15 @@ export function Buehne() {
             <Bewertung />
             <div>
               <h1 className="text-3xl lg:text-4xl font-bold text-white leading-[1.2] tracking-tight">
-                Alles für deinen Shop.
+                Schluss mit PayPal-Fällen und Retouren
               </h1>
               <p className="mt-2 text-3xl lg:text-4xl font-bold leading-[1.2] tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-ecomet to-ecomet-light">
-                Ein Konto.
+                1 bis 2 Tage Versand und geprüfte Qualität.
               </p>
             </div>
             <p className="text-lg text-white/50 max-w-lg leading-relaxed">
-              Lager in Deutschland oder Import aus China. Bestellungen, Versand
-              und Rechnungen laufen bei uns an einem Ort.
+              Dein Fulfillment-Partner für den DACH-Raum.
+              Ein Konto für Lager, Versand und Rechnungen.
             </p>
             <div>
               <Knopf gross />
