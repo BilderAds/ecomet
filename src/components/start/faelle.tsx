@@ -7,6 +7,13 @@ import Link from "next/link";
  * Kevin am 24.08.: „Disputes ist krass, da auf jeden Fall noch so eigene
  * Section auf der Homepage haben, so bisschen weiter unten."
  *
+ * ⚠ Kevin schlug als Überschrift vor: „gewinne automatisch PayPal und Klarna
+ * Fälle". Das Wort AUTOMATISCH steht nicht drin, weil unsere eigene App-Seite
+ * das Gegenteil sagt: „Sie antwortet nichts ohne dich, jede Antwort geht erst
+ * nach deiner Freigabe raus" und „Sie entscheidet keinen Fall". Deshalb
+ * „mit einem Klick", das deckt sich mit Schritt 3 auf der App-Seite:
+ * „Die Belege liegen dabei, du schickst sie mit einem Klick."
+ *
  * Begründung aus der Recherche: PayPal-Fälle und eingefrorene Konten sind
  * der am häufigsten genannte Schmerz von Avatar 1. Kein Wettbewerber ausser
  * ShipSmartify hat dafür überhaupt eine Funktion.
@@ -34,13 +41,13 @@ export function Faelle() {
             <span className="dot" /> ecomet.dispute
           </span>
           <h2>
-            Ein PayPal-Fall kostet dich sonst{" "}
-            <span className="accent">einen halben Tag</span>
+            Gewinne PayPal- und Klarna-Fälle{" "}
+            <span className="accent">mit einem Klick</span>
           </h2>
           <p>
-            Käufer meldet einen Fall, du suchst die Bestellung, die
-            Sendungsnummer, den Zustellnachweis, das Foto vom Paket. Bei
-            Klarna nochmal von vorn, an einer anderen Stelle.
+            Sonst suchst du bei jedem Fall die Bestellung, die Sendungsnummer
+            und den Zustellnachweis zusammen. Bei Klarna nochmal von vorn, in
+            einem anderen Portal. Hier liegt alles schon am Fall.
           </p>
           <ul className="haken">
             <li>

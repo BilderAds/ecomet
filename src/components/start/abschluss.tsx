@@ -21,12 +21,17 @@ export function Abschluss() {
             keine Kulanz, das steht im Vertrag mit unserem Lagerpartner.
           </p>
           <div className="abschluss-knoepfe">
-            <Link href="/registrieren" className="abschluss-knopf">
-              Konto erstellen
+            <a
+              href="https://apps.shopify.com/ecomet"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="abschluss-knopf"
+            >
+              ecomet App laden
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-            </Link>
+            </a>
             <Link href="/preise" className="abschluss-knopf zweit">
               Preise ansehen
             </Link>

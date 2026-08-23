@@ -114,17 +114,19 @@ function Belege({ klein = false }: { klein?: boolean }) {
 
 function Knopf({ gross = false }: { gross?: boolean }) {
   return (
-    <Link
-      href="/registrieren"
+    <a
+      href="https://apps.shopify.com/ecomet"
+      target="_blank"
+      rel="noopener noreferrer"
       className={`inline-flex items-center justify-center gap-2 bg-ecomet hover:bg-ecomet-dark text-white font-semibold rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-ecomet/30 hover:scale-[1.02] ${
         gross ? "px-8 py-4 text-lg" : "px-6 py-3.5 text-base"
       }`}
     >
-      Konto erstellen
+      ecomet App laden
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="ml-1">
         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
-    </Link>
+    </a>
   );
 }
 
@@ -151,9 +153,11 @@ export function Buehne() {
               deine Bestellungen.
             </p>
           </div>
+          {/* Jeder Satz beginnt auf einer eigenen Zeile. Ein einzelnes Wort
+              am Zeilenende sieht kaputt aus, siehe Regel in der Memory. */}
           <p className="text-sm text-white/50 leading-relaxed">
-            Aus unserem Lager in Deutschland oder direkt aus China.
-            Keine Mindestmenge, kein Vertrag.
+            <span className="block">Aus unserem Lager in Deutschland oder direkt aus China.</span>
+            <span className="block">Keine Mindestmenge, kein Vertrag.</span>
           </p>
           <div>
             <Knopf />
@@ -173,10 +177,9 @@ export function Buehne() {
                 verschicken deine Bestellungen.
               </p>
             </div>
-            <p className="text-lg text-white/50 max-w-xl leading-relaxed">
-              Aus unserem Lager in Deutschland oder direkt aus China.
-              <strong className="text-white/80 font-semibold"> Keine Mindestmenge,
-              kein Vertrag.</strong>
+            <p className="text-lg text-white/50 max-w-2xl leading-relaxed">
+              <span className="block">Aus unserem Lager in Deutschland oder direkt aus China.</span>
+              <strong className="block text-white/80 font-semibold">Keine Mindestmenge, kein Vertrag.</strong>
             </p>
             <div>
               <Knopf gross />

@@ -68,7 +68,7 @@ export const empfehlungen: Zahl = {
  * nicht gab.
  */
 export const buehneBelege: Zahl[] = [
-  { wert: "", label: "1 bis 3 Tage aus Deutschland", geprueft: true, quelle: KEVIN },
+  { wert: "", label: "1-3 Tage Lieferzeit", geprueft: true, quelle: KEVIN },
   { wert: "", label: "Qualitätskontrolle", geprueft: true,
     quelle: "eigene Prüfung vor jedem Versand, steht so auf der alten Seite seit 2026" },
   { wert: "", label: "Dropshipping und Lagern möglich", geprueft: true,

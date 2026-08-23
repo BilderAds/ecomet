@@ -51,10 +51,12 @@ export function Navigation() {
 
         <div className="flex items-center gap-4">
           <Link
-            href="/registrieren"
+            href="https://apps.shopify.com/ecomet"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden sm:inline-flex items-center gap-2 bg-ecomet hover:bg-ecomet-dark text-white text-sm font-medium px-5 py-2.5 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-ecomet/25"
           >
-            Konto erstellen
+            ecomet App laden
           </Link>
 
           <button
@@ -89,11 +91,13 @@ export function Navigation() {
               Kontakt
             </Link>
             <Link
-              href="/registrieren"
+              href="https://apps.shopify.com/ecomet"
+            target="_blank"
+            rel="noopener noreferrer"
               onClick={() => setOffen(false)}
               className="bg-ecomet hover:bg-ecomet-dark text-white text-sm font-medium px-5 py-2.5 rounded-full text-center transition-all duration-200 mt-2"
             >
-              Konto erstellen
+              ecomet App laden
             </Link>
           </div>
         </div>

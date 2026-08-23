@@ -28,8 +28,8 @@ export function Ansicht() {
             <span className="dot" /> Die ecomet App, genauer
           </span>
           <h2>
-            Du weißt, wie viel du verdienst{" "}
-            <span className="accent">und wo deine Produkte sind</span>
+            <span className="block">Du weißt, wie viel du verdienst</span>
+            <span className="block accent">und wo deine Produkte sind</span>
           </h2>
           <p>
             Nicht Umsatz. Was nach Steuer, Einkauf, Gebühren und Werbung

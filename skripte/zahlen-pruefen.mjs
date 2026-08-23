@@ -19,6 +19,8 @@ const wurzel = join(dirname(fileURLToPath(import.meta.url)), "..");
 const zahlenDatei = join(wurzel, "src", "inhalte", "zahlen.ts");
 
 const { alleZahlen } = await import(pathToFileURL(zahlenDatei).href);
+const stimmenDatei = join(wurzel, "src", "inhalte", "stimmen.ts");
+const { stimmen } = await import(pathToFileURL(stimmenDatei).href);
 
 let rot = false;
 
@@ -38,6 +40,15 @@ if (ohneQuelle.length) {
   rot = true;
   console.log(`\nGEPRÜFT, aber ohne Quelle (${ohneQuelle.length}):`);
   for (const z of ohneQuelle) console.log(`  · ${name(z)}`);
+}
+
+// 1b. Kundenstimmen ohne Beleg
+const ohneBeleg = stimmen.filter((st) => !st.beleg?.trim());
+if (ohneBeleg.length) {
+  rot = true;
+  console.log(`\nKUNDENSTIMMEN OHNE BELEG, duerfen so nicht live (${ohneBeleg.length}):`);
+  for (const st of ohneBeleg) console.log(`  · ${st.name}, ${st.rolle}`);
+  console.log("  Erfundene Bewertungen sind nach § 5b Abs. 3 UWG abmahnfaehig.");
 }
 
 // 2. Geldbeträge, die an zahlen.ts vorbeigehen

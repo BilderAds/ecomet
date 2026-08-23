@@ -4,15 +4,16 @@ import { stimmen } from "@/inhalte/stimmen";
  * Die laufende Trust-Sektion, zwei Reihen in Gegenrichtung, nach dem
  * Vorbild von bilderads.de/en (dort 48 und 56 Sekunden je Runde).
  *
- * ⚠ Sie erscheint NUR, wenn in `src/inhalte/stimmen.ts` echte, freigegebene
- * Kundenstimmen stehen. Heute ist die Liste leer, also rendert die Sektion
- * nichts. Kein Platzhalter, keine erfundenen Namen.
+ * ⚠ Die sechs Stimmen in `src/inhalte/stimmen.ts` sind PLATZHALTER von
+ * ecometapp.de, keine davon ist belegt. Kevin will die Sektion so sehen.
+ * Vor dem Livegang müssen sie ersetzt werden, `npm run zahlen-pruefen`
+ * zeigt jede Stimme ohne Beleg an.
  *
- * Sobald Kevin echte Stimmen liefert: in `stimmen.ts` eintragen, fertig.
- * An dieser Datei muss dann nichts geändert werden.
+ * Zum Austauschen reicht `stimmen.ts`, an dieser Datei ändert sich nichts.
  */
 export function Stimmen() {
   if (stimmen.length < 4) return null;
+
 
   const haelfte = Math.ceil(stimmen.length / 2);
   const reihen = [stimmen.slice(0, haelfte), stimmen.slice(haelfte)];
