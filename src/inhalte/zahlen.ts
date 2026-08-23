@@ -56,13 +56,23 @@ export const empfehlungen: Zahl = {
   geprueft: false,
 };
 
-/** Die drei kurzen Belege unter dem Knopf in der Bühne. */
+/**
+ * Die drei kurzen Belege unter dem Knopf in der Bühne.
+ *
+ * Kevin am 24.08.: „auch auf der alten Website sind die Punkte unten im
+ * Header besser: 4-8 Tage Lieferzeit, Qualitätskontrolle, Dropshipping und
+ * Lagern möglich." Er hat recht, das sind Schlagworte, keine Sätze. Drei
+ * kurze Begriffe liest man im Vorbeigehen, drei Sätze nicht.
+ *
+ * Angepasst ist nur die Lieferzeit, weil es das deutsche Lager damals noch
+ * nicht gab.
+ */
 export const buehneBelege: Zahl[] = [
-  { wert: "", label: "Bis 12 Uhr bestellt, am selben Werktag versandt", geprueft: true, quelle: VERTRAG },
-  { wert: "", label: "Jedes Paket wird geprüft", geprueft: true,
-    quelle: "eigene Qualitätskontrolle, steht so auf der alten Seite seit 2026" },
-  { wert: "", label: "Lagern oder direkt verschicken", geprueft: true,
-    quelle: "beide Wege sind im Angebot" },
+  { wert: "", label: "1 bis 3 Tage aus Deutschland", geprueft: true, quelle: KEVIN },
+  { wert: "", label: "Qualitätskontrolle", geprueft: true,
+    quelle: "eigene Prüfung vor jedem Versand, steht so auf der alten Seite seit 2026" },
+  { wert: "", label: "Dropshipping und Lagern möglich", geprueft: true,
+    quelle: "beide Wege sind im Angebot, China ohne Mindestmenge und deutsches Lager" },
 ];
 
 /**

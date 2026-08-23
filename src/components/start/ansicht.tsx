@@ -25,10 +25,11 @@ export function Ansicht() {
       <div className="ansicht-gitter">
         <div className="ansicht-text fx">
           <span className="eyebrow">
-            <span className="dot" /> Die ecomet App
+            <span className="dot" /> Die ecomet App, genauer
           </span>
           <h2>
-            Was am Ende <span className="accent">übrig bleibt</span>
+            Abends weißt du, ob der Tag{" "}
+            <span className="accent">Geld gebracht hat</span>
           </h2>
           <p>
             Nicht Umsatz. Was nach Steuer, Einkauf, Gebühren und Werbung

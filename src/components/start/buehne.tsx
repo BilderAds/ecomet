@@ -13,11 +13,13 @@ import { buehneBelege, empfehlungen, zeigen } from "@/inhalte/zahlen";
  *
  * Der Globus lädt erst im Browser, damit er den ersten Aufbau nicht bremst.
  *
- * Die Überschrift kommt aus dem Offer Brief, Angle 6, Headline 20:
- * "Teste in China. Liefere aus Deutschland." Sie beschreibt, was der Kunde
- * TUT, nicht wie wir organisiert sind, und sie enthält den Übergang, den wir
- * verkaufen. Höchstens ZWEI Zeilen, harte Regel. Aufbau wie auf der alten
- * Seite, weiße Zeile plus orange Zeile.
+ * Die Überschrift muss den Grunt Test bestehen: was bietet ihr an, wie macht
+ * das mein Leben besser, was muss ich tun. Kevin am 24.08. zur Vorgängerin
+ * "Teste in China. Liefere aus Deutschland.": "das ist unklar, was Test was
+ * Liefern, pure Verwirrung. Das ist nicht SB7."
+ *
+ * Er hatte recht. Der Satz war eine Positionierung für Leute, die uns schon
+ * kennen. Jetzt steht dort schlicht, was wir tun. Höchstens ZWEI Zeilen.
  */
 const GlobeOrders = dynamic(
   () => import("../ui/globe-orders").then((m) => m.GlobeOrders),
@@ -143,15 +145,16 @@ export function Buehne() {
           <Trust />
           <div>
             <h1 className="text-[1.75rem] font-bold text-white leading-[1.15] tracking-tight">
-              Teste in China.
+              Wir lagern, packen und verschicken
             </h1>
             <p className="mt-1 text-[1.75rem] font-bold leading-[1.15] tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-ecomet to-ecomet-light">
-              Liefere aus Deutschland.
+              deine Bestellungen.
             </p>
           </div>
           <p className="text-sm text-white/50 leading-relaxed">
-            Lager, Versand, Rechnungen und PayPal-Fälle über ein Konto.
-            Keine Mindestmenge, kein Vertrag, keine Grundgebühr.
+            Aus unserem Lager in Deutschland oder direkt aus China. Dazu drei
+            Programme für Bestellungen, Rechnungen und PayPal-Fälle.
+            Keine Mindestmenge, kein Vertrag.
           </p>
           <div>
             <Knopf />
@@ -165,16 +168,17 @@ export function Buehne() {
             <Trust />
             <div>
               <h1 className="text-4xl lg:text-5xl font-bold text-white leading-[1.12] tracking-[-0.03em]">
-                Teste in China.
+                Wir lagern, packen und
               </h1>
               <p className="mt-1 text-4xl lg:text-5xl font-bold leading-[1.12] tracking-[-0.03em] text-transparent bg-clip-text bg-gradient-to-r from-ecomet to-ecomet-light">
-                Liefere aus Deutschland.
+                verschicken deine Bestellungen.
               </p>
             </div>
             <p className="text-lg text-white/50 max-w-xl leading-relaxed">
-              Lager, Versand, Rechnungen und PayPal-Fälle über ein Konto.
-              <strong className="text-white/80 font-semibold"> Keine Mindestmenge, kein Vertrag,
-              keine Grundgebühr.</strong>
+              Aus unserem Lager in Deutschland oder direkt aus China. Dazu drei
+              Programme für Bestellungen, Rechnungen und PayPal-Fälle.
+              <strong className="text-white/80 font-semibold"> Keine Mindestmenge,
+              kein Vertrag.</strong>
             </p>
             <div>
               <Knopf gross />

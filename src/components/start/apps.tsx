@@ -34,11 +34,18 @@ export function Apps() {
       <div className="wrap">
         <div className="sec-head fx">
           <span className="eyebrow">
-            <span className="dot" /> Im Konto enthalten
+            <span className="dot" /> Software, die wir selbst bauen
           </span>
-          <h2 className="sec-h2">Drei Apps, ein Login</h2>
+          <h2 className="sec-h2">
+            Du siehst jede Bestellung, jede Rechnung und jeden{" "}
+            <span className="mark glow">
+              <span>Zahlungsfall</span>
+            </span>{" "}
+            an einem Ort
+          </h2>
           <p className="sec-p">
-            Keine zweite Anmeldung, keine dritte Rechnung. Du klickst links um.
+            Dafür bauen wir drei eigene Programme. Sie kommen mit deinem Konto,
+            ohne zweite Anmeldung und ohne dritte Rechnung.
           </p>
         </div>
 
