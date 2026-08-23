@@ -30,6 +30,11 @@ export function Stimmen() {
           <div className={`stimmen-lauf ${r === 0 ? "links" : "rechts"}`}>
             {[...reihe, ...reihe].map((s, i) => (
               <figure className="stimme" key={`${s.name}-${i}`}>
+                <div className="stimme-sterne" aria-hidden="true">
+                  {[...Array(5)].map((_, n) => (
+                    <span key={n}>&#9733;</span>
+                  ))}
+                </div>
                 <blockquote>„{s.text}"</blockquote>
                 <figcaption>
                   <span className="stimme-kreis">{s.name.charAt(0)}</span>
