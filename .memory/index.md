@@ -21,6 +21,7 @@ tags: [moc, ecomet]
 
 ## Lessons Learned
 - [[lessons-learned/LL-001-erfundene-angaben-auf-der-seite|LL-001]] Erfundene Angaben stehen auf der Seite, bis jemand die Quelle sucht
+- [[lessons-learned/LL-002-angle-ist-keine-startseiten-headline|LL-002]] Eine Angle-Zeile ist keine Startseiten-Überschrift
 
 ## Entscheidungen
 _Noch keine Eintraege._
