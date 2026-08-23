@@ -112,7 +112,14 @@ erfundenen Namen. Solche Dateien werden irgendwann wiederverwendet, deshalb sind
 zwei Orangetöne nebeneinander. Alles auf den Wert des Baukastens **`#FF642C`**
 (dunkel `#EF5615`).
 
-### 8. Selbst durchgeklickt
+### 8. Das Akzentwort war auf JEDER Unterseite weiß
+
+`.accent` war im CSS nur innerhalb `.hero-h1` definiert. Die Unterseiten nutzen
+`SeitenKopf`, dort greift die Regel nicht. Auf allen neun Unterseiten stand das
+orange gedachte Wort also in Weiß, ohne dass irgendwo ein Fehler auftauchte.
+Die Regel gilt jetzt auch für `.seitenkopf h1`, `.sec-h2` und `h2`.
+
+### 9. Selbst durchgeklickt
 
 Alle 14 Seiten plus 404 aufgerufen, alle geben 200 bzw. 404. Jeder interne Link und der
 einzige Link nach draußen (`bilderads.de`, 200) einzeln geprüft. Handy-Ansicht mit
@@ -136,10 +143,12 @@ Entscheidung.
 
 ---
 
-## Drei Commits liegen bereit, NICHT gepusht
+## Sechs Commits liegen bereit, NICHT gepusht
 
 ```
-(neu)    Erfundene Angaben raus, Zahlen an eine Stelle, Waechter gebaut
+a2ccd7f  Akzentwort war auf jeder Unterseite weiss, DE-Ueberschrift auf eine Zeile
+902b331  Projekt-Memory: Session 2, LL-001, Marken-Orange korrigiert
+d4dc30a  Erfundene Angaben raus, Zahlen an eine Stelle, Waechter gebaut
 ed51ef4  Buehnentext aus der alten Seite, Uebergabe, Startdatei
 f6b6f27  Kevins Rueckmeldung: alter Kopf und alte Buehne zurueck
 33b5e29  Relaunch als Plattform: neue Seitenstruktur, dark-glass, Anfrageformular
