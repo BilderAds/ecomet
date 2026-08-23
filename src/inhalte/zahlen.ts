@@ -108,6 +108,22 @@ export const zusagen: Zahl[] = [
     quelle: "Vertrag § 5.6: Betriebshaftpflicht mindestens 1.000.000 € je Versicherungsfall" },
 ];
 
+/**
+ * Was es kostet, NICHT zu handeln. Alle drei sind belegt, keiner ist ein
+ * Werbesatz. Sie stehen im Abschnitt "Was dich das Warten kostet".
+ */
+export const wartenKostet: Zahl[] = [
+  { wert: "3 €", label: "je Paket, seit dem 1. Juli", geprueft: true,
+    quelle: "Wegfall der 150-Euro-Zollfreigrenze zum 01.07.2026, pauschal 3 € je Warenkategorie je Sendung. " +
+      "zoll.de Pressemitteilung, Bundesfinanzministerium, IHK Karlsruhe, abgerufen 23.08.2026. " +
+      "Beschluss ECOFIN-Rat 12.12.2025" },
+  { wert: "2×", label: "jede Retoure", geprueft: true,
+    quelle: "eigenes Angebot: Ware aus China geht nach China zurück, die Retoure ins deutsche Lager ist der Unterschied" },
+  { wert: "200.000 €", label: "Bußgeld beim Verpackungsrecht", geprueft: true,
+    quelle: "eigener Leitfaden Verpackungsrecht, Stand August 2026: „Bußgeldern bis 200.000 €“. " +
+      "PPWR (EU) 2025/40 gilt seit 12.08.2026, bestätigt bei IHK Schleswig-Holstein" },
+];
+
 /** Preise. Jede Zeile, die auf der Seite auftaucht, steht hier. */
 export const preise = {
   bestellungDe: { wert: "6,98 €", label: "Bestellung bis 400 g nach Deutschland", geprueft: true,
@@ -137,5 +153,6 @@ export const alleZahlen: Zahl[] = [
   ...buehneZahlen,
   ...aussageZahlen,
   ...zusagen,
+  ...wartenKostet,
   ...Object.values(preise),
 ];

@@ -46,7 +46,10 @@ export function Ablauf() {
             </span>{" "}
             angeschlossen
           </h2>
-          <p className="sec-p">Ohne Vertrag, ohne Einrichtungsgebühr, ohne Mindestmenge.</p>
+          <p className="sec-p">
+            Wir haben selbst aus China verkauft. Wir kennen den Moment, in dem
+            eine Bestellung reinkommt und du nicht weißt, wann das Paket ankommt.
+          </p>
         </div>
 
         <div className="schritte fx" data-d="1">

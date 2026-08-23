@@ -4,6 +4,8 @@ import { Buehne } from "@/components/start/buehne";
 import { Partner } from "@/components/start/partner";
 import { Wege } from "@/components/start/wege";
 import { Ansicht } from "@/components/start/ansicht";
+import { Einsatz } from "@/components/start/einsatz";
+import { Abschluss } from "@/components/start/abschluss";
 import { Ablauf } from "@/components/start/ablauf";
 import { Leistungen } from "@/components/start/leistungen";
 import { Aussage } from "@/components/start/aussage";
@@ -22,12 +24,14 @@ export default function Startseite() {
         <Buehne />
         <Partner />
         <Wege />
+        <Einsatz />
         <Ansicht />
         <Ablauf />
         <Leistungen />
         <Aussage />
         <Apps />
         <Fragen />
+        <Abschluss />
       </main>
       <Fuss />
       <MobileLeiste />

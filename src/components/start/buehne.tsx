@@ -13,10 +13,11 @@ import { buehneBelege, empfehlungen, zeigen } from "@/inhalte/zahlen";
  *
  * Der Globus lädt erst im Browser, damit er den ersten Aufbau nicht bremst.
  *
- * Die Überschrift steht seit dem 23.08. abends auf der Positionierung statt
- * auf dem Schmerz: "Zwei Lager, ein Konto. Deutschland und China." Höchstens
- * ZWEI Zeilen, das ist harte Regel. Der Aufbau (weiße Zeile, orange Zeile)
- * ist der der alten Seite, den Kevin gut fand.
+ * Die Überschrift kommt aus dem Offer Brief, Angle 6, Headline 20:
+ * "Teste in China. Liefere aus Deutschland." Sie beschreibt, was der Kunde
+ * TUT, nicht wie wir organisiert sind, und sie enthält den Übergang, den wir
+ * verkaufen. Höchstens ZWEI Zeilen, harte Regel. Aufbau wie auf der alten
+ * Seite, weiße Zeile plus orange Zeile.
  */
 const GlobeOrders = dynamic(
   () => import("../ui/globe-orders").then((m) => m.GlobeOrders),
@@ -142,15 +143,15 @@ export function Buehne() {
           <Trust />
           <div>
             <h1 className="text-[1.75rem] font-bold text-white leading-[1.15] tracking-tight">
-              Zwei Lager, ein Konto.
+              Teste in China.
             </h1>
             <p className="mt-1 text-[1.75rem] font-bold leading-[1.15] tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-ecomet to-ecomet-light">
-              Deutschland und China.
+              Liefere aus Deutschland.
             </p>
           </div>
           <p className="text-sm text-white/50 leading-relaxed">
-            Lager, Versand, Rechnungen und PayPal-Fälle an einer Stelle.
-            Für deutsche Shopify-Händler.
+            Lager, Versand, Rechnungen und PayPal-Fälle über ein Konto.
+            Keine Mindestmenge, kein Vertrag, keine Grundgebühr.
           </p>
           <div>
             <Knopf />
@@ -164,15 +165,16 @@ export function Buehne() {
             <Trust />
             <div>
               <h1 className="text-4xl lg:text-5xl font-bold text-white leading-[1.12] tracking-[-0.03em]">
-                Zwei Lager, ein Konto.
+                Teste in China.
               </h1>
               <p className="mt-1 text-4xl lg:text-5xl font-bold leading-[1.12] tracking-[-0.03em] text-transparent bg-clip-text bg-gradient-to-r from-ecomet to-ecomet-light">
-                Deutschland und China.
+                Liefere aus Deutschland.
               </p>
             </div>
             <p className="text-lg text-white/50 max-w-xl leading-relaxed">
-              Lager, Versand, Rechnungen und PayPal-Fälle an einer Stelle.
-              Für <strong className="text-white/80 font-semibold">deutsche Shopify-Händler</strong>.
+              Lager, Versand, Rechnungen und PayPal-Fälle über ein Konto.
+              <strong className="text-white/80 font-semibold"> Keine Mindestmenge, kein Vertrag,
+              keine Grundgebühr.</strong>
             </p>
             <div>
               <Knopf gross />

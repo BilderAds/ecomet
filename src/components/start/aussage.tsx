@@ -1,17 +1,17 @@
-import { aussageZahlen, zeigen } from "@/inhalte/zahlen";
+import { zeigen, zusagen } from "@/inhalte/zahlen";
 
 export function Aussage() {
   return (
     <section className="sec">
       <div className="wrap">
         <div className="claim fx">
-          <h3>Du verkaufst. Den Rest machen wir.</h3>
+          <h3>Was im Vertrag steht, nicht im Prospekt.</h3>
           <p>
-            Kein zweites Konto beim Lager, kein Chat auf Englisch, keine Tabelle,
-            die du selbst pflegst.
+            Vier Zusagen, die unser Lagerpartner schriftlich gegeben hat.
+            Nachlesbar, nicht geworben.
           </p>
           <div className="claim-nums">
-            {zeigen(aussageZahlen).map((z) => (
+            {zeigen(zusagen).map((z) => (
               <div key={z.label}>
                 <p className="v num">{z.wert}</p>
                 <p className="k">{z.label}</p>
