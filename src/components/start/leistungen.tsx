@@ -27,7 +27,7 @@ const leistungen: Leistung[] = [
   {
     tag: "Lager",
     titel: "Platz in Deutschland",
-    text: "Deine Ware liegt hier und geht am selben Tag raus. Abgerechnet wird nach Palette, nicht nach Vertrag.",
+    text: "Deine Ware liegt hier, der Versand geht täglich raus. Abgerechnet wird nach Palette, nicht nach Vertrag.",
     symbol: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 20V8l8-5 8 5v12" />

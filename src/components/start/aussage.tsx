@@ -1,4 +1,4 @@
-import { aussageZahlen } from "@/inhalte/zahlen";
+import { aussageZahlen, zeigen } from "@/inhalte/zahlen";
 
 export function Aussage() {
   return (
@@ -11,7 +11,7 @@ export function Aussage() {
             die du selbst pflegst.
           </p>
           <div className="claim-nums">
-            {aussageZahlen.map((z) => (
+            {zeigen(aussageZahlen).map((z) => (
               <div key={z.label}>
                 <p className="v num">{z.wert}</p>
                 <p className="k">{z.label}</p>

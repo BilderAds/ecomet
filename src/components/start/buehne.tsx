@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Clock, ShieldCheck, Package } from "lucide-react";
-import { buehneBelege, empfehlungen } from "@/inhalte/zahlen";
+import { buehneBelege, empfehlungen, zeigen } from "@/inhalte/zahlen";
 
 /**
  * Die Bühne im Aufbau der alten Seite, den Kevin am 23.08. zurückhaben
@@ -15,7 +15,7 @@ import { buehneBelege, empfehlungen } from "@/inhalte/zahlen";
  * ⚠ ÜBERSCHRIFT GERATEN: Kevin schrieb am 23.08. "nimm diesen Text auf der
  * Hero Section, dein Text ist Arsch", der gemeinte Text kam aber nicht mit an.
  * Hier steht deshalb die alte Überschrift, die er gut fand, mit einer
- * Anpassung: aus "4-8 Tage Versand" wurde "1 bis 2 Tage", weil das
+ * Anpassung: aus "4-8 Tage Versand" wurde "1 bis 2 Werktage", weil das
  * Hauptversprechen jetzt das deutsche Lager ist. Bitte gegenlesen.
  */
 const GlobeOrders = dynamic(
@@ -30,7 +30,7 @@ const GlobeOrders = dynamic(
 
 /** Fünf Kreise als Andeutung von Menschen. Bewusst ohne fremden Dienst. */
 function Koepfe() {
-  const toene = ["#F26B2B", "#FF8A50", "#D4571E", "#FF9E6B", "#C4491A"];
+  const toene = ["#FF642C", "#FF8A50", "#EF5615", "#FF9E6B", "#C4491A"];
   return (
     <div className="flex -space-x-1.5">
       {toene.map((ton, i) => (
@@ -47,7 +47,13 @@ function Koepfe() {
   );
 }
 
+/**
+ * Die Bewertungszeile erscheint NUR, wenn `empfehlungen.geprueft` steht.
+ * Ohne Beleg ist eine Bewertungszahl nach § 5b Abs. 3 UWG angreifbar,
+ * also zeigen wir lieber nichts als etwas Erfundenes.
+ */
 function Bewertung() {
+  if (!empfehlungen.geprueft) return null;
   return (
     <div className="flex items-center gap-3">
       <Koepfe />
@@ -69,7 +75,7 @@ function Belege({ klein = false }: { klein?: boolean }) {
   const symbole = [Clock, ShieldCheck, Package];
   return (
     <div className={`flex flex-wrap ${klein ? "gap-4 pt-1" : "gap-6 pt-2"}`}>
-      {buehneBelege.map((b, i) => {
+      {zeigen(buehneBelege).map((b, i) => {
         const Symbol = symbole[i] ?? Clock;
         return (
           <div
@@ -121,7 +127,7 @@ export function Buehne() {
               Schluss mit PayPal-Fällen und Retouren
             </h1>
             <p className="mt-2 text-2xl font-bold leading-[1.2] tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-ecomet to-ecomet-light">
-              1 bis 2 Tage Versand und geprüfte Qualität.
+              1 bis 2 Werktage Versand und geprüfte Qualität.
             </p>
           </div>
           <p className="text-sm text-white/50 leading-relaxed">
@@ -143,7 +149,7 @@ export function Buehne() {
                 Schluss mit PayPal-Fällen und Retouren
               </h1>
               <p className="mt-2 text-3xl lg:text-4xl font-bold leading-[1.2] tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-ecomet to-ecomet-light">
-                1 bis 2 Tage Versand und geprüfte Qualität.
+                1 bis 2 Werktage Versand und geprüfte Qualität.
               </p>
             </div>
             <p className="text-lg text-white/50 max-w-lg leading-relaxed">

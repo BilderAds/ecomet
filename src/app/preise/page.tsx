@@ -9,18 +9,25 @@ export const metadata: Metadata = {
     "Was Lagerung, Verpackung und Versand aus dem deutschen Lager kosten. Feste Preise pro Bestellung, keine Grundgebühr, keine Mindestlaufzeit.",
 };
 
-/** Alle Werte aus der Preisliste vom 21.08.2026, Regel Packsy mal 1,23 abgeschnitten. */
+/**
+ * Jede Zeile kommt aus `src/inhalte/zahlen.ts` und hat dort eine Quelle.
+ *
+ * Zwei Zeilen sind am 23.08. RAUSGEFLOGEN, weil sie in keiner Quelle stehen:
+ * „Jeder weitere Artikel in derselben Bestellung 0,36 €" (das ist der Preis
+ * für Verpackungsmaterial, und Packsy wirbt ausdrücklich mit „ein Pauschalpreis
+ * pro Bestellung, egal wie viele Artikel drin sind") und „Wareneingang je
+ * Palette 18,45 €" (Warenannahme und Einlagerung sind laut Infosheet kostenlos).
+ */
 const lager = [
-  ["Fulfillment je Bestellung", "2,82 €"],
-  ["Jeder weitere Artikel in derselben Bestellung", "0,36 €"],
-  ["Verpackungsmaterial", "0,36 €"],
-  ["Wareneingang je Palette", "18,45 €"],
-  ["Lagerplatz je Palette und Monat", "18,45 €"],
-  ["Retoure, geprüft und wieder eingelagert", "3,07 €"],
+  [preise.fulfillmentDe.label, preise.fulfillmentDe.wert],
+  [preise.verpackung.label, preise.verpackung.wert],
+  [preise.warenannahme.label, preise.warenannahme.wert],
+  [preise.lagerplatz.label, preise.lagerplatz.wert],
+  [preise.retoure.label, preise.retoure.wert],
 ];
 
 const versand = [
-  ["Kleinpaket bis 1 kg, Deutschland", "4,16 €"],
+  [preise.kleinpaketDe.label, preise.kleinpaketDe.wert],
   ["Paket bis 2 kg, Deutschland", "auf Anfrage"],
   ["Österreich und Schweiz", "auf Anfrage"],
   ["Übriges Europa, 43 Länder", "auf Anfrage"],
@@ -106,7 +113,7 @@ export default function Preise() {
               <p style={{ margin: "14px 0 0", color: "rgba(255,255,255,.66)", lineHeight: 1.7 }}>
                 Hier gibt es keine Liste, weil jedes Produkt anders ist. Du
                 schickst uns einen Link oder ein Foto, wir nennen dir Stückpreis
-                und Versand, meistens am selben Tag. Erst danach entscheidest du.
+                und Versand. Erst danach entscheidest du.
               </p>
               <div style={{ marginTop: 20 }}>
                 <span className="glass-wrap">

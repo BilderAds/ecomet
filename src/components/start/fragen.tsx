@@ -8,7 +8,7 @@ const fragen = [
   {
     frage: "Muss ich Ware auf Vorrat kaufen?",
     antwort:
-      "Nein. Beim Import aus China schicken wir jedes Paket einzeln los, sobald dein Kunde bestellt. Für das deutsche Lager brauchst du Ware vor Ort, dafür geht sie in ein bis zwei Tagen raus.",
+      "Nein. Beim Import aus China schicken wir jedes Paket einzeln los, sobald dein Kunde bestellt. Für das deutsche Lager brauchst du Ware vor Ort, dafür ist sie in ein bis zwei Werktagen beim Kunden.",
   },
   {
     frage: "Sieht mein Kunde, dass die Ware aus China kommt?",
@@ -39,7 +39,7 @@ export function Fragen() {
         <div className="sec-head fx">
           <h2 className="sec-h2">Häufige Fragen</h2>
           <p className="sec-p">
-            Steht deine Frage nicht dabei, schreib uns. Wir antworten am selben Tag.
+            Steht deine Frage nicht dabei, schreib uns. Wir antworten am selben Werktag.
           </p>
         </div>
         <div className="faq">

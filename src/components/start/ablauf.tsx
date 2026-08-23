@@ -28,7 +28,7 @@ export function Ablauf() {
             </span>{" "}
             angeschlossen
           </h2>
-          <p className="sec-p">Vom Klick bis zum ersten Paket vergeht ein Tag.</p>
+          <p className="sec-p">Ohne Vertrag, ohne Einrichtungsgebühr, ohne Mindestmenge.</p>
         </div>
         <div className="steps">
           {schritte.map((s, i) => (

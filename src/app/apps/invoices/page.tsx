@@ -69,7 +69,7 @@ const inhalt: AppSeitenInhalt = {
   preis: {
     zeile: `${preise.invoicesMonat.wert} im Monat`,
     zusatz:
-      "Sieben Tage kostenlos testen. Abgerechnet über Shopify, jederzeit kündbar. Zehn PayPal- oder Klarna-Fälle im Monat sind enthalten, jeder weitere kostet 0,50 €.",
+      `Sieben Tage kostenlos testen. Abgerechnet über Shopify, jederzeit kündbar. Zehn PayPal- oder Klarna-Fälle im Monat sind enthalten, jeder weitere kostet ${preise.fallPreis.wert}.`,
   },
   fragen: [
     {

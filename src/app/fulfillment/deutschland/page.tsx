@@ -6,7 +6,7 @@ import { preise } from "@/inhalte/zahlen";
 export const metadata: Metadata = {
   title: "Lager in Deutschland | ecomet",
   description:
-    "Deine Ware liegt in Deutschland und geht in 1 bis 2 Tagen zum Kunden. Deutsche Rechnung, deutscher Ansprechpartner, Retouren im Inland.",
+    "Deine Ware liegt in Deutschland und ist in 1 bis 2 Werktagen beim Kunden. Deutsche Rechnung, deutscher Ansprechpartner, Retouren im Inland.",
 };
 
 const Haken = () => (
@@ -22,11 +22,11 @@ export default function Deutschland() {
         ueber="Deutsches Lager"
         titel={
           <>
-            Heute bestellt.{" "}
-            <span className="accent">Morgen beim Kunden.</span>
+            Dein Lager steht in Deutschland.{" "}
+            <span className="accent">Nicht in China.</span>
           </>
         }
-        satz="Deine Ware liegt in Deutschland. Wir packen und verschicken am selben Tag, mit deutscher Rechnung und einem Ansprechpartner, der deine Sprache spricht."
+        satz="1 bis 2 Werktage Laufzeit, deutsche Rechnung, Retouren im Inland. Und ein Ansprechpartner, der deine Sprache spricht."
       />
 
       <section className="sec">
@@ -40,10 +40,10 @@ export default function Deutschland() {
                 Bewertungen bleiben oben, und du bekommst weniger Nachfragen.
               </p>
               <ul className="haken">
-                <li><Haken /> Versand am selben Tag, wenn die Bestellung bis mittags kommt</li>
+                <li><Haken /> Täglicher Versand aus dem Lager, Laufzeit 1 bis 2 Werktage</li>
                 <li><Haken /> Sendungsverfolgung von DHL, kein Umweg über Asien</li>
                 <li><Haken /> Retouren gehen nach Deutschland zurück, nicht nach China</li>
-                <li><Haken /> Wir kümmern uns um deine Pflichten beim Verpackungsgesetz</li>
+                <li><Haken /> Fehlerquote im Lager unter 1 %, sonst geht die Ware neu raus</li>
                 <li><Haken /> Keine Mindestlaufzeit und keine Grundgebühr</li>
               </ul>
             </div>
@@ -61,20 +61,20 @@ export default function Deutschland() {
                     <td>{preise.fulfillmentDe.wert}</td>
                   </tr>
                   <tr>
-                    <td>Verpackungsmaterial</td>
-                    <td>0,36 €</td>
+                    <td>{preise.verpackung.label}</td>
+                    <td>{preise.verpackung.wert}</td>
                   </tr>
                   <tr>
-                    <td>Kleinpaket bis 1 kg nach DE</td>
-                    <td>4,16 €</td>
+                    <td>{preise.kleinpaketDe.label}</td>
+                    <td>{preise.kleinpaketDe.wert}</td>
                   </tr>
                   <tr>
-                    <td>Retoure, geprüft und wieder eingelagert</td>
-                    <td>3,07 €</td>
+                    <td>{preise.retoure.label}</td>
+                    <td>{preise.retoure.wert}</td>
                   </tr>
                   <tr>
-                    <td>Lagerplatz je Palette und Monat</td>
-                    <td>18,45 €</td>
+                    <td>{preise.lagerplatz.label}</td>
+                    <td>{preise.lagerplatz.wert}</td>
                   </tr>
                   <tr className="hervor">
                     <td>Eine Bestellung 400 g nach Deutschland</td>

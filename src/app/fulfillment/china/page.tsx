@@ -36,7 +36,7 @@ export default function China() {
               <p>
                 Du redest auf Deutsch mit uns, wir reden mit den Herstellern. Du
                 schickst uns einen Link oder ein Foto, wir kommen mit einem Preis
-                zurück, meistens am selben Tag.
+                zurück.
               </p>
               <ul className="haken">
                 <li><Haken /> Eigenes Team vor Ort, das die Ware in die Hand nimmt</li>
