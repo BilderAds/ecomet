@@ -43,3 +43,4 @@ next-env.d.ts
 # macOS-Reste, entstehen beim Kopieren ueber Netzlaufwerke
 .DS_Store
 ._*
+.logs/
