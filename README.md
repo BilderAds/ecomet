@@ -1,7 +1,13 @@
 # ecomet Website
 
-> **ZUERST LESEN: [`docs/UEBERGABE-23AUG26-RELAUNCH.md`](docs/UEBERGABE-23AUG26-RELAUNCH.md)**
-> Stand der Arbeit, was offen ist, wie man die Seite ansieht.
+> **ZUERST LESEN: [`docs/UEBERGABE-24AUG26-DOMAIN-UND-KONTEN.md`](docs/UEBERGABE-24AUG26-DOMAIN-UND-KONTEN.md)**
+> Der aktuelle Stand: eigenes Vercel-Projekt `ecomet-website`, DNS liegt bei Alex,
+> Nameserver-Wechsel verworfen, fünf offene Fragen.
+> Danach der Plan fürs Konto: [`docs/PLAN-25AUG26-KONTEN-UND-PLATTFORM.md`](docs/PLAN-25AUG26-KONTEN-UND-PLATTFORM.md)
+> und die DNS-Sicherung: [`docs/DNS-SICHERUNG-e-comet.de-24AUG26.md`](docs/DNS-SICHERUNG-e-comet.de-24AUG26.md)
+>
+> Davor: [`docs/UEBERGABE-23AUG26-RELAUNCH.md`](docs/UEBERGABE-23AUG26-RELAUNCH.md)
+> Stand der Arbeit an der Seite selbst, was offen ist, wie man sie ansieht.
 > Danach der Plan: [`docs/SPEC-23AUG26-RELAUNCH-PLATTFORM.md`](docs/SPEC-23AUG26-RELAUNCH-PLATTFORM.md)
 > Der Relaunch zur Plattform, der Umzug auf **e-comet.de**, die Webapplikation unter
 > `app.e-comet.de`, die drei App-Seiten und alle offenen Punkte mit Unify und Alex.
