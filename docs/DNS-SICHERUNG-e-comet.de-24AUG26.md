@@ -37,7 +37,26 @@ Das ist der einzige wirklich gefährliche Punkt am ganzen Umzug.
 | `fulfillment.e-comet.de` | dieselben | **302 auf sich selbst**, Endlos-Schleife, kein Ursprung |
 
 `fulfillment.e-comet.de` ist im Memory als Partner-Portal geführt. **Es lebt nicht.**
-Hinter keinem der drei Hostnamen antwortet ein Ursprung.
+
+## ⚠⚠ NACHTRAG, und er kippt die Empfehlung: ZWEI APPS LEBEN AUF DIESER DOMAIN
+
+| Hostname | Antwort |
+|---|---|
+| **`invoices.e-comet.de`** | **https 200**, Titel `ecomet.invoices`. Das ist die laufende Rechnungs-App |
+| **`dispute.e-comet.de`** | antwortet `Shop fehlt`, lebt also auch |
+
+Beide antworten über Cloudflare, ohne eigenen Ursprung-Header. Das sind mit sehr
+hoher Wahrscheinlichkeit **Cloudflare Worker in Alex' Konto**.
+
+**Ein Worker ist kein DNS-Eintrag.** Er lässt sich nicht abschreiben und bei
+GoDaddy nachbauen. Werden die Nameserver umgestellt, sind **ecomet.invoices und
+ecomet.dispute sofort offline**, und zwar ohne Weg zurück ausser über Alex.
+
+**Damit ist der Nameserver-Wechsel keine Option mehr**, solange die beiden Apps
+dort laufen. Der Weg ist: Alex legt in seiner Zone zwei Einträge an.
+
+Gefunden erst im zweiten Durchgang: `invoices` und `dispute` standen nicht in der
+Namensliste unten. Genau die Lücke, vor der der Absatz darunter warnt.
 
 ## Was ich gesucht und NICHT gefunden habe
 
@@ -51,16 +70,21 @@ Abgefragt und leer: `mail` `autodiscover` `api` `portal` `dashboard` `test` `sta
 Zonentransfer geht nicht. Es kann Einträge geben, deren Namen ich nicht geraten habe.
 **Vollständig ist die Liste erst mit einem Blick in die Cloudflare-Zone selbst.**
 
-## Der Weg, wenn gewechselt wird
+## Der Weg: Alex legt zwei Einträge an
 
-1. In Kevins GoDaddy die Domain `e-comet.de` öffnen und prüfen, ob die Nameserver dort
-   änderbar sind (sie sollten es sein, die Domain liegt im eigenen Konto).
-2. Zielzone anlegen (eigenes Cloudflare oder GoDaddy-DNS) und **zuerst** MX, SPF und
-   DMARC aus dieser Datei eintragen.
-3. Erst danach die Nameserver bei GoDaddy umstellen.
-4. Nach dem Wechsel gegen `dig MX` und eine echte Testmail an `kontakt@e-comet.de`
-   prüfen, dass Mail weiter ankommt.
-5. Erst dann die Website-Records auf Vercel zeigen lassen.
+Ziel ist das Vercel-Projekt **`ecomet-website`** im Team `ecomet1` (unser eigenes Konto,
+angelegt am 24.08.2026, Projekt `prj_XdERTMqTLP3hSmCoMyWiyKC7Zy6P`).
 
-**Der risikoarme Gegenweg:** Alex legt in seiner Zone einen einzigen Eintrag für uns an.
-Dauert für ihn eine Minute und fasst die Mail überhaupt nicht an.
+```
+A      e-comet.de   76.76.21.21            Proxy AUS (graue Wolke)
+CNAME  www          cname.vercel-dns.com   Proxy AUS (graue Wolke)
+```
+
+Beide Werte kommen aus Vercels eigener Domain-Konfiguration, nicht geraten.
+**Proxy muss aus sein.** Bleibt die Wolke orange, kommt wieder 525, genau wie heute.
+
+Mail, `invoices`, `dispute` und `fulfillment` werden dabei nicht angefasst.
+
+**Der Nameserver-Wechsel zu GoDaddy ist verworfen**, siehe Nachtrag oben. Er würde
+ecomet.invoices und ecomet.dispute abschalten. Er käme erst wieder in Frage, wenn beide
+Apps vorher woanders laufen.
