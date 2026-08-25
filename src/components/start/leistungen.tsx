@@ -5,7 +5,7 @@ type Leistung = { tag: string; titel: string; text: string; symbol: ReactNode };
 const leistungen: Leistung[] = [
   {
     tag: "Einkauf",
-    titel: "Wir finden dein Produkt",
+    titel: "Du schickst einen Link, du bekommst einen Preis",
     text: "Du schickst uns einen Link oder ein Bild. Wir suchen den Hersteller und nennen dir einen Preis.",
     symbol: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -16,7 +16,7 @@ const leistungen: Leistung[] = [
   },
   {
     tag: "Prüfung",
-    titel: "Jedes Paket wird angesehen",
+    titel: "Kein Paket geht ungeprüft zu deinem Kunden",
     text: "Bevor etwas rausgeht, prüfen wir die Ware. Was nicht passt, geht nicht zu deinem Kunden.",
     symbol: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -48,7 +48,7 @@ const leistungen: Leistung[] = [
   },
   {
     tag: "Rücksendung",
-    titel: "Retouren gehen an uns",
+    titel: "Deine Retouren bleiben in Deutschland",
     text: "Deine Kunden schicken nach Deutschland zurück, nicht nach China. Wir prüfen und lagern wieder ein.",
     symbol: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -59,7 +59,7 @@ const leistungen: Leistung[] = [
   },
   {
     tag: "Papierkram",
-    titel: "Rechnung und Fälle",
+    titel: "Deine Rechnungen schreiben sich selbst",
     text: "Rechnungen und Gutschriften entstehen von selbst. PayPal- und Klarna-Fälle bearbeiten wir mit dir.",
     symbol: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -75,7 +75,7 @@ export function Leistungen() {
     <section className="sec" id="leistungen">
       <div className="wrap">
         <div className="sec-head fx">
-          <h2 className="sec-h2">Was wir übernehmen</h2>
+          <h2 className="sec-h2">Was du nie wieder selbst machst</h2>
           <p className="sec-p">
             Alles, was zwischen deinem Produkt und deinem Kunden passiert.
           </p>

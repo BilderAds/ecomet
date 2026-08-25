@@ -50,13 +50,13 @@ const inter = Inter({
  */
 export const metadata: Metadata = {
   metadataBase: new URL("https://e-comet.de"),
-  title: "ecomet | Lager, Versand und Import aus einer Hand",
+  title: "ecomet | Dein Fulfillment-Center in Deutschland und China",
   description:
-    "Ein Konto für dein ganzes Fulfillment. Lager in Deutschland mit 1 bis 3 Tagen Lieferzeit oder Import aus China. Bestellungen, Versand und Rechnungen an einem Ort.",
+    "Dropshipping, Brandshipping, Import und Lager. Bestellungen, Versand und Rechnungen in einem Dashboard. Lager in Deutschland mit 1 bis 3 Tagen Lieferzeit oder direkt aus China.",
   openGraph: {
-    title: "ecomet | Lager, Versand und Import aus einer Hand",
+    title: "ecomet | Dein Fulfillment-Center in Deutschland und China",
     description:
-      "Ein Konto für dein ganzes Fulfillment. Lager in Deutschland oder Import aus China.",
+      "Dropshipping, Brandshipping, Import und Lager. Alles in einem Dashboard, ohne Mindestmenge und ohne Vertrag.",
     url: "https://e-comet.de",
     siteName: "ecomet",
     type: "website",
@@ -65,9 +65,9 @@ export const metadata: Metadata = {
   twitter: {
     // Ohne das bleibt die Vorschau die kleine Kachel mit Mini-Bild daneben.
     card: "summary_large_image",
-    title: "ecomet | Lager, Versand und Import aus einer Hand",
+    title: "ecomet | Dein Fulfillment-Center in Deutschland und China",
     description:
-      "Ein Konto für dein ganzes Fulfillment. Lager in Deutschland oder Import aus China.",
+      "Dropshipping, Brandshipping, Import und Lager. Alles in einem Dashboard, ohne Mindestmenge und ohne Vertrag.",
   },
 };
 

@@ -51,7 +51,7 @@ export function Fuss() {
                 style={{ height: 22, width: "auto" }}
               />
             </div>
-            <p className="foot-tag">Fulfillment aus einer Hand</p>
+            <p className="foot-tag">Dein Lager. Dein Versand. Dein Name auf dem Karton.</p>
             <p className="foot-desc">
               Wir lagern, packen und verschicken für deutschsprachige Onlineshops.
               Aus dem Lager in Deutschland oder direkt aus China.

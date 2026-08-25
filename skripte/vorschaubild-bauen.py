@@ -63,7 +63,7 @@ def bauen(name, z1, z2, unter):
     d = ImageDraw.Draw(og)
     logo(og, 96, 250)
 
-    f = bold(56)
+    f = bold(54)
     mittig(d, 244, z1, f, WEISS, -1.8)
     mittig(d, 244 + 71, z2, f, ORANGE, -1.8)
 

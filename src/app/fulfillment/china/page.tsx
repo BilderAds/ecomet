@@ -21,11 +21,11 @@ export default function China() {
         ueber="Import aus China"
         titel={
           <>
-            Kein Lager nötig.{" "}
-            <span className="accent">Kein Risiko.</span>
+            Du verkaufst,{" "}
+            <span className="accent">bevor du einkaufst.</span>
           </>
         }
-        satz="Wir suchen den Hersteller, prüfen jedes Paket und schicken es direkt an deinen Kunden. Du kaufst nichts auf Vorrat und bindest kein Geld."
+        satz="Dropshipping aus China, ohne Mindestmenge und ohne Vorrat. Du bindest kein Geld, wir suchen den Hersteller, prüfen jedes Paket und schicken es direkt an deinen Kunden."
       />
 
       <section className="sec">

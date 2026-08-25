@@ -43,7 +43,7 @@ export function Stimmen() {
     <section className="sec stimmen">
       <div className="wrap">
         <div className="sec-head fx">
-          <h2 className="sec-h2">Was unsere Kunden sagen</h2>
+          <h2 className="sec-h2">So läuft es für Shops wie deinen</h2>
         </div>
       </div>
       {reihen.map((reihe, r) => (

@@ -22,11 +22,11 @@ export default function Deutschland() {
         ueber="Deutsches Lager"
         titel={
           <>
-            Dein Lager steht{" "}
-            <span className="accent">in Deutschland.</span>
+            Deine Kunden haben ihr Paket{" "}
+            <span className="accent">in 1 bis 3 Tagen.</span>
           </>
         }
-        satz="1 bis 3 Werktage bis zum Kunden, deutsche Rechnung, Retouren im Inland. Und ein Ansprechpartner, der deine Sprache spricht."
+        satz="Deine Ware liegt in Deutschland. Deutsche Rechnung, Retouren im Inland, und ein Ansprechpartner, der deine Sprache spricht."
       />
 
       <section className="sec">

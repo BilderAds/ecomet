@@ -147,16 +147,17 @@ export function Buehne() {
           <Trust />
           <div>
             <h1 className="text-[1.75rem] font-bold text-white leading-[1.15] tracking-tight">
-              Wir lagern, packen und verschicken
+              Dein Fulfillment-Center in
             </h1>
             <p className="mt-1 text-[1.75rem] font-bold leading-[1.15] tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-ecomet to-ecomet-light">
-              deine Bestellungen.
+              Deutschland und China.
             </p>
           </div>
           {/* Jeder Satz beginnt auf einer eigenen Zeile. Ein einzelnes Wort
               am Zeilenende sieht kaputt aus, siehe Regel in der Memory. */}
           <p className="text-sm text-white/50 leading-relaxed">
-            <span className="block">Aus unserem Lager in Deutschland oder direkt aus China.</span>
+            <span className="block">Dropshipping, Brandshipping, Import und Lager.</span>
+            <span className="block">Bestellungen, Versand und Rechnungen in einem Dashboard.</span>
             <span className="block">Keine Mindestmenge, kein Vertrag.</span>
           </p>
           <div>
@@ -171,14 +172,15 @@ export function Buehne() {
             <Trust />
             <div>
               <h1 className="text-4xl lg:text-5xl font-bold text-white leading-[1.12] tracking-[-0.03em]">
-                Wir lagern, packen und
+                Dein Fulfillment-Center in
               </h1>
               <p className="mt-1 text-4xl lg:text-5xl font-bold leading-[1.12] tracking-[-0.03em] text-transparent bg-clip-text bg-gradient-to-r from-ecomet to-ecomet-light">
-                verschicken deine Bestellungen.
+                Deutschland und China.
               </p>
             </div>
             <p className="text-lg text-white/50 max-w-2xl leading-relaxed">
-              <span className="block">Aus unserem Lager in Deutschland oder direkt aus China.</span>
+              <span className="block">Dropshipping, Brandshipping, Import und Lager.</span>
+              <span className="block">Bestellungen, Versand und Rechnungen in einem Dashboard.</span>
               <strong className="block text-white/80 font-semibold">Keine Mindestmenge, kein Vertrag.</strong>
             </p>
             <div>
