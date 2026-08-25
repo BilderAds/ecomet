@@ -25,6 +25,17 @@ export type Zahl = {
   geprueft: boolean;
   /** woher die Zahl stammt, Pflicht sobald geprueft */
   quelle?: string;
+  /**
+   * GEPARKT: die Zahl steht absichtlich hier, wird aber nirgends angezeigt.
+   * Nur für ungeprüfte Zahlen gedacht, die wir nicht verlieren wollen.
+   *
+   * Das ist kein Freifahrtschein: `npm run zahlen-pruefen` sucht jede
+   * geparkte Zahl in allen .tsx und wird ROT, sobald eine davon doch
+   * irgendwo gerendert wird. Parken ohne Abschalten fliegt also auf.
+   */
+  geparkt?: boolean;
+  /** Name der Konstante, damit der Wächter sie in den .tsx suchen kann. */
+  variable?: string;
 };
 
 /** Filter für die Anzeige: was nicht geprüft ist, wird nicht gezeigt. */
@@ -43,17 +54,51 @@ const PREISLISTE = "ecomet Preisliste 21.08.2026, Packsy mal 1,23 abgeschnitten"
 
 /**
  * Die Bewertungszeile über der Überschrift.
- * ⚠ NICHT BELEGT. Es gibt keine Bewertungsquelle: ecomet liegt nicht im
- * Shopify App Store (am 23.08.2026 gesucht, kein Eintrag) und hat kein
- * Trustpilot-Profil. Dieselbe Zahl steht seit Monaten auf ecometapp.de.
- * Erfundene Bewertungen sind nach § 5b Abs. 3 UWG abmahnfähig. Sobald eine
- * echte Zahl da ist: hier eintragen, `geprueft: true`, Quelle dazu. An der
- * Bühne muss dann nichts geändert werden.
+ *
+ * ⚠ SEIT 25.08.2026 WIRD DIESE ZAHL NICHT MEHR ANGEZEIGT. Sie steht nur
+ * noch hier, damit der Wächter sie im Blick behält und damit eine echte
+ * Zahl später an genau dieser Stelle eingetragen werden kann.
+ *
+ * Der Grund für das Abschalten: am 25.08. hat Alex das DNS von `e-comet.de`
+ * auf unser Vercel-Projekt gestellt, das TLS-Zertifikat kam dazu, die Seite
+ * ist damit öffentlich. Und am selben Tag der harte Gegenbeleg: die
+ * ecomet-App im Shopify App Store (apps.shopify.com/ecomet, Entwickler
+ * Alexander Günter) steht auf **Rating 0,0 bei 0 Reviews**. Es gibt also
+ * nachweislich keine einzige öffentliche Bewertung. Die Notiz vom 23.08.
+ * („liegt nicht im App Store") war überholt: die App ist dort, sie hat nur
+ * keine Bewertungen.
+ *
+ * „1.475+ Empfehlungen" über fünf Sternen war damit eine Behauptung gegen
+ * die eigene Quelle. § 5b Abs. 3 UWG, abmahnfähig.
+ *
+ * SO KOMMT SIE ZURÜCK: echte Zahl hier eintragen, `geprueft: true`, Quelle
+ * dazu (z. B. „apps.shopify.com/ecomet, abgerufen TT.MM.JJJJ"), und in
+ * `buehne.tsx` in `Trust()` wieder `empfehlungen` statt `buehneTrust`
+ * einsetzen. Die Sterne hängen im selben Block.
  */
 export const empfehlungen: Zahl = {
   wert: "1.475+",
   label: "Empfehlungen",
   geprueft: false,
+  geparkt: true,
+  variable: "empfehlungen",
+};
+
+/**
+ * Was seit dem 25.08.2026 an der Stelle der Bewertungszeile steht.
+ * Kein Superlativ, keine Bewertung, sondern eine Zahl aus dem
+ * Kooperationsvertrag. Sie ist belegt und darf deshalb live.
+ *
+ * Warum nicht „keine Mindestmenge, kein Vertrag": das steht drei Zeilen
+ * tiefer schon im Bühnentext. Doppelt gesagt ist nichts gesagt.
+ */
+export const buehneTrust: Zahl = {
+  wert: "500.000 €",
+  label: "Warenversicherung im Lager",
+  geprueft: true,
+  quelle:
+    "Kooperations- und White-Label-Vertrag ecomet/Packsy24, § 5.6: Waren- " +
+    "und Lagerversicherung mindestens 500.000 €",
 };
 
 /**

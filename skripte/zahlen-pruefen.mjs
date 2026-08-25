@@ -25,7 +25,11 @@ const { stimmen } = await import(pathToFileURL(stimmenDatei).href);
 let rot = false;
 
 // 1. Jede Zahl geprüft und mit Quelle
-const offen = alleZahlen.filter((z) => !z.geprueft);
+// Geparkte Zahlen stehen absichtlich in der Datei, ohne angezeigt zu werden.
+// Sie zählen unten getrennt, sonst stünde der Wächter dauerhaft auf rot und
+// niemand würde ihn noch lesen.
+const offen = alleZahlen.filter((z) => !z.geprueft && !z.geparkt);
+const geparkt = alleZahlen.filter((z) => z.geparkt);
 const ohneQuelle = alleZahlen.filter((z) => z.geprueft && !z.quelle?.trim());
 const name = (z) => [z.wert, z.label].filter(Boolean).join("  ");
 
@@ -61,6 +65,36 @@ const sammeln = (ordner) => {
   }
 };
 sammeln(join(wurzel, "src"));
+
+// 1c. Geparkte Zahlen: sie DÜRFEN nirgends angezeigt werden.
+// Ohne diese Prüfung wäre `geparkt: true` ein Freifahrtschein, mit dem man
+// jede unbelegte Zahl still wieder live stellen könnte.
+if (geparkt.length) {
+  console.log(`\nGEPARKT, steht in der Datei und wird NICHT angezeigt (${geparkt.length}):`);
+  const verraeter = [];
+  for (const z of geparkt) {
+    console.log(`  · ${name(z)}${z.variable ? `  (${z.variable})` : ""}`);
+    if (!z.variable) {
+      rot = true;
+      console.log("    ⚠ ohne `variable` kann der Wächter nicht nachsehen, ob sie doch gerendert wird.");
+      continue;
+    }
+    const wort = new RegExp(`\\b${z.variable}\\b`);
+    for (const pfad of dateien) {
+      if (!/\.tsx$/.test(pfad)) continue;
+      readFileSync(pfad, "utf8").split("\n").forEach((zeile, i) => {
+        if (/^\s*(\*|\/\/)/.test(zeile)) return; // Kommentare erklären nur
+        if (wort.test(zeile)) verraeter.push(`${relative(wurzel, pfad)}:${i + 1}  ${z.variable}`);
+      });
+    }
+  }
+  if (verraeter.length) {
+    rot = true;
+    console.log(`\nGEPARKTE ZAHL WIRD DOCH BENUTZT (${verraeter.length}):`);
+    for (const v of verraeter) console.log(`  · ${v}`);
+    console.log("  Entweder die Zahl belegen und `geparkt` entfernen, oder sie aus der Seite nehmen.");
+  }
+}
 
 const geld = /[0-9]{1,3}(?:[.,][0-9]{2})?\s?€/g;
 const streuner = [];

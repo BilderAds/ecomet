@@ -1,7 +1,13 @@
 # ecomet Website
 
-> **ZUERST LESEN: [`docs/UEBERGABE-24AUG26-DOMAIN-UND-KONTEN.md`](docs/UEBERGABE-24AUG26-DOMAIN-UND-KONTEN.md)**
-> Der aktuelle Stand: eigenes Vercel-Projekt `ecomet-website`, DNS liegt bei Alex,
+> **ZUERST LESEN: [`docs/UEBERGABE-25AUG26-DOMAIN-LIVE-UND-UWG.md`](docs/UEBERGABE-25AUG26-DOMAIN-LIVE-UND-UWG.md)**
+> **`https://e-comet.de` ist seit dem 25.08. live und öffentlich.** Alex hat das DNS
+> gestellt, es fehlte nur das TLS-Zertifikat. Dabei rausgekommen: die Seite ging mit
+> sechs erfundenen Kundenstimmen und „1.475+ Empfehlungen" online, beides ist raus
+> und ersetzt. Offen bleibt, wer ins Impressum gehört.
+>
+> Davor: [`docs/UEBERGABE-24AUG26-DOMAIN-UND-KONTEN.md`](docs/UEBERGABE-24AUG26-DOMAIN-UND-KONTEN.md)
+> Eigenes Vercel-Projekt `ecomet-website`, DNS liegt bei Alex,
 > Nameserver-Wechsel verworfen, fünf offene Fragen.
 > Danach der Plan fürs Konto: [`docs/PLAN-25AUG26-KONTEN-UND-PLATTFORM.md`](docs/PLAN-25AUG26-KONTEN-UND-PLATTFORM.md)
 > und die DNS-Sicherung: [`docs/DNS-SICHERUNG-e-comet.de-24AUG26.md`](docs/DNS-SICHERUNG-e-comet.de-24AUG26.md)
