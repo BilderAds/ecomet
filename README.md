@@ -1,5 +1,9 @@
 # ecomet Website
 
+> **OFFENE PUNKTE: [`docs/TODO-25AUG26-WEBSITE.md`](docs/TODO-25AUG26-WEBSITE.md)**
+> Was auf der Seite noch fehlt, gemessen an allen 13 Seiten. Groesster Punkt:
+> sechs Unterseiten haben kein einziges Bild.
+>
 > **ZUERST LESEN: [`docs/UEBERGABE-25AUG26-DOMAIN-LIVE-UND-UWG.md`](docs/UEBERGABE-25AUG26-DOMAIN-LIVE-UND-UWG.md)**
 > **`https://e-comet.de` ist seit dem 25.08. live und öffentlich.** Alex hat das DNS
 > gestellt, es fehlte nur das TLS-Zertifikat. Dabei rausgekommen: die Seite ging mit
