@@ -37,14 +37,14 @@ export default function Preise() {
   return (
     <Rahmen>
       <SeitenKopf
-        ueber="Preise"
+        ueber="Preise · Lager und Versand aus Deutschland"
         titel={
           <>
             Eine Bestellung nach Deutschland:{" "}
             <span className="accent">{preise.bestellungDe.wert}</span>
           </>
         }
-        satz="Bis 400 Gramm, alles zusammen: Kommissionierung, Verpackung und Porto. Keine Grundgebühr, keine Mindestlaufzeit, keine Einrichtungskosten."
+        satz="Bis 400 Gramm, alles zusammen: Kommissionierung, Verpackung und Porto. Keine Grundgebühr, keine Mindestlaufzeit, keine Einrichtungskosten. Alle Preise auf dieser Seite gelten für Lager und Versand aus unserem Lager in Deutschland."
       />
 
       <section className="sec" style={{ paddingTop: 0 }}>
@@ -93,12 +93,19 @@ export default function Preise() {
                 </tbody>
               </table>
               <p className="feld-hinweis" style={{ marginTop: 14 }}>
-                Die vollständige Liste mit allen Gewichtsstufen und 43 Ländern
-                schicken wir dir als PDF. Frag sie über{" "}
-                <Link href="/kontakt" style={{ color: "var(--a1)" }}>
-                  das Kontaktformular
-                </Link>{" "}
-                an.
+                {/* Bis 25.08. musste man die Liste per Formular anfragen. Sie
+                    liegt fertig vor, also gibt es sie jetzt direkt. Ein Knopf,
+                    der eine Datei verspricht, muss die Datei auch liefern. */}
+                <a
+                  href="/ecomet-preisliste.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "var(--a1)", fontWeight: 600 }}
+                >
+                  Ganze Preisliste als PDF öffnen
+                </a>
+                {" "}mit allen Gewichtsstufen, Österreich, Schweiz und 43 Ländern
+                in Europa.
               </p>
             </div>
           </div>
@@ -109,11 +116,12 @@ export default function Preise() {
         <div className="wrap">
           <div className="zwei" style={{ alignItems: "start" }}>
             <div className="tab-huelle fx">
-              <span className="svc-tag">Import aus China</span>
+              <span className="svc-tag">Dropshipping aus China</span>
               <p style={{ margin: "14px 0 0", color: "rgba(255,255,255,.66)", lineHeight: 1.7 }}>
-                Hier gibt es keine Liste, weil jedes Produkt anders ist. Du
-                schickst uns einen Link oder ein Foto, wir nennen dir Stückpreis
-                und Versand. Erst danach entscheidest du.
+                Für Dropshipping gibt es <strong>keine Preisliste</strong>, weil
+                jedes Produkt anders ist. Du schickst uns einen Link oder ein
+                Foto, wir nennen dir Stückpreis und Versand. Erst danach
+                entscheidest du.
               </p>
               <div style={{ marginTop: 20 }}>
                 <span className="glass-wrap">
