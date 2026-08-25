@@ -673,8 +673,13 @@ img{max-width:100%;display:block}
 .stimmen-lauf.links{animation:stimmen-links 52s linear infinite}
 .stimmen-lauf.rechts{animation:stimmen-rechts 62s linear infinite}
 .stimmen-band:hover .stimmen-lauf{animation-play-state:paused}
-@keyframes stimmen-links{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes stimmen-rechts{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+/* Geschoben wird um EINEN von vier Saetzen, also -25%. Dahinter stehen immer
+   noch drei volle Saetze, rund 3900 px, damit reisst die Reihe auch auf einem
+   sehr breiten Bildschirm nicht auf. Bei -50% lief sie ab etwa 1300 px
+   Fensterbreite leer. Wer die Zahl der Saetze in `stimmen.tsx` aendert, muss
+   diese Prozente mitaendern: Verschiebung = 100 / Anzahl Saetze. */
+@keyframes stimmen-links{from{transform:translateX(0)}to{transform:translateX(-25%)}}
+@keyframes stimmen-rechts{from{transform:translateX(-25%)}to{transform:translateX(0)}}
 .stimme{flex:0 0 auto;width:min(420px,80vw);padding:24px 26px;border-radius:18px;
   border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);margin:0}
 .stimme-sterne{display:flex;gap:3px;margin-bottom:14px;color:var(--a1);font-size:.8125rem;line-height:1}
