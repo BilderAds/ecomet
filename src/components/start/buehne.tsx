@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { Clock, ShieldCheck, Package } from "lucide-react";
-import { buehneBelege, buehneTrust, zeigen } from "@/inhalte/zahlen";
+import { buehneBelege, empfehlungen, zeigen } from "@/inhalte/zahlen";
 
 /**
  * Die Bühne im Aufbau der alten Seite, den Kevin am 23.08. zurückhaben
@@ -62,39 +62,32 @@ function Koepfe() {
 }
 
 /**
- * Die Trust-Zeile über der Überschrift.
+ * Die Trust-Zeile über der Überschrift, im Aufbau der Live-Seite:
+ * fünf Köpfe, fünf Sterne, darunter die Zahl.
  *
- * ⚠ GEÄNDERT AM 25.08.2026. Vorher standen hier fünf Sterne und
- * „1.475+ Empfehlungen". Beides ist raus, und zwar aus einem harten Grund:
- *
- * An dem Tag hat Alex das DNS von `e-comet.de` auf unser Vercel-Projekt
- * gestellt, das TLS-Zertifikat kam dazu, die Seite ist damit öffentlich.
- * Am selben Tag der Gegenbeleg: die ecomet-App im Shopify App Store
- * (apps.shopify.com/ecomet, Entwickler Alexander Günter) steht auf
- * **Rating 0,0 bei 0 Reviews**. Fünf Sterne über einer vierstelligen Zahl
- * waren damit eine Behauptung gegen die eigene Quelle. § 5b Abs. 3 UWG,
- * abmahnfähig. Die Notiz vom 23.08. („liegt nicht im App Store") war
- * überholt: die App ist dort, sie hat nur keine Bewertungen.
- *
- * An der Stelle steht jetzt `buehneTrust`, eine Zusage, die im Infosheet
- * unseres Lagers wörtlich belegt ist. Die Köpfe bleiben: es sind gezeichnete
- * Figuren, die niemanden als echte Person ausgeben, und sie sind Kevins
- * Aufbau von der alten Seite.
- *
- * ZURÜCKSCHALTEN, sobald es echte Bewertungen gibt: in `zahlen.ts` bei
- * `empfehlungen` die echte Zahl eintragen, `geprueft: true`, Quelle dazu,
- * und hier wieder `empfehlungen` statt `buehneTrust` verwenden.
+ * ⚠ Die ZAHL ist nicht belegt. Es gibt keine Bewertungsquelle: ecomet liegt
+ * nicht im Shopify App Store, es gibt kein Trustpilot-Profil. Sie steht in
+ * `zahlen.ts` weiter auf `geprueft: false`, damit `npm run zahlen-pruefen`
+ * weiter darauf zeigt. Kevin am 23.08. ausdrücklich so gewollt, die Zeile
+ * steht wortgleich schon auf ecometapp.de. Sobald eine echte Zahl da ist,
+ * wird nur `zahlen.ts` angefasst, hier nichts.
  */
 function Trust() {
   return (
     <div className="flex items-center gap-3">
       <Koepfe />
-      <span className="text-white/45 text-[13px] leading-snug">
-        <strong className="font-semibold text-white/70 tabular-nums">
-          {buehneTrust.wert}
-        </strong>{" "}
-        {buehneTrust.label}
-      </span>
+      <div className="flex flex-col gap-0.5">
+        <div className="flex gap-1" aria-hidden="true">
+          {[...Array(5)].map((_, i) => (
+            <span key={i} className="text-ecomet text-[13px] leading-none">
+              &#9733;
+            </span>
+          ))}
+        </div>
+        <span className="text-white/45 text-[13px] leading-none">
+          {empfehlungen.wert} {empfehlungen.label}
+        </span>
+      </div>
     </div>
   );
 }
