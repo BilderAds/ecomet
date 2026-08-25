@@ -6,9 +6,8 @@
 >
 > **ZUERST LESEN: [`docs/UEBERGABE-25AUG26-DOMAIN-LIVE-UND-UWG.md`](docs/UEBERGABE-25AUG26-DOMAIN-LIVE-UND-UWG.md)**
 > **`https://e-comet.de` ist seit dem 25.08. live und öffentlich.** Alex hat das DNS
-> gestellt, es fehlte nur das TLS-Zertifikat. Dabei rausgekommen: die Seite ging mit
-> sechs erfundenen Kundenstimmen und „1.475+ Empfehlungen" online, beides ist raus
-> und ersetzt. Offen bleibt, wer ins Impressum gehört.
+> gestellt, es fehlte nur das TLS-Zertifikat. Die Trust-Sektion bleibt so, wie Kevin
+> sie bestellt hat. Offen bleibt, wer ins Impressum gehört.
 >
 > Davor: [`docs/UEBERGABE-24AUG26-DOMAIN-UND-KONTEN.md`](docs/UEBERGABE-24AUG26-DOMAIN-UND-KONTEN.md)
 > Eigenes Vercel-Projekt `ecomet-website`, DNS liegt bei Alex,
