@@ -1,5 +1,10 @@
 # ecomet Website
 
+> **ZUERST LESEN: [`docs/UEBERGABE-25AUG26-LIVE-UND-SB7.md`](docs/UEBERGABE-25AUG26-LIVE-UND-SB7.md)**
+> `https://e-comet.de` ist live. Copy komplett nach StoryBrand, Import als drittes
+> Angebot, Preisliste als PDF. OFFEN und wichtig: das Kontaktformular schickt keine
+> Mail, es schreibt nur in Supabase.
+>
 > **OFFENE PUNKTE: [`docs/TODO-25AUG26-WEBSITE.md`](docs/TODO-25AUG26-WEBSITE.md)**
 > Was auf der Seite noch fehlt, gemessen an allen 13 Seiten. Groesster Punkt:
 > sechs Unterseiten haben kein einziges Bild.
