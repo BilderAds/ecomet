@@ -28,7 +28,21 @@ const inter = Inter({
  *   src/app/apple-icon.png        180×180, für den Home-Bildschirm
  *
  * Gebaut aus den echten Markendateien (`public/ecomet-schrift-weiss.png` und
- * `public/icon-logo.png`), das Logo ist nirgends nachgetippt.
+ * `public/icon-logo.png`), das Logo ist nirgends nachgetippt. Das Skript dazu
+ * liegt in `skripte/vorschaubild-bauen.py` und prüft beim Bauen selbst nach,
+ * ob jede Zeile in die sichere Zone passt.
+ *
+ * ⚠ DIE SICHERE ZONE, sonst wird das Logo abgeschnitten (25.08., zweiter
+ * Anlauf): das Bild ist 1200×630, also 1,905:1. **WhatsApp zeigt seine Kachel
+ * aber im Verhältnis 1,42:1 und schneidet links und rechts je rund 153 px
+ * weg.** Der erste Entwurf hatte 84 px Rand, das Logo lag also mitten im
+ * abgeschnittenen Bereich und war in der Vorschau nicht mehr da.
+ *
+ * Deshalb steht jetzt alles Wichtige mittig in den inneren **630 px**
+ * (x von 285 bis 915). Das ist der quadratische Ausschnitt, den auch die
+ * strengsten Clients noch zeigen. Wer den Text ändert, prüft mit dem Skript
+ * nach: es rechnet jede Zeile gegen beide Zuschnitte und sagt es, wenn eine
+ * herausragt.
  *
  * `metadataBase` MUSS gesetzt sein, sonst schreibt Next relative Pfade ins
  * `og:image`, und daran scheitern alle Vorschauen, weil die Dienste eine
