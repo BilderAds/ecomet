@@ -24,7 +24,10 @@ type Eingang = {
 };
 
 const erlaubteArten = ["registrierung", "kontakt"];
-const erlaubteWege = ["deutschland", "china", "beides", "unklar"];
+// Muss zu den <option>-Werten in `anfrage-formular.tsx` passen. Steht ein Wert
+// hier NICHT drin, wird er still auf null gesetzt und die Auswahl des Kunden
+// ist weg, ohne dass jemand etwas merkt.
+const erlaubteWege = ["deutschland", "china", "import", "beides", "unklar"];
 
 function sauber(wert: unknown, maxLaenge: number): string | null {
   if (typeof wert !== "string") return null;

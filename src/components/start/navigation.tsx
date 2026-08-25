@@ -14,6 +14,7 @@ import { Menu, X } from "lucide-react";
 const punkte = [
   { text: "Deutsches Lager", ziel: "/fulfillment/deutschland" },
   { text: "Dropshipping", ziel: "/fulfillment/china" },
+  { text: "Import aus China", ziel: "/fulfillment/import" },
   { text: "Apps", ziel: "/#apps" },
   { text: "Preise", ziel: "/preise" },
   { text: "Über uns", ziel: "/ueber-uns" },

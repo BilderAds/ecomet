@@ -92,6 +92,7 @@ export function AnfrageFormular({ art, quelle }: { art: Art; quelle: string }) {
           <select id="weg" name="weg" defaultValue="unklar">
             <option value="deutschland">Lager in Deutschland</option>
             <option value="china">Dropshipping aus China</option>
+            <option value="import">Import aus China, groessere Menge</option>
             <option value="beides">Beides</option>
             <option value="unklar">Weiß ich noch nicht</option>
           </select>
