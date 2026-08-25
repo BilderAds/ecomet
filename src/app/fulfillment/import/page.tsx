@@ -29,7 +29,7 @@ import { Rahmen, SeitenKopf } from "@/components/start/rahmen";
 export const metadata: Metadata = {
   title: "Import aus China | ecomet",
   description:
-    "Größere Mengen direkt beim Hersteller einkaufen und nach Deutschland holen. Wir finden den Hersteller, prüfen die Ware und lagern sie ein. Preis pro Anfrage, weil jede Menge anders ist.",
+    "Du kaufst direkt in China ein, ohne je dort gewesen zu sein. Erst ein Muster, dann die Menge. Unser Team prüft die Ware vor Ort, danach liegt sie im deutschen Lager.",
 };
 
 const Haken = () => (
@@ -45,18 +45,18 @@ export default function Import() {
         ueber="Import aus China"
         titel={
           <>
-            Ab einer Menge kaufst du{" "}
-            <span className="accent">direkt beim Hersteller.</span>
+            Du kaufst direkt in China ein.{" "}
+            <span className="accent">Ohne je dort gewesen zu sein.</span>
           </>
         }
-        satz="Kein Zwischenhändler, kein Aufschlag auf jedes Stück. Du sagst uns, was du brauchst, wir finden den Hersteller, prüfen die Ware und bringen sie nach Deutschland."
+        satz="Du überweist keine fünfstellige Summe an eine Fabrik, die du nie gesehen hast. Unser Team steht vor Ort daneben, du bekommst erst ein Muster, dann geht die Menge in Produktion. Kein Zwischenhändler, kein Aufschlag auf jedes Stück."
       />
 
       <section className="sec">
         <div className="wrap">
           <div className="zwei">
             <div className="fx">
-              <h2>Wann sich der eigene Import lohnt</h2>
+              <h2>Wann du aufhören solltest, den Zwischenhändler zu bezahlen</h2>
               <p>
                 Beim Dropshipping geht jedes Paket einzeln raus, dafür zahlst du
                 jedes Mal Stückpreis und Versand. Sobald ein Produkt bei dir
