@@ -84,7 +84,7 @@ const inhalt: AppSeitenInhalt = {
     {
       frage: "Sehe ich, was eine Bestellung kostet, bevor sie rausgeht?",
       antwort:
-        "Für das deutsche Lager ja, dort gilt eine feste Preisliste. Beim Import aus China nennen wir dir den Preis vorab.",
+        "Für das deutsche Lager ja, dort gilt eine feste Preisliste. Beim Dropshipping aus China nennen wir dir den Preis vorab.",
     },
   ],
   knopf: { text: "Konto erstellen", ziel: "/registrieren" },

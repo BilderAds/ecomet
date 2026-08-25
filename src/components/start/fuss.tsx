@@ -6,7 +6,7 @@ const spalten = [
     titel: "Fulfillment",
     punkte: [
       { text: "Lager in Deutschland", ziel: "/fulfillment/deutschland" },
-      { text: "Import aus China", ziel: "/fulfillment/china" },
+      { text: "Dropshipping aus China", ziel: "/fulfillment/china" },
       { text: "Preise", ziel: "/preise" },
     ],
   },

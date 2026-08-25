@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Rahmen, SeitenKopf } from "@/components/start/rahmen";
 
 export const metadata: Metadata = {
-  title: "Import aus China | ecomet",
+  title: "Dropshipping aus China | ecomet",
   description:
     "Wir finden dein Produkt, prüfen die Qualität und verschicken direkt an deinen Kunden. 4 bis 8 Tage in den DACH-Raum, ohne Mindestmenge.",
 };
@@ -18,7 +18,7 @@ export default function China() {
   return (
     <Rahmen>
       <SeitenKopf
-        ueber="Import aus China"
+        ueber="Dropshipping aus China"
         titel={
           <>
             Du verkaufst,{" "}

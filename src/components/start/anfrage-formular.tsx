@@ -43,8 +43,8 @@ export function AnfrageFormular({ art, quelle }: { art: Art; quelle: string }) {
           <br />
           Wir melden uns am selben Werktag bei dir, meistens innerhalb weniger
           Stunden. Wenn es eilig ist, schreib uns direkt an{" "}
-          <a href="mailto:info@e-comet.de" style={{ color: "var(--a1)" }}>
-            info@e-comet.de
+          <a href="mailto:kontakt@e-comet.de" style={{ color: "var(--a1)" }}>
+            kontakt@e-comet.de
           </a>
           .
         </div>
@@ -91,7 +91,7 @@ export function AnfrageFormular({ art, quelle }: { art: Art; quelle: string }) {
           <label htmlFor="weg">Was brauchst du?</label>
           <select id="weg" name="weg" defaultValue="unklar">
             <option value="deutschland">Lager in Deutschland</option>
-            <option value="china">Import aus China</option>
+            <option value="china">Dropshipping aus China</option>
             <option value="beides">Beides</option>
             <option value="unklar">Weiß ich noch nicht</option>
           </select>

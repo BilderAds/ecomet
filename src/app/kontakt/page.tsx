@@ -34,8 +34,8 @@ export default function Kontakt() {
           <div className="claim fx" style={{ textAlign: "center" }}>
             <h3>Lieber direkt schreiben?</h3>
             <p>
-              <a href="mailto:info@e-comet.de" style={{ color: "var(--a1)" }}>
-                info@e-comet.de
+              <a href="mailto:kontakt@e-comet.de" style={{ color: "var(--a1)" }}>
+                kontakt@e-comet.de
               </a>
             </p>
           </div>

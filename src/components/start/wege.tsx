@@ -67,7 +67,7 @@ export function Wege() {
                 <span>4 bis 8 Tage</span>
               </div>
             </div>
-            <h3>Import aus China</h3>
+            <h3>Dropshipping aus China</h3>
             <p>
               Wir suchen das Produkt, prüfen die Qualität und verschicken direkt an
               deinen Kunden. Du kaufst nichts auf Vorrat.
