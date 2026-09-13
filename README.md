@@ -1,5 +1,9 @@
 # ecomet Website
 
+> **13.09.2026 — Instagram, TikTok und YouTube im Footer, live.** ZUERST
+> [`docs/UEBERGABE-13SEP26-SOCIAL-LINKS-FOOTER.md`](docs/UEBERGABE-13SEP26-SOCIAL-LINKS-FOOTER.md).
+> Ein Push deployt nichts, live geht nur `vercel deploy --prod`.
+>
 > **ZUERST LESEN: [`docs/UEBERGABE-25AUG26-LIVE-UND-SB7.md`](docs/UEBERGABE-25AUG26-LIVE-UND-SB7.md)**
 > `https://e-comet.de` ist live. Copy komplett nach StoryBrand, Import als drittes
 > Angebot, Preisliste als PDF. OFFEN und wichtig: das Kontaktformular schickt keine
