@@ -1,5 +1,8 @@
 # ecomet Website
 
+> **24.09.2026 — ecomet zieht auf Alex' Cloudflare (Termin mit Alex ab 28.09.), danach Webapp mit einem Konto für alle Apps.** ZUERST
+> [`docs/UEBERGABE-24SEP26-CLOUDFLARE-UND-KONTO.md`](docs/UEBERGABE-24SEP26-CLOUDFLARE-UND-KONTO.md).
+>
 > **13.09.2026 — Instagram, TikTok und YouTube im Footer, live.** ZUERST
 > [`docs/UEBERGABE-13SEP26-SOCIAL-LINKS-FOOTER.md`](docs/UEBERGABE-13SEP26-SOCIAL-LINKS-FOOTER.md).
 > Ein Push deployt nichts, live geht nur `vercel deploy --prod`.
