@@ -407,6 +407,12 @@ img{max-width:100%;display:block}
 .rechtstext-inhalt a{color:var(--a1)}
 .rechtstext-inhalt a:hover{text-decoration:underline}
 
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.8125rem;font-weight:600;
+  letter-spacing:.1em;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.7);margin-bottom:24px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--a1);animation:pulse 2s var(--ease) infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
 /* --- 4. Kopf einer Unterseite --- */
 .seitenkopf{position:relative;z-index:1;padding:150px 0 60px;text-align:center}
 .seitenkopf h1{font-size:clamp(2.25rem,5vw,3.5rem);font-weight:700;margin:16px 0 18px}

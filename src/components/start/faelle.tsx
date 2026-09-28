@@ -37,6 +37,9 @@ export function Faelle() {
         </div>
 
         <div className="faelle-text fx" data-d="1">
+          <span className="eyebrow">
+            <span className="dot" /> ecomet.disputes App
+          </span>
           <h2>
             Gewinne PayPal- und Klarna-Fälle{" "}
             <span className="accent">mit einem Klick</span>
