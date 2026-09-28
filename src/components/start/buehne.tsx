@@ -73,6 +73,8 @@ function Koepfe() {
  * wird nur `zahlen.ts` angefasst, hier nichts.
  */
 function Trust() {
+  // Kevin 29.09.2026: „nimm die fake Bewertungen raus". Ohne Beleg keine Zeile.
+  if (!empfehlungen.geprueft) return null;
   return (
     <div className="flex items-center gap-3">
       <Koepfe />
