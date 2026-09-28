@@ -58,7 +58,7 @@ const inhalt: AppSeitenInhalt = {
   ],
   nichtDrin: [
     "Sie verschickt nichts selbst, das machen unsere Lager",
-    "Sie ersetzt keine Buchhaltung, dafür gibt es ecomet.invoices",
+    "Sie ersetzt keine Buchhaltung, dafür gibt es ecomet.invoice",
   ],
   preis: {
     zeile: "Kostenlos",

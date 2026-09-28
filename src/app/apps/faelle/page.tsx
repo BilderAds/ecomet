@@ -3,7 +3,7 @@ import { AppSeite, type AppSeitenInhalt } from "@/components/start/app-seite";
 import { preise } from "@/inhalte/zahlen";
 
 export const metadata: Metadata = {
-  title: "ecomet.dispute | PayPal- und Klarna-Fälle an einem Ort",
+  title: "Fälle in ecomet.invoice | PayPal- und Klarna-Fälle an einem Ort",
   description:
     "Alle Käuferbeschwerden aus PayPal, Klarna und Shopify Payments in einer Ansicht, mit den Belegen, die dazugehören.",
 };
@@ -13,11 +13,11 @@ export const metadata: Metadata = {
  * hinterlegen, Fälle je Anbieter, Abrechnung über die invoices-Brücke:
  * zehn Fälle im Monat frei, danach 0,50 € je Fall).
  *
- * ⚠ Wie bei ecomet.invoices gehört auch diese App heute Alex.
+ * ⚠ Wie bei ecomet.invoice gehört auch diese App heute Alex.
  * Vor dem Livegang klären, siehe Spec, offener Punkt 3.
  */
 const inhalt: AppSeitenInhalt = {
-  ueber: "ecomet.dispute",
+  ueber: "ecomet.invoice",
   titel: (
     <>
       Käuferbeschwerden, <span className="accent">ohne Zettelwirtschaft</span>
@@ -29,7 +29,7 @@ const inhalt: AppSeitenInhalt = {
     pfad: "/apps/dispute-uebersicht.png",
     breite: 1425,
     hoehe: 2595,
-    alt: "Übersicht von ecomet.dispute mit offenen Fällen",
+    alt: "Fälle-Übersicht in ecomet.invoice mit offenen Fällen",
   },
   nervt: [
     {
@@ -65,7 +65,7 @@ const inhalt: AppSeitenInhalt = {
   ],
   preis: {
     zeile: "Im Plan enthalten",
-    zusatz: `Zehn Fälle im Monat sind in ecomet.invoices enthalten. Jeder weitere kostet ${preise.fallPreis.wert}.`,
+    zusatz: `Zehn Fälle im Monat sind in ecomet.invoice enthalten. Jeder weitere kostet ${preise.fallPreis.wert}.`,
   },
   fragen: [
     {

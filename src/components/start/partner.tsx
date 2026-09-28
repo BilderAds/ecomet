@@ -5,9 +5,9 @@
  *   Shopify   – unsere App liegt im Shopify App Store
  *   DHL       – Versand aus dem deutschen Lager
  *   YunExpress– Trackingnummern aus China, belegt im Partner-Chat 21.07.
- *   PayPal    – ecomet.dispute
- *   Klarna    – ecomet.dispute
- *   Lexware   – ecomet.invoices
+ *   PayPal    – Fälle in ecomet.invoice
+ *   Klarna    – Fälle in ecomet.invoice
+ *   Lexware   – ecomet.invoice
  *
  * Die weichen Kanten laufen über `mask-image`, NICHT über zwei Kästen in
  * der Hintergrundfarbe. Der alte Weg rechnete gegen `var(--bg)`, während

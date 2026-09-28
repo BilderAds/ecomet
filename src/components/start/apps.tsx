@@ -11,7 +11,7 @@ const apps = [
     hoehe: 1700,
   },
   {
-    name: "ecomet.invoices",
+    name: "ecomet.invoice",
     ziel: "/apps/invoices",
     satz: "Rechnung und Gutschrift entstehen von selbst, sobald eine Bestellung bezahlt ist.",
     bild: "/apps/invoices-uebersicht.png",
@@ -19,7 +19,7 @@ const apps = [
     hoehe: 1800,
   },
   {
-    name: "ecomet.dispute",
+    name: "Fälle in ecomet.invoice",
     ziel: "/apps/faelle",
     satz: "PayPal- und Klarna-Fälle an einem Ort, mit den Belegen, die dazugehören.",
     bild: "/apps/dispute-uebersicht.png",
@@ -41,7 +41,7 @@ export function Apps() {
             an einem Ort
           </h2>
           <p className="sec-p">
-            Dafür bauen wir drei eigene Programme. Sie kommen mit deinem Konto,
+            Dafür bauen wir zwei eigene Programme. Sie kommen mit deinem Konto,
             ohne zweite Anmeldung und ohne dritte Rechnung.
           </p>
         </div>

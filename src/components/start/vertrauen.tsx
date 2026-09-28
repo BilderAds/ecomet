@@ -19,9 +19,9 @@ import Image from "next/image";
  * Jede Anbindung ist belegt:
  *   Shopify    unsere App liegt im Shopify App Store, apps.shopify.com/ecomet
  *   DHL        Versand aus dem deutschen Lager
- *   PayPal     ecomet.dispute
- *   Klarna     ecomet.dispute
- *   Lexware    ecomet.invoices
+ *   PayPal     Fälle in ecomet.invoice
+ *   Klarna     Fälle in ecomet.invoice
+ *   Lexware    ecomet.invoice
  *   YunExpress Tracking aus China, belegt im Partner-Chat 21.07.
  */
 const marken = [

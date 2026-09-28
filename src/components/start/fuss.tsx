@@ -33,8 +33,8 @@ const spalten = [
     titel: "Apps",
     punkte: [
       { text: "die ecomet App", ziel: "/apps/dashboard" },
-      { text: "ecomet.invoices", ziel: "/apps/invoices" },
-      { text: "ecomet.dispute", ziel: "/apps/faelle" },
+      { text: "ecomet.invoice", ziel: "/apps/invoices" },
+      { text: "Fälle in ecomet.invoice", ziel: "/apps/faelle" },
     ],
   },
   {

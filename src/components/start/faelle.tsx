@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 /**
- * Eigener Abschnitt für ecomet.dispute, weiter unten auf der Startseite.
+ * Eigener Abschnitt für die Fälle in ecomet.invoice, weiter unten auf der Startseite.
  *
  * Kevin am 24.08.: „Disputes ist krass, da auf jeden Fall noch so eigene
  * Section auf der Homepage haben, so bisschen weiter unten."
@@ -30,7 +30,7 @@ export function Faelle() {
         <div className="faelle-bild fx">
           <Image
             src="/apps/dispute-uebersicht.png"
-            alt="ecomet.dispute: PayPal- und Klarna-Fälle mit allen Belegen an einem Ort"
+            alt="Fälle in ecomet.invoice: PayPal- und Klarna-Fälle mit allen Belegen an einem Ort"
             width={1425}
             height={2595}
           />
@@ -67,7 +67,7 @@ export function Faelle() {
           <div>
             <Link href="/apps/faelle" className="glass-wrap">
               <span className="glass-btn sm">
-                <span className="glass-txt">ecomet.dispute ansehen</span>
+                <span className="glass-txt">Fälle ansehen</span>
               </span>
               <span className="glass-shadow" />
             </Link>

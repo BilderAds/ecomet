@@ -147,17 +147,17 @@ export default function Preise() {
                     <td>kostenlos</td>
                   </tr>
                   <tr>
-                    <td>ecomet.invoices</td>
+                    <td>ecomet.invoice</td>
                     <td>{preise.invoicesMonat.wert} / Monat</td>
                   </tr>
                   <tr>
-                    <td>ecomet.dispute, ab dem elften Fall im Monat</td>
+                    <td>Fälle in ecomet.invoice, ab dem elften Fall im Monat</td>
                     <td>{preise.fallPreis.wert}</td>
                   </tr>
                 </tbody>
               </table>
               <p className="feld-hinweis" style={{ marginTop: 14 }}>
-                ecomet.invoices sieben Tage kostenlos, danach monatlich kündbar.
+                ecomet.invoice sieben Tage kostenlos, danach monatlich kündbar.
               </p>
             </div>
           </div>

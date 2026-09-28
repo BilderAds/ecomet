@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Rahmen, SeitenKopf } from "@/components/start/rahmen";
+import { ImportRechner } from "@/components/start/import-rechner";
 
 /**
  * Import aus China, das dritte Angebot neben Dropshipping und deutschem Lager.
@@ -16,9 +17,10 @@ import { Rahmen, SeitenKopf } from "@/components/start/rahmen";
  * Zielgruppe, andere Preislogik, deshalb nach Miller (S. 130) eine eigene
  * Seite mit eigenem BrandScript.
  *
- * ⚠ WAS HIER BEWUSST NICHT STEHT, weil es niemand belegt hat:
- * Mindestmengen, Stückpreise, Transportkosten, Zollsätze, Laufzeiten für
- * See- und Luftfracht, Incoterms. **Nichts davon erfinden.** Sobald Kevin die
+ * Import-Rechner (28.09.2026): Richtwerte aus Bertils Rechner, siehe
+ * `src/inhalte/import-rechnung.ts`. Weiterhin NICHT auf der Seite:
+ * Mindestmengen, feste Stückpreise, Incoterms.
+ * **Nichts davon erfinden.** Sobald Kevin die
  * Zahlen nennt, gehören sie nach `src/inhalte/zahlen.ts` mit Quelle, dann
  * zeigt `npm run zahlen-pruefen` sie als belegt an.
  *
@@ -122,15 +124,26 @@ export default function Import() {
         </div>
       </section>
 
+      <section className="sec" id="rechner">
+        <div className="wrap">
+          <div className="sec-head fx">
+            <h2 className="sec-h2">Rechne aus, was dich ein Stück aus China kostet</h2>
+            <p className="sec-p">Preis ab Werk, Fracht, Zoll und Hafen in einer Zahl, frei Lager Deutschland.</p>
+          </div>
+          <div className="fx" data-d="1">
+            <ImportRechner />
+          </div>
+        </div>
+      </section>
+
       <section className="sec">
         <div className="wrap">
           <div className="zwei" style={{ alignItems: "start" }}>
             <div className="tab-huelle fx">
               <span className="svc-tag">Was der Import kostet</span>
               <p style={{ margin: "14px 0 0", color: "rgba(255,255,255,.66)", lineHeight: 1.7 }}>
-                Dafür gibt es <strong>keine Preisliste</strong>, und zwar aus
-                demselben Grund wie beim Dropshipping: der Preis hängt am
-                Produkt, an der Menge und am Gewicht. Du bekommst Stückpreis,
+                Der Rechner oben gibt dir einen Richtwert. Der echte Preis hängt
+                am Produkt, an der Menge und am Gewicht. Du bekommst Stückpreis,
                 Transport und Dauer als ein Angebot, bevor du dich entscheidest.
               </p>
               <p style={{ margin: "14px 0 0", color: "rgba(255,255,255,.5)", lineHeight: 1.7, fontSize: ".9375rem" }}>

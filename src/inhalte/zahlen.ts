@@ -156,7 +156,7 @@ export const preise = {
     quelle: `${PREISLISTE}: Packsy 15,00. Fällt nur an, wenn im Monat keine Bestellung läuft (${INFOSHEET})` },
   warenannahme: { wert: "kostenlos", label: "Warenannahme und Einlagerung", geprueft: true,
     quelle: `${INFOSHEET}: „Warenannahme & Einlagerung kostenlos“` },
-  invoicesMonat: { wert: "20 €", label: "ecomet.invoices im Monat", geprueft: true,
+  invoicesMonat: { wert: "20 €", label: "ecomet.invoice im Monat", geprueft: true,
     quelle: "Worker-Quelltext, Plan ecomet.invoices, 7 Tage Test, Deckel 100 €" },
   fallPreis: { wert: "0,50 €", label: "je Fall ab dem elften im Monat", geprueft: true,
     quelle: "Worker-Quelltext, dispute-bridge/usage" },

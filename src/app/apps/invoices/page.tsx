@@ -3,7 +3,7 @@ import { AppSeite, type AppSeitenInhalt } from "@/components/start/app-seite";
 import { preise } from "@/inhalte/zahlen";
 
 export const metadata: Metadata = {
-  title: "ecomet.invoices | Rechnungen und Gutschriften für Shopify",
+  title: "ecomet.invoice | Rechnungen und Gutschriften für Shopify",
   description:
     "Rechnung und Gutschrift entstehen automatisch, sobald eine Bestellung bezahlt oder erstattet wird. Mit Anbindung an Lexware Office.",
 };
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
  * Siehe docs/SPEC-23AUG26-RELAUNCH-PLATTFORM.md, offener Punkt 3.
  */
 const inhalt: AppSeitenInhalt = {
-  ueber: "ecomet.invoices",
+  ueber: "ecomet.invoice",
   titel: (
     <>
       Rechnungen schreiben sich <span className="accent">von selbst</span>
@@ -31,7 +31,7 @@ const inhalt: AppSeitenInhalt = {
     pfad: "/apps/invoices-uebersicht.png",
     breite: 2880,
     hoehe: 1800,
-    alt: "Übersicht von ecomet.invoices mit Rechnungen und Kennzahlen",
+    alt: "Übersicht von ecomet.invoice mit Rechnungen und Kennzahlen",
   },
   nervt: [
     {
