@@ -218,11 +218,6 @@ img{max-width:100%;display:block}
 .sec-head{text-align:center;margin-bottom:64px}
 .sec-h2{font-size:clamp(1.875rem,4vw,3rem);font-weight:600;margin-bottom:16px}
 .sec-p{font-size:1.125rem;color:rgba(255,255,255,.6);max-width:672px;margin-inline:auto;line-height:1.6}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.8125rem;font-weight:600;
-  letter-spacing:.1em;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.7);margin-bottom:24px}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--a1);animation:pulse 2s var(--ease) infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 
 /* ---------- 4 · Zwei Auswahl-Karten ---------- */
 .pick{display:grid;gap:32px;max-width:896px;margin-inline:auto}
@@ -416,7 +411,6 @@ img{max-width:100%;display:block}
 .seitenkopf{position:relative;z-index:1;padding:150px 0 60px;text-align:center}
 .seitenkopf h1{font-size:clamp(2.25rem,5vw,3.5rem);font-weight:700;margin:16px 0 18px}
 .seitenkopf p{max-width:620px;margin:0 auto;color:rgba(255,255,255,.6);font-size:1.0625rem;line-height:1.65}
-.seitenkopf .eyebrow{margin-inline:auto}
 
 /* --- 5. Zweispalter: links Text, rechts Bild --- */
 .zwei{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}

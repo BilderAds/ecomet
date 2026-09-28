@@ -12,7 +12,6 @@ export default function Kontakt() {
   return (
     <Rahmen>
       <SeitenKopf
-        ueber="Kontakt"
         titel={
           <>
             Frag uns <span className="accent">alles</span>

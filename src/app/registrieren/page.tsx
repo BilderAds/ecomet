@@ -12,7 +12,6 @@ export default function Registrieren() {
   return (
     <Rahmen>
       <SeitenKopf
-        ueber="Konto anlegen"
         titel={
           <>
             Ein Konto, <span className="accent">alles drin</span>

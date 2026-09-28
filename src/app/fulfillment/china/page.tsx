@@ -18,7 +18,6 @@ export default function China() {
   return (
     <Rahmen>
       <SeitenKopf
-        ueber="Dropshipping aus China"
         titel={
           <>
             Du verkaufst,{" "}

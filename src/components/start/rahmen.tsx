@@ -17,28 +17,21 @@ export function Rahmen({ children }: { children: React.ReactNode }) {
   );
 }
 
-/** Kopf einer Unterseite: Überzeile, Überschrift, ein Satz. */
+/** Kopf einer Unterseite: Überschrift und ein Satz. Über der Überschrift steht nichts (Kevin, 20.09. und 28.09.2026). */
 export function SeitenKopf({
-  ueber,
   titel,
   satz,
 }: {
-  ueber?: string;
   titel: React.ReactNode;
   satz: string;
 }) {
   return (
     <section className="seitenkopf">
       <div className="wrap">
-        {ueber && (
-          <span className="eyebrow fx">
-            <span className="dot" /> {ueber}
-          </span>
-        )}
-        <h1 className="fx" data-d="1">
+        <h1 className="fx">
           {titel}
         </h1>
-        <p className="fx" data-d="2">
+        <p className="fx" data-d="1">
           {satz}
         </p>
       </div>

@@ -19,7 +19,6 @@ export default function Deutschland() {
   return (
     <Rahmen>
       <SeitenKopf
-        ueber="Deutsches Lager"
         titel={
           <>
             Deine Pakete sind beim Kunden.{" "}

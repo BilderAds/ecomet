@@ -26,7 +26,7 @@ const Haken = () => (
 export function AppSeite({ inhalt }: { inhalt: AppSeitenInhalt }) {
   return (
     <Rahmen>
-      <SeitenKopf ueber={inhalt.ueber} titel={inhalt.titel} satz={inhalt.satz} />
+      <SeitenKopf titel={inhalt.titel} satz={inhalt.satz} />
 
       <section className="sec" style={{ paddingTop: 0 }}>
         <div className="wrap">

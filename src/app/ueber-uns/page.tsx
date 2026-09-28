@@ -18,7 +18,6 @@ export default function UeberUns() {
   return (
     <Rahmen>
       <SeitenKopf
-        ueber="Über uns"
         titel={
           <>
             Deutsch geführt, <span className="accent">nah an der Ware</span>

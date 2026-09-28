@@ -42,7 +42,6 @@ export default function Import() {
   return (
     <Rahmen>
       <SeitenKopf
-        ueber="Import aus China"
         titel={
           <>
             Du kaufst direkt in China ein.{" "}

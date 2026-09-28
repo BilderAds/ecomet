@@ -37,7 +37,6 @@ export default function Preise() {
   return (
     <Rahmen>
       <SeitenKopf
-        ueber="Preise · Lager und Versand aus Deutschland"
         titel={
           <>
             Eine Bestellung nach Deutschland:{" "}
