@@ -53,6 +53,18 @@ export default function Import() {
         satz="Du überweist keine fünfstellige Summe an eine Fabrik, die du nie gesehen hast. Unser Team steht vor Ort daneben, du bekommst erst ein Muster, dann geht die Menge in Produktion. Kein Zwischenhändler, kein Aufschlag auf jedes Stück."
       />
 
+      <section className="sec" id="rechner">
+        <div className="wrap">
+          <div className="sec-head fx">
+            <h2 className="sec-h2">Rechne aus, was dich ein Stück aus China kostet</h2>
+            <p className="sec-p">Preis ab Werk, Fracht, Zoll und Hafen in einer Zahl, frei Lager Deutschland.</p>
+          </div>
+          <div className="fx" data-d="1">
+            <ImportRechner />
+          </div>
+        </div>
+      </section>
+
       <section className="sec">
         <div className="wrap">
           <div className="zwei">
@@ -120,18 +132,6 @@ export default function Import() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="sec" id="rechner">
-        <div className="wrap">
-          <div className="sec-head fx">
-            <h2 className="sec-h2">Rechne aus, was dich ein Stück aus China kostet</h2>
-            <p className="sec-p">Preis ab Werk, Fracht, Zoll und Hafen in einer Zahl, frei Lager Deutschland.</p>
-          </div>
-          <div className="fx" data-d="1">
-            <ImportRechner />
           </div>
         </div>
       </section>
