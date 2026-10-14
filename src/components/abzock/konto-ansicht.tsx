@@ -9,6 +9,9 @@ type Check = { vorname: string; bestellungen: string };
 const abonnieren = () => () => {};
 function lesen() {
   try {
+    // Vorschau ohne Formular: /konto?vorschau=10 (ab 10 Bestellungen) oder ?vorschau=1 (darunter)
+    const vorschau = new URLSearchParams(location.search).get("vorschau");
+    if (vorschau) return JSON.stringify({ vorname: "Kevin", bestellungen: vorschau === "1" ? "1 bis 9" : "10 bis 29" });
     return sessionStorage.getItem("ecomet-check") ?? "";
   } catch {
     return "";
