@@ -913,3 +913,22 @@ img{max-width:100%;display:block}
 .ak-zwischen{display:grid;gap:6px;padding:22px;border-radius:18px;border:1px solid color-mix(in srgb,var(--a1) 35%,transparent);
   background:color-mix(in srgb,var(--a1) 8%,transparent);color:rgba(255,255,255,.7);font-size:.9375rem;line-height:1.5}
 .ak-zwischen-zahl{font-size:2.25rem;font-weight:700;letter-spacing:-.035em;color:#fff;line-height:1}
+/* Hero nach Fabios Muster (14.10.2026) */
+.ak-hero2 h1{max-width:none;font-size:clamp(2.2rem,5.6vw,4.5rem);line-height:1.04}
+.ak-kursiv{display:block;font-weight:400;font-size:1.12em;letter-spacing:-.01em;margin-top:.04em;
+  background:linear-gradient(90deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ak-hero2 .ak-unterzeile{max-width:34rem;font-size:1.125rem}
+.ak-hero2 .ak-unterzeile strong{color:#fff;font-weight:500}
+.ak-knopf-gross{box-shadow:inset 0 -4px 0 rgba(0,0,0,.28),0 10px 30px -10px color-mix(in srgb,var(--a1) 70%,transparent);padding-bottom:4px}
+.ak-knopf-gross:active{transform:translateY(2px);box-shadow:inset 0 -1px 0 rgba(0,0,0,.28)}
+.ak-beweis{display:grid;justify-items:center;gap:8px;margin-top:32px}
+.ak-beweis p{font-size:.9375rem;color:rgba(255,255,255,.6)}
+.ak-beweis p strong{color:#fff}
+.ak-koepfe img{width:36px;height:36px}
+.ak-sterne-kasten{display:flex;align-items:center;gap:4px}
+.ak-sterne-kasten span{width:26px;height:26px;display:grid;place-items:center;border-radius:6px;background:var(--a1);color:#fff;font-size:.875rem;line-height:1}
+.ak-sterne-kasten b{margin-left:8px;font-weight:600;font-size:1rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.ak-chips{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:20px}
+.ak-chips span{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:999px;font-size:.8125rem;color:rgba(255,255,255,.72);
+  border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04)}
+@media (min-width:640px){.ak-chips{flex-direction:row;justify-content:center}}

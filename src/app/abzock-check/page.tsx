@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { BadgeEuro, Camera, ClipboardCheck, FlaskConical, ScanSearch, ShieldCheck } from "lucide-react";
+import { Instrument_Serif } from "next/font/google";
 import { Effekte } from "@/components/start/effekte";
 import { AbzockKopf, AbzockFuss } from "@/components/abzock/kopf";
 import { MargenRechner } from "@/components/abzock/rechner";
@@ -19,11 +20,14 @@ import {
  */
 
 export const metadata: Metadata = {
-  title: "Der kostenlose 24-Stunden-Abzock-Check | ecomet",
+  title: "Bessere Einkaufspreise für deinen Shop. Kostenlos. | ecomet",
   description:
     "Mehr Marge aus jeder Bestellung. Preis-Check, Shop-Analyse und Bilder-Plan für Shops, die schon verkaufen. Kostenlos, in 24 Stunden.",
   alternates: { canonical: "/abzock-check" },
 };
+
+// Kursiver Akzent wie in Fabios Triolo-Funnel, nur für das eine Wort im H1.
+const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: "italic", display: "swap" });
 
 const symbole = [BadgeEuro, ScanSearch, Camera, ClipboardCheck, FlaskConical, ShieldCheck];
 
@@ -53,32 +57,48 @@ export default function AbzockCheck() {
       <AbzockKopf />
 
       <main>
-        {/* Hero: Versprechen, Knopf, Beweis, Video */}
+        {/* Hero nach Fabios Muster: Versprechen, Unterzeile, Knopf, Beweis, Chips, Video */}
         <section className="ak-hero2" id="start">
           <div className="wrap ak-mitte">
             <h1 className="fx">
-              Mehr <span className="accent">Marge</span> aus jeder Bestellung.
+              Bessere Einkaufspreise
+              <br />
+              für deinen Shop.
+              <span className={`ak-kursiv ${serif.className}`}>Kostenlos.</span>
             </h1>
             <p className="ak-unterzeile fx" data-d="1">
-              Der kostenlose 24-Stunden-Abzock-Check für Shops, die schon verkaufen.
+              Wir prüfen in 24 Stunden, ob du zu viel für dein Produkt zahlst.
+              <br />
+              <strong>Dazu Shop-Analyse und Bilder-Plan.</strong>
             </p>
             <div className="ak-knoepfe ak-mitte fx" data-d="2">
               <CheckKnopf gross />
             </div>
-            <p className="ak-klein fx" data-d="2">Kostenlos · ohne Vertrag · Ergebnis in 24 Stunden</p>
+            <p className="ak-klein fx" data-d="2">100 % kostenlos · ohne Vertrag</p>
 
             {PLATZHALTER_ZEIGEN && (
-              <div className="ak-beweiszeile fx" data-d="3">
+              <div className="ak-beweis fx" data-d="3">
                 <div className="ak-koepfe" aria-hidden="true">
                   {["Lisa", "Tom", "Sarah", "Marco", "Felix"].map((k) => (
-                    <Image key={k} src={`/koepfe/${k}.svg`} alt="" width={32} height={32} />
+                    <Image key={k} src={`/koepfe/${k}.svg`} alt="" width={36} height={36} />
                   ))}
                 </div>
-                <span>
-                  <strong>★★★★★ 5,0</strong> von [Anzahl] Shops <em className="ak-platzhalter">Platzhalter</em>
-                </span>
+                <p>
+                  <strong>[Anzahl] Shops</strong> haben uns bewertet <em className="ak-platzhalter">Platzhalter</em>
+                </p>
+                <div className="ak-sterne-kasten" aria-label="5,0 von 5 Sternen">
+                  {[0, 1, 2, 3, 4].map((i) => (
+                    <span key={i} aria-hidden="true">★</span>
+                  ))}
+                  <b className="num">5,0</b>
+                </div>
               </div>
             )}
+
+            <div className="ak-chips fx" data-d="3">
+              <span>✓ Ergebnis in 24 Stunden</span>
+              <span>✓ Für Shops, die schon verkaufen</span>
+            </div>
 
             {PLATZHALTER_ZEIGEN && (
               <div className="ak-video fx" data-d="3" aria-label="Platz für das Video von Kevin">
