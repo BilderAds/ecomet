@@ -90,6 +90,23 @@ export function KontoAnsicht({ etikett = true }: { etikett?: boolean }) {
         <p className="ak-klein">Ergebnis in 24 Stunden per WhatsApp.</p>
       </div>
 
+      {proTag ? (
+        <div className="ak-danke-zahl">
+          <span className="ak-rechner-zahl num">{(proTag * 365).toLocaleString("de-DE")} €</span>
+          <span className="ak-rechner-satz">im Jahr, bei nur 1 € zu viel pro Stück</span>
+        </div>
+      ) : null}
+      <ol className="ak-danke-weg">
+        <li className="an"><i />Check läuft</li>
+        <li><i />Ergebnis per WhatsApp</li>
+        {mitCall && <li><i />Call mit Fabio, Kevin oder Alex</li>}
+      </ol>
+      <div className="ak-danke-video" aria-label="Video von Kevin">
+        <div className="ak-video-play" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+        </div>
+      </div>
+
       {/* Vertrauen wie auf der Landingpage. Stimmen sind ausgedacht: live mit Etikett (UWG § 5b). */}
       <div className="ak-beweis">
         <div className="ak-koepfe" aria-hidden="true">
@@ -111,25 +128,6 @@ export function KontoAnsicht({ etikett = true }: { etikett?: boolean }) {
         <span>✓ Kostenlos</span>
         <span>✓ Ohne Vertrag</span>
       </div>
-
-      <div className="ak-danke-video" aria-label="Video von Kevin">
-        <div className="ak-video-play" aria-hidden="true">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
-        </div>
-      </div>
-
-      {proTag ? (
-        <div className="ak-danke-zahl">
-          <span className="ak-rechner-zahl num">{(proTag * 365).toLocaleString("de-DE")} €</span>
-          <span className="ak-rechner-satz">im Jahr, bei nur 1 € zu viel pro Stück</span>
-        </div>
-      ) : null}
-
-      <ol className="ak-danke-weg">
-        <li className="an"><i />Check läuft</li>
-        <li><i />Ergebnis per WhatsApp</li>
-        {mitCall && <li><i />Call mit Fabio, Kevin oder Alex</li>}
-      </ol>
     </div>
   );
 }
