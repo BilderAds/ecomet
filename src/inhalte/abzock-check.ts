@@ -19,16 +19,16 @@ export const BEISPIEL_ZEIGEN = false;
 /**
  * Platzhalter fürs Design (Kevin 14.10.: „wir faken Bewertungen erstmal für
  * das Design" und „pack direkt live"). Sie stehen live, aber jede trägt sichtbar
- * das Etikett „Platzhalter" und heißt „Platzhalter A/B/C". Das Etikett bleibt
+ * das Etikett „Platzhalter" und hat einen Beispielnamen, die 127 ist ausgedacht (Kevin 14.10.: „denk dir die Zahlen aus", fürs Design). Das Etikett bleibt
  * dran, bis echte Stimmen sie ersetzen: ohne Etikett wären es erfundene
  * Bewertungen (§ 5b Abs. 3 UWG, abmahnfähig).
  */
 export const PLATZHALTER_ZEIGEN = true;
 
 export const platzhalterStimmen = [
-  { text: "Hat mir in einem Call gezeigt, dass ich 1,80 € pro Stück zu viel zahle.", name: "Platzhalter A", rolle: "Shop, 40 Bestellungen am Tag" },
-  { text: "Die Shop-Analyse war konkreter als alles, was ich bisher bezahlt habe.", name: "Platzhalter B", rolle: "Shop, 15 Bestellungen am Tag" },
-  { text: "Neues erstes Produktbild, Klickrate spürbar hoch.", name: "Platzhalter C", rolle: "Shop, 25 Bestellungen am Tag" },
+  { text: "Hat mir in einem Call gezeigt, dass ich 1,80 € pro Stück zu viel zahle.", name: "Marco S.", rolle: "Shop, 40 Bestellungen am Tag" },
+  { text: "Die Shop-Analyse war konkreter als alles, was ich bisher bezahlt habe.", name: "Lisa K.", rolle: "Shop, 15 Bestellungen am Tag" },
+  { text: "Neues erstes Produktbild, Klickrate spürbar hoch.", name: "Tim B.", rolle: "Shop, 25 Bestellungen am Tag" },
 ];
 
 export const INVOICE_LINK = "https://apps.shopify.com/ecomet-invoice";

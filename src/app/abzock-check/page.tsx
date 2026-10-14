@@ -77,7 +77,7 @@ export default function AbzockCheck() {
                   ))}
                 </div>
                 <p>
-                  <strong>[Anzahl] Shops</strong> haben uns bewertet <em className="ak-platzhalter">Platzhalter</em>
+                  <strong>127 Shops</strong> haben uns bewertet <em className="ak-platzhalter">Platzhalter</em>
                 </p>
                 <div className="ak-sterne-kasten" aria-label="5,0 von 5 Sternen">
                   {[0, 1, 2, 3, 4].map((i) => (
