@@ -67,92 +67,46 @@ export function KontoAnsicht() {
   const mitCall = CALL_AB.includes(check.bestellungen);
   const proTag = rechengroesse[check.bestellungen];
 
+  // Kevin 14.10.: „zu clumsy, zu viel Text, Bleiwüste". Nur noch: Ziel, Video, Zahl, 3 kurze Schritte.
   return (
     <div className="ak-danke">
-      {/* 1. Bestätigung und das EINE Ziel */}
       <div className="ak-danke-kopf">
         <Haken />
         <h1>Dein Check läuft.</h1>
         {mitCall ? (
           <>
-            <p>Buch dir direkt deinen Termin. Dort gehen wir dein Ergebnis mit dir durch.</p>
+            <p>Buch dir jetzt deinen Termin.</p>
             <a href={TERMIN_LINK} className="ak-knopf ak-knopf-gross ak-knopf-voll">Termin anfragen →</a>
-            <p className="ak-klein">Sonst schreiben wir dir per WhatsApp, sobald dein Check fertig ist.</p>
           </>
         ) : (
           <>
-            <p>Sieh deine PayPal- und Klarna-Fälle sofort. 7 Tage kostenlos.</p>
+            <p>Sieh deine PayPal- und Klarna-Fälle sofort.</p>
             <a href={INVOICE_LINK} target="_blank" rel="noopener noreferrer" className="ak-knopf ak-knopf-gross ak-knopf-voll">
-              ecomet.invoice installieren →
+              ecomet.invoice testen →
             </a>
-            <p className="ak-klein">Dein Check kommt in 24 Stunden per WhatsApp.</p>
           </>
         )}
+        <p className="ak-klein">Ergebnis in 24 Stunden per WhatsApp.</p>
       </div>
 
-      {/* 2. Video */}
       <div className="ak-danke-video" aria-label="Video von Kevin">
         <div className="ak-video-play" aria-hidden="true">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
         </div>
       </div>
 
-      {/* 3. Seine Zahl */}
       {proTag ? (
-        <div className="ak-karte ak-danke-zahl">
-          <span className="ak-danke-angaben">
-            Deine Angaben: {check.bestellungen} Bestellungen am Tag{check.preis ? ` · ${check.preis} € pro Stück` : ""}
-          </span>
+        <div className="ak-danke-zahl">
           <span className="ak-rechner-zahl num">{(proTag * 365).toLocaleString("de-DE")} €</span>
-          <span className="ak-rechner-satz">im Jahr, wenn du pro Stück nur 1 € zu viel zahlst. Beispielrechnung mit {proTag} Bestellungen am Tag.</span>
+          <span className="ak-rechner-satz">im Jahr, bei nur 1 € zu viel pro Stück</span>
         </div>
       ) : null}
 
-      {/* 4. Was jetzt passiert */}
-      <div className="ak-karte ak-danke-schritte">
-        <h2>Was jetzt passiert</h2>
-        <ol>
-          <li><b>1</b><span><strong>Wir prüfen deinen Preis, deinen Shop und deine Bilder.</strong></span></li>
-          <li><b>2</b><span><strong>In 24 Stunden kommt dein Ergebnis per WhatsApp.</strong></span></li>
-          {mitCall && (
-            <li><b>3</b><span><strong>Im Call gehen Fabio, Kevin oder Alex alles mit dir durch.</strong></span></li>
-          )}
-        </ol>
-        <p className="ak-klein">Du musst nichts vorbereiten.</p>
-      </div>
-
-      {/* 5. Einwände */}
-      <div className="ak-danke-einwaende">
-        {[
-          ["Kostenlos.", "Kein Abo, kein Vertrag."],
-          ["Du musst nicht wechseln.", "Dein Check gehört dir."],
-          ["Kein Bot.", "Fabio, Kevin oder Alex."],
-        ].map(([titel, zeile]) => (
-          <div key={titel} className="ak-karte">
-            <h3>{titel}</h3>
-            <p>{zeile}</p>
-          </div>
-        ))}
-      </div>
-
-      <p className="ak-zusage-zeile ak-mitte">Ist dein Preis fair, sagen wir dir das.</p>
-
-      {/* 6. Wiederholung des einen Ziels */}
-      <div className="ak-mitte">
-        {mitCall ? (
-          <a href={TERMIN_LINK} className="ak-knopf ak-knopf-gross">Termin anfragen →</a>
-        ) : (
-          <a href={INVOICE_LINK} target="_blank" rel="noopener noreferrer" className="ak-knopf ak-knopf-gross">ecomet.invoice installieren →</a>
-        )}
-      </div>
-
-      {mitCall && (
-        <p className="ak-klein ak-mitte">
-          <a href={INVOICE_LINK} target="_blank" rel="noopener noreferrer" className="ak-link-leise">
-            ecomet.invoice: deine PayPal- und Klarna-Fälle in einer Liste
-          </a>
-        </p>
-      )}
+      <ol className="ak-danke-weg">
+        <li className="an"><i />Check läuft</li>
+        <li><i />Ergebnis per WhatsApp</li>
+        {mitCall && <li><i />Call mit Fabio, Kevin oder Alex</li>}
+      </ol>
     </div>
   );
 }

@@ -965,3 +965,13 @@ img{max-width:100%;display:block}
 .ak-danke-einwaende p{margin:0}
 .ak-link-leise{color:rgba(255,255,255,.55);text-decoration:underline;text-underline-offset:3px}
 .ak-link-leise:hover{color:#fff}
+/* Danke-Seite, schlank (Kevin 14.10.: „zu viel Text") */
+.ak-danke{gap:28px}
+.ak-danke-kopf .ak-knopf-voll{margin-top:6px}
+.ak-danke-zahl{display:grid;justify-items:center;text-align:center;gap:4px;padding:8px 0}
+.ak-danke-weg{list-style:none;margin:0;padding:0;display:grid;gap:0;justify-self:center}
+.ak-danke-weg li{position:relative;display:flex;align-items:center;gap:14px;padding:10px 0;color:rgba(255,255,255,.55);font-size:.9375rem}
+.ak-danke-weg li i{flex:none;width:12px;height:12px;border-radius:999px;border:2px solid rgba(255,255,255,.25)}
+.ak-danke-weg li:not(:last-child)::after{content:"";position:absolute;left:5px;top:32px;width:2px;height:18px;background:rgba(255,255,255,.12)}
+.ak-danke-weg li.an{color:#fff}
+.ak-danke-weg li.an i{border-color:var(--a1);background:var(--a1)}
