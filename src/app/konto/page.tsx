@@ -12,7 +12,7 @@ export default function Konto() {
     <>
       <div className="bg-layer bg-glow" aria-hidden="true" />
       <div className="bg-layer bg-grain" aria-hidden="true" />
-      <AbzockKopf knopf={false} />
+      <AbzockKopf nurLogo />
       <main className="ak-seite">
         <div className="wrap">
           <KontoAnsicht />

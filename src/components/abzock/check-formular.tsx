@@ -17,8 +17,12 @@ import { adsOptionen, bestellOptionen, fulfillerOptionen } from "@/inhalte/abzoc
 
 const faelleOptionen = ["0", "1 bis 5", "6 bis 20", "über 20", "weiß nicht"];
 
-/** Untergrenze je Auswahl, für die Rechnung „mindestens". */
-const untergrenze: Record<string, number> = { "1 bis 9": 1, "10 bis 29": 10, "30 bis 99": 30, "100+": 100 };
+/**
+ * Rechengröße je Auswahl für das Zwischenergebnis (Kevin 14.10.: „1 Bestellung
+ * ist zu klein, nimm eher 5 oder 6"). Etwa die Mitte der Spanne, bei 100+ die 100.
+ * Die Angabe des Händlers selbst wird unverändert gespeichert.
+ */
+const rechengroesse: Record<string, number> = { "1 bis 9": 5, "10 bis 29": 20, "30 bis 99": 50, "100+": 100 };
 
 type Daten = {
   bestellungen: string;
@@ -148,7 +152,7 @@ export function CheckFormular() {
     }
   }
 
-  const min = untergrenze[d.bestellungen];
+  const proTag = rechengroesse[d.bestellungen];
   const zurueck = schritt > 1 && (
     <button type="button" className="ak-zurueck-link" onClick={() => geheZu(schritt - 1)} disabled={laeuft}>
       ← Zurück
@@ -199,11 +203,11 @@ export function CheckFormular() {
 
       {schritt === 4 && (
         <>
-          {min ? (
+          {proTag ? (
             <div className="ak-zwischen">
-              <span className="ak-zwischen-zahl num">{(min * 365).toLocaleString("de-DE")} €</span>
+              <span className="ak-zwischen-zahl num">{(proTag * 365).toLocaleString("de-DE")} €</span>
               <span>
-                kostet dich jeder Euro, den du pro Stück zu viel zahlst, im Jahr. Mindestens, bei {d.bestellungen} Bestellungen am Tag.
+                im Jahr, wenn du pro Stück nur 1 € zu viel zahlst. Gerechnet mit {proTag} Bestellungen am Tag.
               </span>
             </div>
           ) : null}

@@ -77,7 +77,7 @@ export function KontoAnsicht() {
       {mitCall ? (
         <div className="ak-karte ak-karte-haupt">
           <h2>Buch dir jetzt deinen Termin</h2>
-          <p>Im Call gehen Kevin oder Fabio dein Ergebnis mit dir durch.</p>
+          <p>Im Call geht Fabio, Kevin oder Alex dein Ergebnis mit dir durch.</p>
           <a href={TERMIN_LINK} className="ak-knopf">Termin anfragen</a>
         </div>
       ) : (

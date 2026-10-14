@@ -115,7 +115,7 @@ export const fragen = [
   {
     frage: "Wer macht den Check?",
     antwort:
-      "Kevin und Fabio. Den Call machst du mit einem von beiden, nicht mit einem Bot.",
+      "Fabio, Kevin und Alex. Den Call machst du mit einem von uns, nicht mit einem Bot.",
   },
   {
     frage: "Wer sieht meine Zahlen?",

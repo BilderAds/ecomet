@@ -4,9 +4,10 @@ import Link from "next/link";
 /**
  * Kopf der Abzock-Check-Seiten. Bauvorlage: Logo links, rechts genau EIN Knopf
  * „Check starten". Daneben klein „Anmelden" für alle, die schon ein Konto haben.
- * Auf den Formular- und Kontoseiten fällt der Knopf weg (`knopf={false}`).
+ * Im Funnel und im Konto steht nur das Logo (`nurLogo`, Kevin 14.10.:
+ * „Anmelde-Knopf macht da keinen Sinn, einfach nur ecomet-Logo").
  */
-export function AbzockKopf({ knopf = true }: { knopf?: boolean }) {
+export function AbzockKopf({ knopf = true, nurLogo = false }: { knopf?: boolean; nurLogo?: boolean }) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#08080a]/80 backdrop-blur-xl border-b border-white/5">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -20,6 +21,7 @@ export function AbzockKopf({ knopf = true }: { knopf?: boolean }) {
             style={{ height: 22, width: "auto" }}
           />
         </Link>
+        {!nurLogo && (
         <div className="flex items-center gap-5">
           <Link href="/anmelden" className="text-sm text-white/60 hover:text-white transition-colors">
             Anmelden
@@ -30,6 +32,7 @@ export function AbzockKopf({ knopf = true }: { knopf?: boolean }) {
             </Link>
           )}
         </div>
+        )}
       </nav>
     </header>
   );

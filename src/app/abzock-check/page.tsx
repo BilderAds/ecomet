@@ -141,7 +141,7 @@ export default function AbzockCheck() {
                 );
               })}
             </div>
-            <p className="ak-klein ak-mitte fx">Ab 10 Bestellungen am Tag: Call mit Kevin oder Fabio dazu.</p>
+            <p className="ak-klein ak-mitte fx">Ab 10 Bestellungen am Tag: Call mit Fabio, Kevin oder Alex dazu.</p>
           </div>
         </section>
 
@@ -222,8 +222,9 @@ export default function AbzockCheck() {
               <div className="ak-gesichter">
                 <Image src="/team/fabio.png" alt="Fabio" width={88} height={88} />
                 <span className="ak-initial" aria-label="Kevin">K</span>
+                <span className="ak-initial" aria-label="Alex">A</span>
               </div>
-              <h2>Moin, wir sind Kevin und Fabio.</h2>
+              <h2>Moin, wir sind Fabio, Kevin und Alex.</h2>
               <p>Den Check macht kein Bot allein. Den Call machst du mit einem von uns.</p>
               <p className="ak-zusage-zeile">Ist dein Preis fair, sagen wir dir das. Ehrlich.</p>
             </div>
