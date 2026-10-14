@@ -18,11 +18,12 @@ export const BEISPIEL_ZEIGEN = false;
 
 /**
  * Platzhalter fürs Design (Kevin 14.10.: „wir faken Bewertungen erstmal für
- * das Design, danach gucken wir, wie viele wir echt haben"). Sie erscheinen
- * NUR in Vorschauen und lokal, nie auf e-comet.de: erfundene Bewertungen sind
- * nach § 5b Abs. 3 UWG abmahnfähig. Echte Stimmen ersetzen sie hier.
+ * das Design" und „pack direkt live"). Sie stehen live, aber jede trägt sichtbar
+ * das Etikett „Platzhalter" und heißt „Platzhalter A/B/C". Das Etikett bleibt
+ * dran, bis echte Stimmen sie ersetzen: ohne Etikett wären es erfundene
+ * Bewertungen (§ 5b Abs. 3 UWG, abmahnfähig).
  */
-export const PLATZHALTER_ZEIGEN = process.env.VERCEL_ENV !== "production";
+export const PLATZHALTER_ZEIGEN = true;
 
 export const platzhalterStimmen = [
   { text: "Hat mir in einem Call gezeigt, dass ich 1,80 € pro Stück zu viel zahle.", name: "Platzhalter A", rolle: "Shop, 40 Bestellungen am Tag" },
