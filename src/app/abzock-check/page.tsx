@@ -20,9 +20,9 @@ import {
  */
 
 export const metadata: Metadata = {
-  title: "Bessere Einkaufspreise für deinen Shop. Kostenlos. | ecomet",
+  title: "Zockt dein Agent dich ab? In 24 Stunden weißt du es. | ecomet",
   description:
-    "Mehr Marge aus jeder Bestellung. Preis-Check, Shop-Analyse und Bilder-Plan für Shops, die schon verkaufen. Kostenlos, in 24 Stunden.",
+    "Der kostenlose Abzock-Check: In 24 Stunden weißt du, ob du deinem Agenten zu viel zahlst. Dazu Shop-Analyse und Bilder-Plan.",
   alternates: { canonical: "/abzock-check" },
 };
 
@@ -60,21 +60,14 @@ export default function AbzockCheck() {
         {/* Hero nach Fabios Muster: Versprechen, Unterzeile, Knopf, Beweis, Chips, Video */}
         <section className="ak-hero2" id="start">
           <div className="wrap ak-mitte">
-            <h1 className="fx">
-              Bessere Einkaufspreise
-              <br />
-              für deinen Shop.
-              <span className={`ak-kursiv ${serif.className}`}>Kostenlos.</span>
-            </h1>
-            <p className="ak-unterzeile fx" data-d="1">
-              Wir prüfen in 24 Stunden, ob du zu viel für dein Produkt zahlst.
-              <br />
-              <strong>Dazu Shop-Analyse und Bilder-Plan.</strong>
+            <h1 className="fx">Zockt dein Agent dich ab?</h1>
+            <p className="ak-antwort fx" data-d="1">
+              In 24 Stunden <span className="ak-nowrap">weißt du es.</span> <span className={`ak-kursiv-inline ${serif.className}`}>Kostenlos.</span>
             </p>
             <div className="ak-knoepfe ak-mitte fx" data-d="2">
               <CheckKnopf gross />
             </div>
-            <p className="ak-klein fx" data-d="2">100 % kostenlos · ohne Vertrag</p>
+            <p className="ak-klein fx" data-d="2">0 € für Shops, die schon verkaufen</p>
 
             {PLATZHALTER_ZEIGEN && (
               <div className="ak-beweis fx" data-d="3">
@@ -173,6 +166,28 @@ export default function AbzockCheck() {
             </div>
             <div className="ak-mitte ak-luft fx">
               <CheckKnopf />
+            </div>
+          </div>
+        </section>
+
+        {/* Was Kunden zusätzlich bekommen (Bonus-Stapel, Bauvorlage Abschnitt 10) */}
+        <section className="sec">
+          <div className="wrap">
+            <div className="sec-head fx">
+              <h2 className="sec-h2">Wirst du ecomet-Kunde, kommt dazu</h2>
+            </div>
+            <div className="ak-kacheln ak-kacheln-vier">
+              {[
+                ["Alle 7 Produktbilder", "Fertig für dein Hauptprodukt"],
+                ["Lager in Deutschland", "Keine Lagergebühr, solange Ware rausgeht"],
+                ["Hilfe beim Skalieren", "Ads, Creatives, Media Buying, Offer"],
+                ["Neue Preise", "Mit Muster zum Vergleich"],
+              ].map(([titel, zeile], i) => (
+                <div key={titel} className="ak-kachel fx" data-d={(i % 4) + 1}>
+                  <h3>{titel}</h3>
+                  <p>{zeile}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
