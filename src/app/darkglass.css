@@ -975,3 +975,12 @@ img{max-width:100%;display:block}
 .ak-danke-weg li:not(:last-child)::after{content:"";position:absolute;left:5px;top:32px;width:2px;height:18px;background:rgba(255,255,255,.12)}
 .ak-danke-weg li.an{color:#fff}
 .ak-danke-weg li.an i{border-color:var(--a1);background:var(--a1)}
+/* Danke-Seite kompakter, Video lugt oben schon rein (Kevin 14.10.) */
+.ak-seite:has(.ak-danke){padding-top:84px}
+.ak-danke{gap:22px}
+.ak-danke-kopf{gap:10px}
+.ak-danke-haken{width:44px;height:44px}
+.ak-danke-kopf h1{font-size:clamp(1.9rem,5vw,2.5rem)}
+.ak-danke-video{width:100%;max-width:400px;justify-self:center;margin-top:0}
+.ak-danke .ak-beweis{margin-top:0}
+.ak-danke .ak-chips{margin-top:-6px}

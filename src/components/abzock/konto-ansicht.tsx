@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useSyncExternalStore } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { CALL_AB, INVOICE_LINK, TERMIN_LINK, rechengroesse } from "@/inhalte/abzock-check";
 
@@ -37,7 +38,7 @@ const Haken = () => (
   </div>
 );
 
-export function KontoAnsicht() {
+export function KontoAnsicht({ etikett = true }: { etikett?: boolean }) {
   // null auf dem Server und beim ersten Zeichnen, "" wenn nichts gespeichert ist.
   const roh = useSyncExternalStore(abonnieren, lesen, () => null);
   const check = useMemo<Check | null | undefined>(() => {
@@ -101,6 +102,28 @@ export function KontoAnsicht() {
           <span className="ak-rechner-satz">im Jahr, bei nur 1 € zu viel pro Stück</span>
         </div>
       ) : null}
+
+      {/* Vertrauen wie auf der Landingpage. Stimmen sind ausgedacht: live mit Etikett (UWG § 5b). */}
+      <div className="ak-beweis">
+        <div className="ak-koepfe" aria-hidden="true">
+          {["Lisa", "Tom", "Sarah", "Marco", "Felix"].map((k) => (
+            <Image key={k} src={`/koepfe/${k}.svg`} alt="" width={36} height={36} />
+          ))}
+        </div>
+        <p>
+          <strong>127 Shops</strong> haben uns bewertet {etikett && <em className="ak-platzhalter">Platzhalter</em>}
+        </p>
+        <div className="ak-sterne-kasten" aria-label="5,0 von 5 Sternen">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <span key={i} aria-hidden="true">★</span>
+          ))}
+          <b className="num">5,0</b>
+        </div>
+      </div>
+      <div className="ak-chips">
+        <span>✓ Kostenlos</span>
+        <span>✓ Ohne Vertrag</span>
+      </div>
 
       <ol className="ak-danke-weg">
         <li className="an"><i />Check läuft</li>

@@ -15,7 +15,7 @@ export default function Konto() {
       <AbzockKopf nurLogo />
       <main className="ak-seite">
         <div className="wrap">
-          <KontoAnsicht />
+          <KontoAnsicht etikett={process.env.VERCEL_ENV === "production"} />
         </div>
       </main>
       <AbzockFuss />
