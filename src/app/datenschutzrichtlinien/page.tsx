@@ -85,6 +85,17 @@ export default function Datenschutz() {
           Informationen, die für die Kontosicherheit verwendet werden.
         </li>
         <li>
+          <strong>Angaben im Abzock-Check</strong>: Vorname, E-Mail-Adresse,
+          WhatsApp-Nummer, Link zu Ihrem Shop und Hauptprodukt, Ihre Angaben zu
+          Bestellungen am Tag, Einkaufspreis, Fulfillment-Anbieter, Werbekanälen
+          und PayPal- oder Klarna-Fällen sowie der Zeitpunkt Ihrer Einwilligung.
+          Wir nutzen diese Angaben nur, um Ihren Check zu erstellen, Ihnen das
+          Ergebnis zu schicken und Sie dazu zu kontaktieren (Art. 6 Abs. 1 lit. a
+          und b DSGVO). Gespeichert werden sie bei unserem Dienstleister Supabase.
+          Sie können Ihre Einwilligung jederzeit per Mail an kontakt@e-comet.de
+          widerrufen, dann löschen wir Ihre Angaben.
+        </li>
+        <li>
           <strong>Informationen zum Kundensupport</strong> – einschließlich der
           Informationen, die Sie in Ihrer Kommunikation mit uns aufnehmen,
           beispielsweise wenn Sie eine Nachricht über die Dienste senden.

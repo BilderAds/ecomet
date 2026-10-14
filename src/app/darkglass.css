@@ -711,3 +711,135 @@ img{max-width:100%;display:block}
 .stimme figcaption strong{display:block;font-size:.875rem;font-weight:600;color:rgba(255,255,255,.86)}
 .stimme figcaption em{display:block;font-style:normal;font-size:.8125rem;color:rgba(255,255,255,.4)}
 @media (prefers-reduced-motion:reduce){.stimmen-lauf{animation:none}}
+
+/* ============================================================
+   ABZOCK-CHECK (14.10.2026): Landingpage /abzock-check, Funnel
+   /abzock-check/start, Konto /konto, /anmelden, /passwort-vergessen.
+   Orange nur am Hauptknopf, am aktiven Wahlfeld und am einen Wort im H1.
+   ============================================================ */
+.ak-knopf{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 24px;
+  border-radius:var(--r-knopf);background:var(--a1);color:#fff;font-weight:600;font-size:.9375rem;
+  transition:background .2s var(--ease),transform .2s var(--ease);white-space:nowrap}
+.ak-knopf:hover{background:var(--a3);transform:translateY(-1px)}
+.ak-knopf-gross{height:56px;padding:0 30px;font-size:1rem}
+.ak-knopf-klein{height:38px;padding:0 16px;font-size:.875rem}
+.ak-knopf-zweit{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 22px;border-radius:var(--r-knopf);
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.82);font-weight:600;font-size:.9375rem;
+  transition:background .2s}
+.ak-knopf-zweit:hover{background:rgba(255,255,255,.09)}
+.ak-knoepfe{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ak-mitte{text-align:center;justify-content:center}
+.ak-luft{margin-top:40px}
+.ak-klein{font-size:.875rem;color:rgba(255,255,255,.45);margin-top:16px}
+
+/* Hero */
+.ak-hero{position:relative;z-index:10;min-height:100svh;display:flex;align-items:center;padding:112px 0 72px}
+.ak-hero-gitter{display:grid;grid-template-columns:1.25fr .75fr;gap:64px;align-items:center}
+.ak-hero h1{font-size:clamp(2.4rem,5.6vw,4.75rem);font-weight:700;letter-spacing:-.04em;line-height:1.02}
+.ak-unterzeile{margin-top:24px;max-width:36rem;font-size:1.1875rem;line-height:1.6;color:rgba(255,255,255,.66)}
+.ak-hero .ak-knoepfe{margin-top:36px}
+.ak-vorschau,.ak-status{border-radius:var(--r-lg);border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.035);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:22px}
+.ak-vorschau-kopf{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;margin-bottom:6px;
+  border-bottom:1px solid rgba(255,255,255,.07);font-size:.875rem;font-weight:600;color:rgba(255,255,255,.86)}
+.ak-vorschau-zeit{font-size:.75rem;font-weight:600;color:rgba(255,255,255,.5);padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.1)}
+.ak-vorschau ul,.ak-status ul{list-style:none;margin:0;padding:0}
+.ak-vorschau li,.ak-status li{display:flex;align-items:center;gap:12px;padding:11px 0;font-size:.9375rem;color:rgba(255,255,255,.5);
+  border-bottom:1px solid rgba(255,255,255,.05)}
+.ak-vorschau li:last-child,.ak-status li:last-child{border-bottom:0}
+.ak-vorschau li i,.ak-status li i{flex:none;width:16px;height:16px;border-radius:999px;border:1.5px solid rgba(255,255,255,.22)}
+.ak-vorschau li.fertig{color:rgba(255,255,255,.88)}
+.ak-vorschau li.fertig i{border-color:var(--a1);background:radial-gradient(circle,var(--a1) 0 3px,transparent 4px)}
+@media (max-width:900px){
+  .ak-hero{min-height:auto;padding:104px 0 56px}
+  .ak-hero-gitter{grid-template-columns:1fr;gap:40px}
+  .ak-unterzeile{font-size:1.0625rem}
+}
+@media (max-width:480px){
+  .ak-hero .ak-knopf-gross{width:100%}
+}
+
+/* Block 3 */
+.ak-pakete{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ak-paket{padding:26px 24px;border-radius:20px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);
+  transition:border-color .3s var(--ease),background .3s var(--ease)}
+.ak-paket:hover{border-color:rgba(255,255,255,.15);background:rgba(255,255,255,.05)}
+.ak-paket h3{font-size:1.0625rem;font-weight:600;letter-spacing:-.015em;margin-bottom:8px}
+.ak-paket p{font-size:.9375rem;line-height:1.6;color:rgba(255,255,255,.56)}
+.ak-zusatz{max-width:640px;margin:44px auto 0;text-align:center;display:grid;gap:14px;justify-items:center}
+.ak-zusatz p{color:rgba(255,255,255,.66);line-height:1.6}
+.ak-zusatz strong{color:#fff;font-weight:600}
+.ak-anker{font-size:.9375rem;color:rgba(255,255,255,.45)!important;margin-bottom:10px}
+@media (max-width:900px){.ak-pakete{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.ak-pakete{grid-template-columns:1fr}}
+
+/* Block 4 */
+.ak-plan{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin-inline:auto}
+@media (max-width:760px){.ak-plan{grid-template-columns:1fr}}
+
+/* Block 5 */
+.ak-einsatz{color:rgba(255,255,255,.72)!important;font-size:1rem!important}
+
+/* Block 6 */
+.ak-zusage{max-width:720px;margin-inline:auto;text-align:center;padding:44px 32px;border-radius:24px;
+  border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.03)}
+.ak-zusage h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-.03em;margin-bottom:14px}
+.ak-zusage p{color:rgba(255,255,255,.62);line-height:1.7;max-width:34rem;margin-inline:auto}
+
+/* Block 7 */
+.ak-fuerwen{max-width:1000px;text-align:center}
+.ak-haken{list-style:none;margin:28px auto 0;padding:0;display:inline-grid;gap:14px;text-align:left}
+.ak-haken li{display:flex;gap:12px;align-items:flex-start;color:rgba(255,255,255,.78);line-height:1.5;font-size:1.0625rem}
+.ak-haken svg{flex:none;margin-top:3px;color:rgba(255,255,255,.45)}
+
+/* Fuß, schlank */
+.ak-fuss{position:relative;z-index:10;border-top:1px solid rgba(255,255,255,.08);padding:28px 0;margin-top:48px;font-size:.8125rem;color:rgba(255,255,255,.42)}
+.ak-fuss .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.ak-fuss nav{display:flex;gap:20px}
+.ak-fuss a:hover{color:#fff}
+.ak-mbar{display:flex;align-items:center;justify-content:center;width:100%;padding:14px;border-radius:12px;font-weight:600;background:var(--a1);color:#fff}
+
+/* Formular-Seiten */
+.ak-seite{position:relative;z-index:10;min-height:calc(100svh - 80px);padding:112px 0 40px}
+.ak-formular{max-width:560px;margin-inline:auto;display:grid;gap:20px;position:relative}
+.ak-schmal{max-width:420px}
+.ak-form-h{font-size:clamp(1.9rem,4vw,2.6rem);font-weight:700;letter-spacing:-.035em;line-height:1.1}
+.ak-form-p{color:rgba(255,255,255,.6);line-height:1.6;margin-top:-8px}
+.ak-fortschritt{display:grid;gap:10px;font-size:.8125rem;color:rgba(255,255,255,.5)}
+.ak-balken{height:3px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden}
+.ak-balken i{display:block;height:100%;background:var(--a1);transition:width .4s var(--ease)}
+.ak-formular fieldset{border:0;padding:0;margin:0;min-width:0}
+.ak-formular legend{font-size:.8125rem;font-weight:600;color:rgba(255,255,255,.72);margin-bottom:9px;padding:0}
+.ak-wahl{display:flex;flex-wrap:wrap;gap:8px}
+.ak-wahl button{height:42px;padding:0 16px;border-radius:12px;font-size:.9375rem;color:rgba(255,255,255,.75);
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);transition:border-color .15s,background .15s,color .15s}
+.ak-wahl button:hover{border-color:rgba(255,255,255,.25);color:#fff}
+.ak-wahl button.an{border-color:var(--a1);background:color-mix(in srgb,var(--a1) 14%,transparent);color:#fff}
+.ak-zeile{display:flex;gap:10px;align-items:center}
+.ak-zeile input{flex:1;min-width:0}
+.ak-zeile input:disabled{opacity:.4}
+.ak-fehler{font-size:.8125rem;color:#ff8a8a}
+.ak-form-knoepfe{display:flex;gap:10px;align-items:stretch;margin-top:6px}
+.ak-form-knoepfe .formular-knopf{flex:1;margin-top:0}
+.ak-zurueck{padding:0 20px;border-radius:12px;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);font-weight:600;font-size:.9375rem}
+.ak-zurueck:hover{background:rgba(255,255,255,.06);color:#fff}
+.ak-haken-feld{display:flex;gap:12px;align-items:flex-start;font-size:.875rem;line-height:1.55;color:rgba(255,255,255,.62);cursor:pointer}
+.ak-haken-feld input{flex:none;width:18px;height:18px;margin-top:2px;accent-color:var(--a1)}
+.ak-haken-feld a,.ak-form-unten a,.ak-label-zeile a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.ak-form-unten{font-size:.875rem;color:rgba(255,255,255,.5);text-align:center}
+.ak-label-zeile{display:flex;justify-content:space-between;align-items:baseline}
+.ak-label-zeile a{font-size:.8125rem;color:rgba(255,255,255,.55)}
+@media (max-width:480px){.ak-form-knoepfe{flex-direction:column-reverse}.ak-zurueck{height:46px}}
+
+/* Konto */
+.ak-konto{max-width:640px;margin-inline:auto;display:grid;gap:20px}
+.ak-konto h1{font-size:clamp(2.2rem,5vw,3.25rem);font-weight:700;letter-spacing:-.04em;line-height:1.05}
+.ak-konto-satz{color:rgba(255,255,255,.64);font-size:1.0625rem;line-height:1.6;margin-top:-6px}
+.ak-konto-hinweis{color:rgba(255,255,255,.55)}
+.ak-karte{padding:26px;border-radius:20px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);display:grid;gap:10px;justify-items:start}
+.ak-karte-haupt{border-color:color-mix(in srgb,var(--a1) 35%,rgba(255,255,255,.08));
+  background:radial-gradient(ellipse 90% 140% at 0% 0%,color-mix(in srgb,var(--a1) 8%,transparent),transparent 70%),rgba(255,255,255,.03)}
+.ak-karte h2{font-size:1.25rem;font-weight:600;letter-spacing:-.02em}
+.ak-karte p{color:rgba(255,255,255,.58);line-height:1.6;margin-bottom:6px}
+.ak-leer{text-align:center;justify-items:center;padding-top:40px}
+.ak-leer p{color:rgba(255,255,255,.6)}
