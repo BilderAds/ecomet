@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { BadgeEuro, Camera, ClipboardCheck, FlaskConical, ScanSearch, ShieldCheck } from "lucide-react";
+import { BadgeEuro, Camera, ClipboardCheck, FlaskConical, ScanSearch, ShieldCheck, Truck } from "lucide-react";
 import { Instrument_Serif } from "next/font/google";
 import { Effekte } from "@/components/start/effekte";
 import { AbzockKopf, AbzockFuss } from "@/components/abzock/kopf";
@@ -36,7 +36,7 @@ const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: "ital
  */
 const ETIKETT = process.env.VERCEL_ENV === "production";
 
-const symbole = [BadgeEuro, ScanSearch, Camera, ClipboardCheck, FlaskConical, ShieldCheck];
+const symbole = [BadgeEuro, ScanSearch, Camera, ClipboardCheck, FlaskConical, ShieldCheck, Truck];
 
 function CheckKnopf({ gross = false }: { gross?: boolean }) {
   return (
@@ -134,7 +134,7 @@ export default function AbzockCheck() {
         <section className="sec">
           <div className="wrap">
             <div className="sec-head fx">
-              <h2 className="sec-h2">6 Dinge in 24 Stunden, kostenlos</h2>
+              <h2 className="sec-h2">7 Dinge in 24 Stunden, kostenlos</h2>
             </div>
             <div className="ak-kacheln">
               {paketeKurz.map((p, i) => {
@@ -160,7 +160,7 @@ export default function AbzockCheck() {
             </div>
             <div className="ak-plan">
               {[
-                ["Fragen klicken", "Bestellungen, Preis, Ads"],
+                ["Fragen klicken", "Preis, Lieferzeit, Retouren"],
                 ["Check läuft", "Preis, Shop und Bilder"],
                 ["Ergebnis in 24 Stunden", "In deinem ecomet-Konto"],
               ].map(([titel, zeile], i) => (

@@ -74,6 +74,8 @@ export async function POST(anfrage: Request) {
     fulfiller: fulfiller && fulfillerOptionen.includes(fulfiller) ? fulfiller : null,
     ads,
     faelle_angabe: d.faelle_unbekannt === true ? "weiß nicht" : sauber(d.faelle, 10),
+    lieferzeit_angabe: sauber(d.lieferzeit, 20),
+    retouren_angabe: sauber(d.retouren, 20),
     einwilligung_am: new Date().toISOString(),
     quelle: sauber(d.quelle, 200),
   };

@@ -87,7 +87,7 @@ export default function Datenschutz() {
         <li>
           <strong>Angaben im Abzock-Check</strong>: Vorname, E-Mail-Adresse,
           WhatsApp-Nummer, Link zu Ihrem Shop und Hauptprodukt, Ihre Angaben zu
-          Bestellungen am Tag, Einkaufspreis, Fulfillment-Anbieter, Werbekanälen
+          Bestellungen am Tag, Einkaufspreis, Fulfillment-Anbieter, Lieferzeit, Retourenquote, Werbekanälen
           und PayPal- oder Klarna-Fällen sowie der Zeitpunkt Ihrer Einwilligung.
           Wir nutzen diese Angaben nur, um Ihren Check zu erstellen, Ihnen das
           Ergebnis zu schicken und Sie dazu zu kontaktieren (Art. 6 Abs. 1 lit. a

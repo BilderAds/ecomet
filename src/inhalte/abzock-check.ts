@@ -46,6 +46,7 @@ export const paketeKurz = [
   { titel: "Angle-Liste", zeile: "Fertig zum Testen" },
   { titel: "Testing-Liste", zeile: "Was du zuerst testest" },
   { titel: "Fälle-Check", zeile: "PayPal und Klarna im Blick" },
+  { titel: "Lieferzeit und Retouren", zeile: "Wo du Kunden und Geld verlierst" },
 ];
 
 export const pakete = [

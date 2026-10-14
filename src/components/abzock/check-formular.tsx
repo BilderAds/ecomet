@@ -16,6 +16,9 @@ import { adsOptionen, bestellOptionen, fulfillerOptionen, rechengroesse } from "
  */
 
 const faelleOptionen = ["0", "1 bis 5", "6 bis 20", "über 20", "weiß nicht"];
+// Kevin 14.10. (Meeting): Lieferzeit und Retourenquote müssen in den Check.
+const lieferzeitOptionen = ["unter 5 Tage", "5 bis 9 Tage", "10 bis 14 Tage", "über 14 Tage", "weiß nicht"];
+const retourenOptionen = ["unter 2 %", "2 bis 5 %", "5 bis 10 %", "über 10 %", "weiß nicht"];
 
 
 
@@ -25,6 +28,8 @@ type Daten = {
   ads: string[];
   fulfiller: string;
   faelle: string;
+  lieferzeit: string;
+  retouren: string;
   shop_url: string;
   produkt_url: string;
   vorname: string;
@@ -36,12 +41,12 @@ type Daten = {
 };
 
 const leer: Daten = {
-  bestellungen: "", preis: "", ads: [], fulfiller: "", faelle: "",
+  bestellungen: "", preis: "", ads: [], fulfiller: "", faelle: "", lieferzeit: "", retouren: "",
   shop_url: "", produkt_url: "", vorname: "", email: "", passwort: "",
   whatsapp: "", einwilligung: false, webseite: "",
 };
 
-const SCHRITTE = 7;
+const SCHRITTE = 9;
 
 const istLink = (w: string) => /^(https?:\/\/)?[^\s.]+\.[^\s]{2,}/i.test(w.trim());
 
@@ -80,7 +85,7 @@ export function CheckFormular() {
   };
 
   /** Ein Klick genügt: wählen und weiter. */
-  const klickWeiter = <K extends "bestellungen" | "fulfiller" | "faelle">(feld: K, wert: string) => {
+  const klickWeiter = <K extends "bestellungen" | "fulfiller" | "faelle" | "lieferzeit" | "retouren">(feld: K, wert: string) => {
     setze(feld, wert);
     setTimeout(() => geheZu(schritt + 1), 180);
   };
@@ -92,11 +97,11 @@ export function CheckFormular() {
       if (!d.preis || !Number.isFinite(preis) || preis <= 0) f.preis = "Trag ein, was du je Stück zahlst, zum Beispiel 8,50.";
     }
     if (s === 3 && d.ads.length === 0) f.ads = "Wähl mindestens eins aus.";
-    if (s === 6) {
+    if (s === 8) {
       if (!istLink(d.shop_url)) f.shop_url = "Trag den Link zu deinem Shop ein.";
       if (!istLink(d.produkt_url)) f.produkt_url = "Trag den Link zu deinem Hauptprodukt ein.";
     }
-    if (s === 7) {
+    if (s === 9) {
       if (!d.vorname.trim()) f.vorname = "Trag deinen Vornamen ein.";
       if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(d.email.trim())) f.email = "Diese E-Mail-Adresse sieht nicht richtig aus.";
       if (d.passwort.length < 8) f.passwort = "Mindestens 8 Zeichen.";
@@ -213,12 +218,26 @@ export function CheckFormular() {
 
       {schritt === 5 && (
         <>
+          <h1 className="ak-form-h">Wie lange braucht dein Paket heute zum Kunden?</h1>
+          <Wahl optionen={lieferzeitOptionen} gewaehlt={(o) => d.lieferzeit === o} waehle={(o) => klickWeiter("lieferzeit", o)} />
+        </>
+      )}
+
+      {schritt === 6 && (
+        <>
+          <h1 className="ak-form-h">Wie viele Bestellungen kommen zurück?</h1>
+          <Wahl optionen={retourenOptionen} gewaehlt={(o) => d.retouren === o} waehle={(o) => klickWeiter("retouren", o)} />
+        </>
+      )}
+
+      {schritt === 7 && (
+        <>
           <h1 className="ak-form-h">Wie viele PayPal- und Klarna-Fälle hast du im Monat?</h1>
           <Wahl optionen={faelleOptionen} gewaehlt={(o) => d.faelle === o} waehle={(o) => klickWeiter("faelle", o)} />
         </>
       )}
 
-      {schritt === 6 && (
+      {schritt === 8 && (
         <>
           <h1 className="ak-form-h">Welchen Shop sehen wir uns an?</h1>
           <div className="feld">
@@ -235,7 +254,7 @@ export function CheckFormular() {
         </>
       )}
 
-      {schritt === 7 && (
+      {schritt === 9 && (
         <>
           <h1 className="ak-form-h">Dein Check wartet auf dich</h1>
           <p className="ak-form-p">Leg dein ecomet-Konto an. Dort liegt dein Ergebnis in spätestens 24 Stunden.</p>
