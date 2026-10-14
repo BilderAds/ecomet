@@ -29,6 +29,13 @@ export const metadata: Metadata = {
 // Kursiver Akzent wie in Fabios Triolo-Funnel, nur für das eine Wort im H1.
 const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: "italic", display: "swap" });
 
+/**
+ * Das Etikett „Platzhalter" steht auf e-comet.de immer dran: ausgedachte
+ * Bewertungen ohne Kennzeichnung sind nach § 5b Abs. 3 UWG abmahnfähig.
+ * In Vorschauen fehlt es, damit Kevin das Design ohne Etikett sieht (14.10.).
+ */
+const ETIKETT = process.env.VERCEL_ENV === "production";
+
 const symbole = [BadgeEuro, ScanSearch, Camera, ClipboardCheck, FlaskConical, ShieldCheck];
 
 function CheckKnopf({ gross = false }: { gross?: boolean }) {
@@ -77,7 +84,7 @@ export default function AbzockCheck() {
                   ))}
                 </div>
                 <p>
-                  <strong>127 Shops</strong> haben uns bewertet <em className="ak-platzhalter">Platzhalter</em>
+                  <strong>127 Shops</strong> haben uns bewertet {ETIKETT && <em className="ak-platzhalter">Platzhalter</em>}
                 </p>
                 <div className="ak-sterne-kasten" aria-label="5,0 von 5 Sternen">
                   {[0, 1, 2, 3, 4].map((i) => (
@@ -98,7 +105,7 @@ export default function AbzockCheck() {
                 <div className="ak-video-play" aria-hidden="true">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
                 </div>
-                <span className="ak-platzhalter">Platzhalter: Video von Kevin, 60 bis 90 Sekunden</span>
+                {ETIKETT && <span className="ak-platzhalter">Platzhalter: Video von Kevin, 60 bis 90 Sekunden</span>}
               </div>
             )}
           </div>
@@ -207,7 +214,7 @@ export default function AbzockCheck() {
                     <figcaption>
                       <strong>{s.name}</strong> · {s.rolle}
                     </figcaption>
-                    <span className="ak-platzhalter">Platzhalter</span>
+                    {ETIKETT && <span className="ak-platzhalter">Platzhalter</span>}
                   </figure>
                 ))}
               </div>
