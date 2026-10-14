@@ -16,12 +16,36 @@ export const BEWEIS_ZEIGEN = false;
 /** Der Beispiel-Report ist noch nicht anonymisiert. */
 export const BEISPIEL_ZEIGEN = false;
 
+/**
+ * Platzhalter fürs Design (Kevin 14.10.: „wir faken Bewertungen erstmal für
+ * das Design, danach gucken wir, wie viele wir echt haben"). Sie erscheinen
+ * NUR in Vorschauen und lokal, nie auf e-comet.de: erfundene Bewertungen sind
+ * nach § 5b Abs. 3 UWG abmahnfähig. Echte Stimmen ersetzen sie hier.
+ */
+export const PLATZHALTER_ZEIGEN = process.env.VERCEL_ENV !== "production";
+
+export const platzhalterStimmen = [
+  { text: "Hat mir in einem Call gezeigt, dass ich 1,80 € pro Stück zu viel zahle.", name: "Platzhalter A", rolle: "Shop, 40 Bestellungen am Tag" },
+  { text: "Die Shop-Analyse war konkreter als alles, was ich bisher bezahlt habe.", name: "Platzhalter B", rolle: "Shop, 15 Bestellungen am Tag" },
+  { text: "Neues erstes Produktbild, Klickrate spürbar hoch.", name: "Platzhalter C", rolle: "Shop, 25 Bestellungen am Tag" },
+];
+
 export const INVOICE_LINK = "https://apps.shopify.com/ecomet-invoice";
 export const TERMIN_LINK =
   "mailto:kontakt@e-comet.de?subject=Termin%20zu%20meinem%20Abzock-Check";
 
 /** Ab hier gibt es den Besprechungs-Call. */
 export const CALL_AB = ["10 bis 29", "30 bis 99", "100+"];
+
+/** Kurzfassung für die Landingpage: Leute scannen, sie lesen nicht (Kevin 14.10.). */
+export const paketeKurz = [
+  { titel: "Preis-Check", zeile: "Zahlst du zu viel pro Stück?" },
+  { titel: "Shop-Analyse", zeile: "Jede Seite mit Note und Fix" },
+  { titel: "7-Bilder-Plan", zeile: "Plus ein fertiges Bild" },
+  { titel: "Angle-Liste", zeile: "Fertig zum Testen" },
+  { titel: "Testing-Liste", zeile: "Was du zuerst testest" },
+  { titel: "Fälle-Check", zeile: "PayPal und Klarna im Blick" },
+];
 
 export const pakete = [
   {

@@ -1,23 +1,31 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { BadgeEuro, Camera, ClipboardCheck, FlaskConical, ScanSearch, ShieldCheck } from "lucide-react";
 import { Effekte } from "@/components/start/effekte";
 import { AbzockKopf, AbzockFuss } from "@/components/abzock/kopf";
+import { MargenRechner } from "@/components/abzock/rechner";
 import {
-  BEISPIEL_ZEIGEN,
   BEWEIS_ZEIGEN,
-  einsatz,
-  fragen,
-  fuerWen,
-  pakete,
-  plan,
+  PLATZHALTER_ZEIGEN,
+  paketeKurz,
+  platzhalterStimmen,
 } from "@/inhalte/abzock-check";
+
+/**
+ * Abzock-Check, zweite Fassung (14.10.2026): nach dem Vorbild von Fabios
+ * Triolo-Funnel (app.triolo-bildungsakademie.de/firma). Kevin: „Leute lesen
+ * nicht, die scannen". Gesicht, Zahl und Klick statt Absätze.
+ */
 
 export const metadata: Metadata = {
   title: "Der kostenlose 24-Stunden-Abzock-Check | ecomet",
   description:
-    "Mehr Marge aus jeder Bestellung. Bessere Einkaufspreise, ein Plan für deine Produktbilder und die größten Hebel in deinem Shop. Kostenlos, in 24 Stunden.",
+    "Mehr Marge aus jeder Bestellung. Preis-Check, Shop-Analyse und Bilder-Plan für Shops, die schon verkaufen. Kostenlos, in 24 Stunden.",
   alternates: { canonical: "/abzock-check" },
 };
+
+const symbole = [BadgeEuro, ScanSearch, Camera, ClipboardCheck, FlaskConical, ShieldCheck];
 
 function CheckKnopf({ gross = false }: { gross?: boolean }) {
   return (
@@ -30,11 +38,12 @@ function CheckKnopf({ gross = false }: { gross?: boolean }) {
   );
 }
 
-const Haken = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <path d="M20 6 9 17l-5-5" />
-  </svg>
-);
+const fragen = [
+  { frage: "Was kostet der Check?", antwort: "Nichts. Kein Vertrag, kein Abo." },
+  { frage: "Muss ich danach wechseln?", antwort: "Nein. Du bekommst deinen Check und entscheidest selbst." },
+  { frage: "Wer sieht meine Zahlen?", antwort: "Nur wir, und nur für deinen Check. Mehr in der Datenschutzerklärung." },
+  { frage: "Was, wenn mein Preis schon gut ist?", antwort: "Dann sagen wir dir das. Deinen Check bekommst du trotzdem." },
+];
 
 export default function AbzockCheck() {
   return (
@@ -44,102 +53,101 @@ export default function AbzockCheck() {
       <AbzockKopf />
 
       <main>
-        {/* Block 1: Hero */}
-        <section className="ak-hero" id="start">
-          <div className="wrap ak-hero-gitter">
-            <div className="ak-hero-text">
-              <h1 className="fx">
-                Mehr <span className="accent">Marge</span> aus jeder Bestellung.
-              </h1>
-              <p className="ak-unterzeile fx" data-d="1">
-                Der kostenlose 24-Stunden-Abzock-Check für Shops, die schon verkaufen. Du bekommst
-                bessere Einkaufspreise, einen Plan für deine Produktbilder und die größten Hebel in
-                deinem Shop.
-              </p>
-              <div className="ak-knoepfe fx" data-d="2">
-                <CheckKnopf gross />
-                {BEISPIEL_ZEIGEN && (
-                  <Link href="/abzock-check/beispiel" className="ak-knopf-zweit">
-                    Beispiel ansehen
-                  </Link>
-                )}
-              </div>
-              <p className="ak-klein fx" data-d="3">
-                Kostenlos. Ohne Vertrag. Ehrliche Antwort, auch wenn dein Preis schon gut ist.
-              </p>
+        {/* Hero: Versprechen, Knopf, Beweis, Video */}
+        <section className="ak-hero2" id="start">
+          <div className="wrap ak-mitte">
+            <h1 className="fx">
+              Mehr <span className="accent">Marge</span> aus jeder Bestellung.
+            </h1>
+            <p className="ak-unterzeile fx" data-d="1">
+              Der kostenlose 24-Stunden-Abzock-Check für Shops, die schon verkaufen.
+            </p>
+            <div className="ak-knoepfe ak-mitte fx" data-d="2">
+              <CheckKnopf gross />
             </div>
+            <p className="ak-klein fx" data-d="2">Kostenlos · ohne Vertrag · Ergebnis in 24 Stunden</p>
 
-            {/* So sieht der Check im Konto aus. Nur Struktur, keine Zahlen. */}
-            <div className="ak-vorschau fx" data-d="2" aria-hidden="true">
-              <div className="ak-vorschau-kopf">
-                <span>Dein Abzock-Check</span>
-                <span className="ak-vorschau-zeit num">24 h</span>
+            {PLATZHALTER_ZEIGEN && (
+              <div className="ak-beweiszeile fx" data-d="3">
+                <div className="ak-koepfe" aria-hidden="true">
+                  {["Lisa", "Tom", "Sarah", "Marco", "Felix"].map((k) => (
+                    <Image key={k} src={`/koepfe/${k}.svg`} alt="" width={32} height={32} />
+                  ))}
+                </div>
+                <span>
+                  <strong>★★★★★ 5,0</strong> von [Anzahl] Shops <em className="ak-platzhalter">Platzhalter</em>
+                </span>
               </div>
-              <ul>
-                {pakete.map((p, i) => (
-                  <li key={p.titel} className={i < 2 ? "fertig" : ""}>
-                    <i />
-                    {p.titel.replace(/\.$/, "")}
-                  </li>
-                ))}
-              </ul>
+            )}
+
+            {PLATZHALTER_ZEIGEN && (
+              <div className="ak-video fx" data-d="3" aria-label="Platz für das Video von Kevin">
+                <div className="ak-video-play" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+                </div>
+                <span className="ak-platzhalter">Platzhalter: Video von Kevin, 60 bis 90 Sekunden</span>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* Die eigene Zahl */}
+        <section className="sec">
+          <div className="wrap ak-mitte">
+            <h2 className="sec-h2 fx">Was dich 1 € zu viel kostet</h2>
+            <div className="fx" data-d="1">
+              <MargenRechner />
             </div>
           </div>
         </section>
 
-        {/* Block 2: Beweis. Aus, bis Fabios Screenshot und Okay da sind. */}
+        {/* Block 2: Fabios Beweis, aus bis Screenshot und Okay da sind */}
         {BEWEIS_ZEIGEN && (
           <section className="sec">
             <div className="wrap ak-mitte">
               <h2 className="sec-h2 fx">[Zahl aus Fabios Screenshot] Umsatz an einem Tag</h2>
-              <p className="sec-p fx" data-d="1">
-                Hinter dem Check stehen Leute, deren eigene Stores über 100.000 € an einem Tag
-                gemacht haben.
-              </p>
             </div>
           </section>
         )}
 
-        {/* Block 3: Was du bekommst */}
+        {/* Was du bekommst */}
         <section className="sec">
           <div className="wrap">
             <div className="sec-head fx">
               <h2 className="sec-h2">6 Dinge in 24 Stunden, kostenlos</h2>
             </div>
-            <div className="ak-pakete">
-              {pakete.map((p, i) => (
-                <div key={p.titel} className="ak-paket fx" data-d={(i % 3) + 1}>
-                  <h3>{p.titel}</h3>
-                  <p>{p.text}</p>
-                </div>
-              ))}
+            <div className="ak-kacheln">
+              {paketeKurz.map((p, i) => {
+                const Symbol = symbole[i];
+                return (
+                  <div key={p.titel} className="ak-kachel fx" data-d={(i % 3) + 1}>
+                    <Symbol size={22} strokeWidth={1.8} aria-hidden="true" />
+                    <h3>{p.titel}</h3>
+                    <p>{p.zeile}</p>
+                  </div>
+                );
+              })}
             </div>
-            <div className="ak-zusatz fx">
-              <p>
-                <strong>Dazu ab 10 Bestellungen am Tag:</strong> ein Besprechungs-Call, in dem wir
-                alles mit dir durchgehen.
-              </p>
-              <p className="ak-anker">
-                Ein vergleichbares Paket aus Shop-Analyse, Angles und Produktbildern kostet bei einer
-                Agentur sonst 999 €. Für dich kostenlos.
-              </p>
-              <CheckKnopf />
-            </div>
+            <p className="ak-klein ak-mitte fx">Ab 10 Bestellungen am Tag: Call mit Kevin oder Fabio dazu.</p>
           </div>
         </section>
 
-        {/* Block 4: Der Plan */}
+        {/* 3 Schritte */}
         <section className="sec">
           <div className="wrap">
             <div className="sec-head fx">
               <h2 className="sec-h2">In 3 Schritten zu deinem Check</h2>
             </div>
             <div className="ak-plan">
-              {plan.map((s, i) => (
-                <div key={s.titel} className="schritt-karte fx" data-d={i + 1}>
+              {[
+                ["Fragen klicken", "Bestellungen, Preis, Ads"],
+                ["Check läuft", "Preis, Shop und Bilder"],
+                ["Ergebnis in 24 Stunden", "In deinem ecomet-Konto"],
+              ].map(([titel, zeile], i) => (
+                <div key={titel} className="schritt-karte fx" data-d={i + 1}>
                   <div className="schritt-n">{i + 1}</div>
-                  <h3>{s.titel}</h3>
-                  <p>{s.text}</p>
+                  <h3>{titel}</h3>
+                  <p>{zeile}</p>
                 </div>
               ))}
             </div>
@@ -149,54 +157,45 @@ export default function AbzockCheck() {
           </div>
         </section>
 
-        {/* Block 5: Was auf dem Spiel steht */}
+        {/* Stimmen: Platzhalter, nur in der Vorschau */}
+        {PLATZHALTER_ZEIGEN && (
+          <section className="sec">
+            <div className="wrap">
+              <div className="sec-head fx">
+                <h2 className="sec-h2">Das sagen Shops nach dem Check</h2>
+              </div>
+              <div className="ak-stimmen">
+                {platzhalterStimmen.map((s, i) => (
+                  <figure key={s.name} className="ak-stimme fx" data-d={i + 1}>
+                    <div className="ak-sterne" aria-hidden="true">★★★★★</div>
+                    <blockquote>„{s.text}“</blockquote>
+                    <figcaption>
+                      <strong>{s.name}</strong> · {s.rolle}
+                    </figcaption>
+                    <span className="ak-platzhalter">Platzhalter</span>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Wer den Check macht */}
         <section className="sec">
           <div className="wrap">
-            <div className="sec-head fx">
-              <h2 className="sec-h2">Jede Bestellung kann mehr bringen</h2>
-            </div>
-            <div className="einsatz-reihe">
-              {einsatz.map((satz, i) => (
-                <div key={satz} className="einsatz-karte fx" data-d={i + 1}>
-                  <p className="ak-einsatz">{satz}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Block 6: Garantie */}
-        <section className="sec">
-          <div className="wrap">
-            <div className="ak-zusage fx">
-              <h2>Die Ehrlich-Zusage</h2>
-              <p>
-                Ist dein Preis fair, sagen wir dir das. Passt ecomet nicht zu deinem Shop, sagen wir
-                dir das auch. Deinen Check bekommst du in beiden Fällen.
-              </p>
+            <div className="ak-menschen fx">
+              <div className="ak-gesichter">
+                <Image src="/team/fabio.png" alt="Fabio" width={88} height={88} />
+                <span className="ak-initial" aria-label="Kevin">K</span>
+              </div>
+              <h2>Moin, wir sind Kevin und Fabio.</h2>
+              <p>Den Check macht kein Bot allein. Den Call machst du mit einem von uns.</p>
+              <p className="ak-zusage-zeile">Ist dein Preis fair, sagen wir dir das. Ehrlich.</p>
             </div>
           </div>
         </section>
 
-        {/* Block 7: Für wen */}
-        <section className="sec">
-          <div className="wrap ak-fuerwen">
-            <h2 className="sec-h2 fx">Gemacht für Shops ab 10 Bestellungen am Tag</h2>
-            <ul className="ak-haken fx" data-d="1">
-              {fuerWen.map((z) => (
-                <li key={z}>
-                  <Haken />
-                  {z}
-                </li>
-              ))}
-            </ul>
-            <p className="ak-klein fx" data-d="2">
-              Noch keine Bestellungen? Dann komm wieder, sobald dein Shop läuft.
-            </p>
-          </div>
-        </section>
-
-        {/* Block 8: Fragen */}
+        {/* Fragen */}
         <section className="sec faq-sec">
           <div className="wrap">
             <div className="sec-head fx">
@@ -220,15 +219,12 @@ export default function AbzockCheck() {
           </div>
         </section>
 
-        {/* Block 9: Abschluss */}
+        {/* Abschluss */}
         <section className="sec abschluss">
           <div className="wrap">
             <div className="abschluss-kasten fx">
-              <h2>Dein Check in 24 Stunden</h2>
-              <p>
-                Starte vor dem Weihnachtsgeschäft, dann verkaufst du im Dezember schon mit deinen
-                neuen Zahlen.
-              </p>
+              <h2>Dein Check vor Weihnachten</h2>
+              <p>Im Dezember verkaufst du schon mit deinen neuen Zahlen.</p>
               <div className="abschluss-knoepfe">
                 <CheckKnopf gross />
               </div>
@@ -239,7 +235,6 @@ export default function AbzockCheck() {
 
       <AbzockFuss />
 
-      {/* Handy: Knopf unten, sobald der Hero durch ist */}
       <div className="mbar" id="mbar">
         <div className="mbar-in">
           <Link href="/abzock-check/start" className="ak-mbar">
