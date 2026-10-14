@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { adsOptionen, bestellOptionen, fulfillerOptionen } from "@/inhalte/abzock-check";
+import { adsOptionen, bestellOptionen, fulfillerOptionen, rechengroesse } from "@/inhalte/abzock-check";
 
 /**
  * Der Klick-Funnel des Abzock-Checks, zweite Fassung (14.10.2026, Vorbild
@@ -17,12 +17,7 @@ import { adsOptionen, bestellOptionen, fulfillerOptionen } from "@/inhalte/abzoc
 
 const faelleOptionen = ["0", "1 bis 5", "6 bis 20", "über 20", "weiß nicht"];
 
-/**
- * Rechengröße je Auswahl für das Zwischenergebnis (Kevin 14.10.: „1 Bestellung
- * ist zu klein, nimm eher 5 oder 6"). Etwa die Mitte der Spanne, bei 100+ die 100.
- * Die Angabe des Händlers selbst wird unverändert gespeichert.
- */
-const rechengroesse: Record<string, number> = { "1 bis 9": 5, "10 bis 29": 20, "30 bis 99": 50, "100+": 100 };
+
 
 type Daten = {
   bestellungen: string;
@@ -143,7 +138,7 @@ export function CheckFormular() {
         return;
       }
       try {
-        sessionStorage.setItem("ecomet-check", JSON.stringify({ vorname: d.vorname.trim(), bestellungen: d.bestellungen }));
+        sessionStorage.setItem("ecomet-check", JSON.stringify({ vorname: d.vorname.trim(), bestellungen: d.bestellungen, preis: d.preis.trim() }));
       } catch {}
       router.push("/konto");
     } catch {

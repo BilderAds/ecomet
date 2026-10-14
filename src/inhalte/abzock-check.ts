@@ -131,3 +131,10 @@ export const fragen = [
 export const bestellOptionen = ["noch keine", "1 bis 9", "10 bis 29", "30 bis 99", "100+"];
 export const fulfillerOptionen = ["Agent in China", "CJ", "Zendrop", "eigenes Lager", "anderes"];
 export const adsOptionen = ["Meta", "Google", "TikTok", "keine"];
+
+/**
+ * Rechengröße je Auswahl für „1 € zu viel pro Stück" (Kevin 14.10.: „1 Bestellung
+ * ist zu klein, nimm eher 5 oder 6"). Etwa die Mitte der Spanne, bei 100+ die 100.
+ * Die Angabe des Händlers selbst wird unverändert gespeichert.
+ */
+export const rechengroesse: Record<string, number> = { "1 bis 9": 5, "10 bis 29": 20, "30 bis 99": 50, "100+": 100 };
