@@ -965,7 +965,7 @@ img{max-width:100%;display:block}
 .ak-danke-einwaende p{margin:0}
 .ak-link-leise{color:rgba(255,255,255,.55);text-decoration:underline;text-underline-offset:3px}
 .ak-link-leise:hover{color:#fff}
-/* Danke-Seite, schlank (Kevin 14.10.: „zu viel Text") */
+/* Danke-Seite, schlank (Kevin 14.10.: „zu viel Text"); Trust über dem Video */
 .ak-danke{gap:28px}
 .ak-danke-kopf .ak-knopf-voll{margin-top:6px}
 .ak-danke-zahl{display:grid;justify-items:center;text-align:center;gap:4px;padding:8px 0}
